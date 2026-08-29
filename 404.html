@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<!--
+  ════════════════════════════════════════════════════════════
+   007.gallery
+   Creator : Artist Altayeb Amer
+   المبتكر  : الفنان الطيب عامر
+   Source  : https://007.gallery
+   © 2026 Artist Altayeb Amer — All rights reserved.
+   Protected by ALTAYEB GUARDIAN v4.0
+  ════════════════════════════════════════════════════════════
+-->
+
+<html lang="ar" dir="rtl" data-creator="Artist Altayeb Amer" data-creator-ar="الفنان الطيب عامر" data-source="https://007.gallery" data-guardian="4.0">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>الصفحة غير موجودة — 007.gallery</title>
+<meta name="robots" content="noindex">
+<link rel="stylesheet" href="/assets/brand.css">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/icon-32.png">
+<meta name="theme-color" content="#0a0b0f">
+<style>
+  .nf{min-height:62vh;display:grid;place-items:center;text-align:center;padding:40px 0}
+  .nf .code{font-size:clamp(72px,16vw,140px);font-weight:900;line-height:1;
+    background:linear-gradient(120deg,var(--gold),var(--gold-2));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .nf h1{font-size:clamp(20px,3.4vw,28px);font-weight:800;margin:14px 0 8px}
+  .nf p{color:var(--txt-dim);font-size:15px;max-width:460px;margin:0 auto}
+  .nf .cta{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:26px}
+  .quick{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:30px}
+  .quick a{font-size:13px;font-weight:700;color:var(--gold-2);border:1px solid var(--line-2);
+    padding:9px 15px;border-radius:999px;transition:.15s}
+  .quick a:hover{border-color:var(--gold);background:var(--gold-soft)}
+</style>
+<script data-project="007.gallery" data-project-ar="٠٠٧ جاليري" data-site="https://007.gallery" data-version="1.0.0" data-creator="Artist Altayeb Amer" data-creator-ar="الفنان الطيب عامر" data-domains="007.gallery" src="/assets/guardian.js" data-comment="Processed locally in the browser — no upload, no server. Image rights remain with the image owner." defer></script>
+<meta name="author" content="Artist Altayeb Amer">
+<meta name="creator" content="Artist Altayeb Amer">
+<meta name="designer" content="Artist Altayeb Amer / الفنان الطيب عامر">
+<meta name="copyright" content="© 2026 Artist Altayeb Amer">
+<meta name="owner" content="Artist Altayeb Amer">
+<meta name="publisher" content="007.gallery — Artist Altayeb Amer">
+<meta name="dcterms.creator" content="Artist Altayeb Amer">
+<meta name="dcterms.rights" content="© 2026 Artist Altayeb Amer">
+<meta name="dcterms.rightsHolder" content="Artist Altayeb Amer">
+<meta name="application-name" content="007.gallery">
+<meta name="guardian" content="ALTAYEB GUARDIAN v4.0 — Artist Altayeb Amer">
+<link rel="author" href="/humans.txt">
+</head>
+<body>
+<header class="site-header"><div class="wrap nav">
+  <a class="brand" href="/"><span class="logo">007</span><span>007<b>.gallery</b></span></a>
+  <div class="nav-actions">
+    <button class="btn btn-lang" id="langBtn" onclick="toggleLang()">EN</button>
+    <a class="btn btn-ghost" href="/"><span data-ar>الصفحة الرئيسية</span><span data-en>Home</span></a>
+  </div>
+</div></header>
+
+<main class="wrap">
+  <div class="nf">
+    <div>
+      <div class="code">404</div>
+      <h1><span data-ar>عذراً، هذه الصفحة غير موجودة</span><span data-en>Sorry, this page was not found</span></h1>
+      <p><span data-ar>ربما تغيّر الرابط أو حُذفت الصفحة. لكن كل أدواتنا المجانية ما زالت في انتظارك.</span><span data-en>The link may have changed or the page was removed — but all our free tools are still here for you.</span></p>
+      <div class="cta">
+        <a class="btn btn-primary btn-lg" href="/"><span data-ar>العودة للرئيسية</span><span data-en>Back to home</span></a>
+      </div>
+      <div class="quick">
+        <a href="/services/background-removal.html"><span data-ar>إزالة الخلفية</span><span data-en>Background removal</span></a>
+        <a href="/services/upscale.html"><span data-ar>تكبير الصور</span><span data-en>Upscale</span></a>
+        <a href="/services/convert-compress.html"><span data-ar>تحويل وضغط</span><span data-en>Convert & compress</span></a>
+        <a href="/services/ocr.html"><span data-ar>استخراج النص</span><span data-en>Extract text</span></a>
+        <a href="/services/qr.html"><span data-ar>مولّد QR</span><span data-en>QR generator</span></a>
+        <a href="/services/watermark.html"><span data-ar>العلامة المائية</span><span data-en>Watermark</span></a>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer class="site-footer"><div class="wrap foot">
+  <a class="brand" href="/"><span class="logo">007</span><span>007<b>.gallery</b></span></a>
+  <p>© 2026 007.gallery · <span data-ar>كل الحقوق محفوظة</span><span data-en>All rights reserved</span></p>
+</div></footer>
+<script>
+"use strict";
+function toggleLang(){
+  const h=document.documentElement, en=h.getAttribute('lang')==='en';
+  h.setAttribute('lang', en?'ar':'en');
+  h.setAttribute('dir',  en?'rtl':'ltr');
+  document.getElementById('langBtn').textContent = en?'EN':'ع';
+  try{ localStorage.setItem('gallery_lang', en?'ar':'en'); }catch(e){}
+}
+try{ if(localStorage.getItem('gallery_lang')==='en') toggleLang(); }catch(e){}
+</script>
+</body>
+</html>

@@ -1,0 +1,15 @@
+/* TEAM */
+  Creator  : Artist Altayeb Amer
+  المبتكر   : الفنان الطيب عامر
+  Role     : Founder · Designer · Developer
+  Site     : https://007.gallery
+  From     : United Arab Emirates
+
+/* SITE */
+  Name     : 007.gallery
+  Standards: HTML5, CSS3, JavaScript (ES2022), WebAssembly, WebGPU
+  Software : Transformers.js, ONNX Runtime Web, Tesseract.js
+  Guardian : ALTAYEB GUARDIAN v4.0
+  Rights   : © 2026 Artist Altayeb Amer — All rights reserved.
+
+  All image processing runs locally in the visitor's browser.

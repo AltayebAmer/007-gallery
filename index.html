@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<!--
+  ════════════════════════════════════════════════════════════
+   007.gallery
+   Creator : Artist Altayeb Amer
+   المبتكر  : الفنان الطيب عامر
+   Source  : https://007.gallery
+   © 2026 Artist Altayeb Amer — All rights reserved.
+   Protected by ALTAYEB GUARDIAN v4.0
+  ════════════════════════════════════════════════════════════
+-->
+
+<html lang="ar" dir="rtl" data-creator="Artist Altayeb Amer" data-creator-ar="الفنان الطيب عامر" data-source="https://007.gallery" data-guardian="4.0">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>007.gallery — أدوات الصور الاحترافية</title>
+<meta name="description" content="مجموعة أدوات صور احترافية تعمل في متصفحك مجاناً — إزالة الخلفية، التكبير، OCR، QR والمزيد.">
+<style>
+:root{
+  --bg:#0a0b0f; --bg-2:#12141c; --card:#161a24; --card-2:#1b2130;
+  --line:#232a3a; --line-2:#2e3750;
+  --gold:#d4af37; --gold-2:#f2d16b; --gold-soft:rgba(212,175,55,.12);
+  --txt:#eef1f7; --txt-dim:#9aa4b8; --txt-mute:#6b7488;
+  --green:#37d49a; --blue:#5b8cff;
+  --radius:16px; --maxw:1180px;
+  --ff:'Segoe UI',system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;overflow-x:hidden}
+body{
+  font-family:var(--ff); background:var(--bg); color:var(--txt);
+  line-height:1.6; overflow-x:hidden;
+  background-image:
+    radial-gradient(900px 500px at 80% -10%, rgba(212,175,55,.10), transparent 60%),
+    radial-gradient(700px 500px at 0% 0%, rgba(91,140,255,.08), transparent 55%);
+}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 22px}
+
+/* ---------- Header ---------- */
+header{
+  position:sticky;top:0;z-index:50;
+  backdrop-filter:blur(14px);
+  background:rgba(10,11,15,.72);
+  border-bottom:1px solid var(--line);
+}
+.nav{display:flex;align-items:center;justify-content:space-between;height:68px;gap:12px;min-width:0}
+.nav .brand{min-width:0;flex-shrink:1}
+.nav-actions{flex-shrink:0}
+.brand{display:flex;align-items:center;gap:11px;font-weight:800;font-size:20px;letter-spacing:.3px}
+.brand .logo{
+  width:38px;height:38px;border-radius:11px;display:grid;place-items:center;
+  background:linear-gradient(135deg,var(--gold),var(--gold-2));color:#0a0b0f;
+  font-weight:900;font-size:15px;box-shadow:0 4px 18px rgba(212,175,55,.35)
+}
+.brand b{color:var(--gold)}
+.nav-actions{display:flex;align-items:center;gap:10px}
+.btn{
+  border:1px solid var(--line-2);background:var(--card);color:var(--txt);
+  padding:9px 15px;border-radius:11px;font-size:14px;font-weight:700;cursor:pointer;
+  transition:.18s;font-family:inherit
+}
+.btn:hover{border-color:var(--gold);color:var(--gold-2)}
+.btn-lang{min-width:58px}
+.btn-primary{
+  background:linear-gradient(135deg,var(--gold),var(--gold-2));color:#0a0b0f;border:none
+}
+.btn-primary:hover{filter:brightness(1.06);color:#0a0b0f}
+
+/* ---------- Hero ---------- */
+.hero{padding-top:74px;padding-bottom:46px;text-align:center;position:relative}
+.pill{
+  display:inline-flex;align-items:center;gap:8px;
+  background:var(--gold-soft);border:1px solid rgba(212,175,55,.3);
+  color:var(--gold-2);padding:7px 15px;border-radius:999px;font-size:13px;font-weight:700;margin-bottom:22px
+}
+.pill .dot{width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 10px var(--green)}
+.hero h1{font-size:clamp(30px,5vw,52px);line-height:1.18;font-weight:900;letter-spacing:-.5px}
+.hero h1 span{background:linear-gradient(120deg,var(--gold),var(--gold-2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p{max-width:660px;margin:20px auto 0;color:var(--txt-dim);font-size:clamp(15px,2vw,18px)}
+.hero-cta{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:30px}
+.stats{display:flex;gap:34px;justify-content:center;flex-wrap:wrap;margin-top:44px}
+.stat b{display:block;font-size:26px;font-weight:900;color:var(--gold-2)}
+.stat span{font-size:13px;color:var(--txt-mute)}
+
+/* ---------- Section ---------- */
+.section{padding-top:40px;padding-bottom:40px}
+.sec-head{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;margin-bottom:26px;flex-wrap:wrap}
+.sec-head h2{font-size:clamp(22px,3vw,30px);font-weight:900}
+.sec-head h2 em{font-style:normal;color:var(--gold-2)}
+.sec-head p{color:var(--txt-dim);font-size:15px;margin-top:6px}
+.tag{
+  font-size:12.5px;font-weight:800;padding:6px 13px;border-radius:999px;white-space:nowrap
+}
+.tag-free{background:rgba(55,212,154,.12);color:var(--green);border:1px solid rgba(55,212,154,.3)}
+.tag-pro{background:rgba(91,140,255,.12);color:var(--blue);border:1px solid rgba(91,140,255,.3)}
+
+/* ---------- Grid ---------- */
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+@media(max-width:980px){.grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.grid{grid-template-columns:1fr}}
+.card{
+  position:relative;background:linear-gradient(180deg,var(--card),var(--card-2));
+  border:1px solid var(--line);border-radius:var(--radius);padding:22px 20px;
+  transition:.2s;overflow:hidden;display:flex;flex-direction:column;min-height:200px
+}
+.card::before{
+  content:"";position:absolute;inset:0;border-radius:var(--radius);padding:1px;
+  background:linear-gradient(135deg,transparent,transparent);opacity:0;transition:.25s;pointer-events:none;
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
+  -webkit-mask-composite:xor;mask-composite:exclude
+}
+.card:hover{transform:translateY(-4px);border-color:var(--line-2)}
+.card:hover::before{opacity:1;background:linear-gradient(135deg,var(--gold),transparent 55%)}
+.card .ic{
+  width:50px;height:50px;border-radius:13px;display:grid;place-items:center;margin-bottom:15px;
+  background:var(--gold-soft);border:1px solid rgba(212,175,55,.22);color:var(--gold-2)
+}
+.card.pro .ic{background:rgba(91,140,255,.10);border-color:rgba(91,140,255,.22);color:var(--blue)}
+.card h3{font-size:17px;font-weight:800;margin-bottom:7px}
+.card .desc{font-size:13.5px;color:var(--txt-dim);flex:1}
+.card .go{display:flex;align-items:center;gap:6px;margin-top:16px;font-size:13.5px;font-weight:800;color:var(--gold-2)}
+.card .go .arrow{transition:.2s}
+.card:hover .go .arrow{transform:translateX(-4px)}
+html[dir=ltr] .card:hover .go .arrow{transform:translateX(4px)}
+.badge{
+  position:absolute;top:14px;inset-inline-end:14px;font-size:11px;font-weight:800;
+  padding:4px 10px;border-radius:999px;background:rgba(91,140,255,.14);color:var(--blue);border:1px solid rgba(91,140,255,.3)
+}
+.card.pro{opacity:.94}
+.card.pro .go{color:var(--blue)}
+
+/* ---------- Ad "رد المعروف" ---------- */
+.ad{
+  margin:30px auto;border:1px dashed var(--line-2);border-radius:14px;
+  min-height:96px;display:flex;align-items:center;justify-content:center;gap:10px;
+  color:var(--txt-mute);font-size:13px;background:
+    repeating-linear-gradient(45deg,transparent,transparent 12px,rgba(255,255,255,.012) 12px,rgba(255,255,255,.012) 24px)
+}
+.ad b{color:var(--txt-dim)}
+
+/* ---------- Footer ---------- */
+footer{border-top:1px solid var(--line);margin-top:50px;padding:38px 0}
+.foot{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;align-items:center}
+.foot .brand{font-size:17px}
+.foot p{color:var(--txt-mute);font-size:13px}
+.support{
+  background:linear-gradient(135deg,var(--gold-soft),transparent);border:1px solid rgba(212,175,55,.25);
+  border-radius:16px;padding:24px;text-align:center;margin:34px 0
+}
+.support h3{font-size:19px;font-weight:900;margin-bottom:6px;color:var(--gold-2)}
+.support p{color:var(--txt-dim);font-size:14px;max-width:560px;margin:0 auto 14px}
+
+
+/* ---------- الشاشات الضيقة (360px وأقل) ---------- */
+@media (max-width:520px){
+  .nav{gap:8px;height:58px}
+  .brand{font-size:15.5px;gap:8px}
+  .brand .logo{width:31px;height:31px;font-size:11.5px;border-radius:9px}
+  .nav-actions{gap:6px}
+  .nav-actions .btn{padding:9px 11px;font-size:12.5px;min-height:40px}
+  .btn-lang{min-width:40px}
+  .nav-cta-hide{display:none}
+  .wrap{padding:0 16px}
+  .hero{padding-top:44px;padding-bottom:32px}
+  .stats{gap:20px}
+  .sec-head{gap:10px}
+}
+@media (max-width:768px){
+  .btn{min-height:44px}
+  .nav-sm-hide{display:none}
+}
+
+[data-en]{display:none}
+html[lang=en] [data-ar]{display:none}
+html[lang=en] [data-en]{display:inline}
+html[lang=en] .desc[data-en],html[lang=en] .support p[data-en]{display:block}
+</style>
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/icon-32.png">
+<link rel="apple-touch-icon" href="assets/icon-180.png">
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#0a0b0f">
+<link rel="canonical" href="https://007.gallery/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="007.gallery">
+<meta property="og:locale" content="ar_AR">
+<meta property="og:title" content="007.gallery — أدوات الصور الاحترافية مجاناً">
+<meta property="og:description" content="١٥ أداة ذكية للصور: إزالة الخلفية، التكبير، OCR، QR، العلامة المائية والمزيد — تعمل في متصفحك مجاناً وبخصوصية كاملة.">
+<meta property="og:url" content="https://007.gallery/">
+<meta property="og:image" content="https://007.gallery/assets/og-cover.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="007.gallery — أدوات الصور الاحترافية مجاناً">
+<meta name="twitter:description" content="١٥ أداة ذكية للصور: إزالة الخلفية، التكبير، OCR، QR، العلامة المائية والمزيد — تعمل في متصفحك مجاناً وبخصوصية كاملة.">
+<meta name="twitter:image" content="https://007.gallery/assets/og-cover.png">
+<script data-project="007.gallery" data-project-ar="٠٠٧ جاليري" data-site="https://007.gallery" data-version="1.0.0" data-creator="Artist Altayeb Amer" data-creator-ar="الفنان الطيب عامر" data-domains="007.gallery" src="assets/guardian.js" data-comment="Processed locally in the browser — no upload, no server. Image rights remain with the image owner." defer></script>
+<meta name="author" content="Artist Altayeb Amer">
+<meta name="creator" content="Artist Altayeb Amer">
+<meta name="designer" content="Artist Altayeb Amer / الفنان الطيب عامر">
+<meta name="copyright" content="© 2026 Artist Altayeb Amer">
+<meta name="owner" content="Artist Altayeb Amer">
+<meta name="publisher" content="007.gallery — Artist Altayeb Amer">
+<meta name="dcterms.creator" content="Artist Altayeb Amer">
+<meta name="dcterms.rights" content="© 2026 Artist Altayeb Amer">
+<meta name="dcterms.rightsHolder" content="Artist Altayeb Amer">
+<meta name="application-name" content="007.gallery">
+<meta name="guardian" content="ALTAYEB GUARDIAN v4.0 — Artist Altayeb Amer">
+<link rel="author" href="humans.txt">
+<script src="assets/ads.js" defer></script>
+<script src="assets/artgallery.js" defer></script>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="#top">
+      <span class="logo">007</span>
+      <span>007<b>.gallery</b></span>
+    </a>
+    <div class="nav-actions">
+      <button class="btn btn-lang" id="langBtn" onclick="toggleLang()">EN</button>
+      <a class="btn btn-ghost nav-sm-hide" href="articles/index.html"><span data-ar>المقالات</span><span data-en>Guides</span></a>
+      <a class="btn btn-primary nav-cta-hide" href="#free"><span data-ar>ابدأ مجاناً</span><span data-en>Start free</span></a>
+    </div>
+  </div>
+</header>
+
+<a id="top"></a>
+<section class="hero wrap">
+  <span class="pill"><span class="dot"></span><span data-ar>يعمل داخل متصفحك — بدون رفع صورك</span><span data-en>Runs in your browser — your images never leave</span></span>
+  <h1>
+    <span data-ar>أدوات الصور الاحترافية<br><span>مجاناً وبخصوصية كاملة</span></span>
+    <span data-en>Professional image tools<br><span>free & fully private</span></span>
+  </h1>
+  <p>
+    <span data-ar>١٥ أداة ذكية للصور — ٧ مجانية تعمل بالكامل في متصفحك عبر WebGPU، و٨ خدمات سحابية احترافية قادمة. لا تسجيل، لا رفع، لا انتظار.</span>
+    <span data-en>15 smart image tools — 7 free, running entirely in your browser via WebGPU, plus 8 pro cloud services coming soon. No sign-up, no upload, no waiting.</span>
+  </p>
+  <div class="hero-cta">
+    <a class="btn btn-primary" href="#free"><span data-ar>الأدوات المجانية</span><span data-en>Free tools</span></a>
+    <a class="btn" href="#pro"><span data-ar>الخدمات الاحترافية</span><span data-en>Pro services</span></a>
+  </div>
+  <div class="stats">
+    <div class="stat"><b>7</b><span data-ar>أدوات مجانية</span><span data-en>Free tools</span></div>
+    <div class="stat"><b>100%</b><span data-ar>خصوصية محلية</span><span data-en>Local privacy</span></div>
+    <div class="stat"><b>0$</b><span data-ar>بدون اشتراك</span><span data-en>No subscription</span></div>
+  </div>
+</section>
+
+<!-- FREE -->
+<section class="section wrap" id="free">
+  <div class="sec-head">
+    <div>
+      <h2><span data-ar>الأدوات <em>المجانية</em></span><span data-en>The <em>free</em> tools</span></h2>
+      <p><span data-ar>معالجة محلية في متصفحك — سريعة، خاصة، وبلا حدود.</span><span data-en>Processed locally in your browser — fast, private, unlimited.</span></p>
+    </div>
+    <span class="tag tag-free"><span data-ar>مجاني بالكامل</span><span data-en>Fully free</span></span>
+  </div>
+
+  <div class="grid" id="freeGrid"></div>
+</section>
+
+<!-- AD -->
+<div class="wrap"><div class="ad"><b><span data-ar>مساحة إعلانية — رد المعروف</span><span data-en>Ad space — support us</span></b> · <span data-ar>يبقي الأدوات مجانية للجميع</span><span data-en>keeps the tools free for everyone</span></div></div>
+
+<div class="wrap"><div data-ad-slot="billboard"></div></div>
+
+<!-- PRO -->
+<section class="section wrap" id="pro">
+  <div class="sec-head">
+    <div>
+      <h2><span data-ar>الخدمات <em>الاحترافية</em></span><span data-en>The <em>pro</em> services</span></h2>
+      <p><span data-ar>معالجة سحابية عالية القوة — قريباً، مع استخدام مجاني واحد كل ٢٤ ساعة.</span><span data-en>High-power cloud processing — coming soon, with one free use every 24h.</span></p>
+    </div>
+    <span class="tag tag-pro"><span data-ar>قريباً</span><span data-en>Coming soon</span></span>
+  </div>
+
+  <div class="grid" id="proGrid"></div>
+</section>
+
+<div class="wrap"><div data-art-gallery></div></div>
+
+
+<!-- Support -->
+<section class="wrap">
+  <div class="support">
+    <h3><span data-ar>❤ ادعمنا — «رد المعروف»</span><span data-en>❤ Support us</span></h3>
+    <p><span data-ar>أدواتنا المجانية تعمل على جهازك بلا تكلفة عليك. مشاهدة إعلان بسيط أو مشاركة الموقع تساعدنا على إبقاء كل شيء مجانياً.</span><span data-en>Our free tools run on your device at no cost to you. Watching a short ad or sharing the site helps keep everything free.</span></p>
+    <a class="btn btn-primary" href="#free"><span data-ar>جرّب أداة الآن</span><span data-en>Try a tool now</span></a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot">
+    <a class="brand" href="#top"><span class="logo">007</span><span>007<b>.gallery</b></span></a>
+    <p>© 2026 007.gallery · <span data-ar>كل الحقوق محفوظة</span><span data-en>All rights reserved</span> · <a href="privacy.html" style="color:var(--gold-2)"><span data-ar>سياسة الخصوصية</span><span data-en>Privacy</span></a> · <a href="articles/index.html" style="color:var(--gold-2)"><span data-ar>المقالات</span><span data-en>Guides</span></a> · <a href="projects.html" style="color:var(--gold-2)"><span data-ar>المشاريع</span><span data-en>Projects</span></a> · <a href="contact.html" style="color:var(--gold-2)"><span data-ar>تواصل</span><span data-en>Contact</span></a></p>
+  </div>
+</footer>
+
+<script>
+/* icon set (inline svg) */
+const I = {
+  scissors:'<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><line x1="20" y1="4" x2="8.12" y2="15.88"/><line x1="14.47" y1="14.48" x2="20" y2="20"/><line x1="8.12" y1="8.12" x2="12" y2="12"/></svg>',
+  expand:'<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg>',
+  aperture:'<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="14.31" y1="8" x2="20.05" y2="17.94"/><line x1="9.69" y1="8" x2="21.17" y2="8"/><line x1="7.38" y1="12" x2="13.12" y2="2.06"/><line x1="9.69" y1="16" x2="3.95" y2="6.06"/><line x1="14.31" y1="16" x2="2.83" y2="16"/><line x1="16.62" y1="12" x2="10.88" y2="21.94"/></svg>',
+  layers:'<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>',
+  palette:'<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="13.5" cy="6.5" r=".8" fill="currentColor"/><circle cx="17.5" cy="10.5" r=".8" fill="currentColor"/><circle cx="8.5" cy="7.5" r=".8" fill="currentColor"/><circle cx="6.5" cy="12.5" r=".8" fill="currentColor"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c1.7 0 2.5-1.3 2.5-2.5 0-.7-.3-1.2-.7-1.7-.4-.4-.6-.9-.6-1.4 0-1.1.9-2 2-2h2c2.8 0 5-2.2 5-5C22 5.9 17.5 2 12 2z"/></svg>',
+  text:'<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 7 4 4 20 4 20 7"/><line x1="9" y1="20" x2="15" y2="20"/><line x1="12" y1="4" x2="12" y2="20"/></svg>',
+  qr:'<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><line x1="14" y1="14" x2="14" y2="17"/><line x1="17" y1="14" x2="20" y2="14"/><line x1="20" y1="17" x2="20" y2="20"/><line x1="14" y1="20" x2="17" y2="20"/></svg>',
+  stamp:'<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M5 22h14"/><path d="M8 22v-4a4 4 0 0 1 .6-2.1C9.5 14.5 10 13.3 10 12a2 2 0 0 0-2-2 2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v2a2 2 0 0 1-2 2 2 2 0 0 0-2 2c0 1.3.5 2.5 1.4 3.9a4 4 0 0 1 .6 2.1v4"/></svg>',
+  face:'<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>',
+  eraser:'<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M20 20H7L3 16a2 2 0 0 1 0-3l9-9a2 2 0 0 1 3 0l5 5a2 2 0 0 1 0 3l-8 8"/><line x1="18" y1="12.5" x2="9.5" y2="4"/></svg>',
+  wand:'<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M15 4V2M15 22v-2M8 9l-2 2M22 15l-2 2M2 15l2 2M20 9l2 2M9 8L2 15l7 7 13-13-5-5-4 4z"/></svg>',
+  image:'<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>',
+  video:'<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>',
+  film:'<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="2"/><line x1="7" y1="2" x2="7" y2="22"/><line x1="17" y1="2" x2="17" y2="22"/><line x1="2" y1="12" x2="22" y2="12"/></svg>',
+  package:'<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M16.5 9.4 7.5 4.21M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>'
+};
+
+const FREE = [
+  {ic:'scissors', href:'services/background-removal.html', ar:['إزالة الخلفية','أزل خلفية أي صورة تلقائياً بدقة عالية، مع أداة تصحيح يدوية دقيقة.'], en:['Background removal','Auto-remove any background in high quality, with precise manual touch-up.']},
+  {ic:'expand', href:'services/upscale.html', ar:['تكبير ودقة الصور','ضاعف حجم صورك ووضوحها حتى ٤ أضعاف دون فقدان الجودة.'], en:['Upscale & enhance','Increase size and sharpness up to 4× without losing quality.']},
+  {ic:'aperture', href:'services/portrait-blur.html', ar:['عزل / طمس الخلفية','تأثير بوكيه احترافي يبرز موضوع الصورة ويطمس ما خلفه.'], en:['Portrait blur','Pro bokeh effect that highlights your subject and blurs the rest.']},
+  {ic:'layers', href:'services/convert-compress.html', ar:['تحويل وضغط وتغيير الحجم','بين PNG وJPG وWebP — اضغط وغيّر الأبعاد بجودة مثالية.'], en:['Convert · compress · resize','Between PNG, JPG & WebP — compress and resize with perfect quality.']},
+  {ic:'text', href:'services/ocr.html', ar:['استخراج النص من الصور (OCR)','حوّل الصور والمستندات إلى نص قابل للتحرير — عربي وإنجليزي.'], en:['Extract text (OCR)','Turn images and documents into editable text — Arabic & English.']},
+  {ic:'qr', href:'services/qr.html', ar:['مولّد QR احترافي','أنشئ رموز QR أنيقة بشعارك وألوانك الخاصة بدقة عالية.'], en:['Pro QR generator','Create elegant QR codes with your logo and colors in high resolution.']},
+  {ic:'stamp', href:'services/watermark.html', ar:['العلامة المائية','أضف علامتك (نص أو شعار) على صورك دفعة واحدة، أو اطمس منطقة لإخفائها.'], en:['Watermark studio','Brand your images (text or logo) in one batch, or blur a region to hide it.']}
+];
+
+const PRO = [
+  {ic:'face', ar:['تحسين وترميم الوجوه HD','ترميم الوجوه القديمة أو الباهتة إلى دقة فائقة وواقعية.'], en:['Face restore HD','Restore old or blurry faces to ultra-sharp, lifelike detail.']},
+  {ic:'eraser', ar:['ممحاة الكائنات الذكية','امسح أي كائن أو شخص من الصورة وتُملأ الفجوة تلقائياً.'], en:['Smart object eraser','Erase any object or person; the gap is filled in automatically.']},
+  {ic:'wand', ar:['التعبئة التوليدية وتوسيع الصورة','وسّع حدود صورتك أو أضف عناصر جديدة بالذكاء الاصطناعي.'], en:['Generative fill & uncrop','Expand your image or add new elements with AI.']},
+  {ic:'image', ar:['توليد صور من نص','حوّل وصفك النصي إلى صور فنية عالية الجودة.'], en:['Text to image','Turn your text prompt into high-quality artistic images.']},
+  {ic:'video', ar:['تحويل صورة إلى فيديو','حرّك صورك الثابتة وحوّلها إلى مقاطع فيديو قصيرة حيّة.'], en:['Image to video','Animate still images into short, lively video clips.']},
+  {ic:'film', ar:['إزالة خلفية الفيديو','افصل الموضوع عن الخلفية في مقاطع الفيديو بدقة عالية.'], en:['Video background removal','Separate subject from background in videos with high precision.']},
+  {ic:'package', ar:['صور المنتجات الاحترافية','خلفيات ومشاهد احترافية لمنتجاتك جاهزة للمتاجر والإعلانات.'], en:['Product photoshoot','Pro backgrounds and scenes for your products, ready for stores & ads.']},
+  {ic:'palette', ar:['تلوين الصور القديمة','أعِد الحياة لصورك بالأبيض والأسود بألوان طبيعية بالذكاء الاصطناعي.'], en:['Colorize old photos','Bring black-&-white photos to life with natural AI color.']}
+];
+
+function card(s, pro){
+  const soon = pro || s.soon;
+  const goAr = soon ? 'قريباً' : 'افتح الأداة';
+  const goEn = soon ? 'Coming soon' : 'Open tool';
+  const badge = soon ? `<span class="badge"><span data-ar>قريباً</span><span data-en>Soon</span></span>` : '';
+  const tag = s.href ? `href="${s.href}"` : 'href="#free"';
+  return `<a class="card ${pro?'pro':''} ${s.soon?'soon':''}" ${tag}>
+    ${badge}
+    <div class="ic">${I[s.ic]}</div>
+    <h3><span data-ar>${s.ar[0]}</span><span data-en>${s.en[0]}</span></h3>
+    <div class="desc"><span data-ar>${s.ar[1]}</span><span data-en>${s.en[1]}</span></div>
+    <div class="go"><span data-ar>${goAr}</span><span data-en>${goEn}</span> <span class="arrow">←</span></div>
+  </a>`;
+}
+
+document.getElementById('freeGrid').innerHTML = FREE.map(s=>card(s,false)).join('');
+document.getElementById('proGrid').innerHTML  = PRO.map(s=>card(s,true)).join('');
+
+function toggleLang(){
+  const html = document.documentElement;
+  const en = html.getAttribute('lang') === 'en';
+  html.setAttribute('lang', en ? 'ar' : 'en');
+  html.setAttribute('dir',  en ? 'rtl' : 'ltr');
+  const arrows = document.querySelectorAll('.arrow');
+  arrows.forEach(a=> a.textContent = en ? '←' : '→');
+  document.getElementById('langBtn').textContent = en ? 'EN' : 'ع';
+  try{ localStorage.setItem('gallery_lang', en?'ar':'en'); }catch(e){}
+}
+// restore
+try{
+  const saved = localStorage.getItem('gallery_lang');
+  if(saved==='en') toggleLang();
+}catch(e){}
+</script>
+</body>
+</html>

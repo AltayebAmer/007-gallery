@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<!--
+  ════════════════════════════════════════════════════════════
+   007.gallery
+   Creator : Artist Altayeb Amer
+   المبتكر  : الفنان الطيب عامر
+   Source  : https://007.gallery
+   © 2026 Artist Altayeb Amer — All rights reserved.
+   Protected by ALTAYEB GUARDIAN v4.0
+  ════════════════════════════════════════════════════════════
+-->
+
+<html lang="ar" dir="rtl" data-creator="Artist Altayeb Amer" data-creator-ar="الفنان الطيب عامر" data-source="https://007.gallery" data-guardian="4.0">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>مولّد QR احترافي — 007.gallery</title>
+<meta name="description" content="أنشئ رموز QR أنيقة بشعارك وألوانك الخاصة بدقة عالية — مجاناً في متصفحك.">
+<link rel="stylesheet" href="../assets/brand.css">
+<style>
+  .tool-hero{text-align:center;padding:32px 0 20px}
+  .tool-hero h1{font-size:clamp(24px,4vw,36px);font-weight:900;letter-spacing:-.4px}
+  .tool-hero h1 span{background:linear-gradient(120deg,var(--gold),var(--gold-2));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .tool-hero p{color:var(--txt-dim);margin-top:10px;font-size:15px}
+
+  .layout{display:grid;grid-template-columns:1fr 380px;gap:22px;align-items:start}
+  @media(max-width:820px){.layout{grid-template-columns:1fr}}
+
+  .field{margin-bottom:18px}
+  textarea{width:100%;padding:13px;border:1px solid var(--line-2);border-radius:12px;background:var(--bg-2);
+    color:var(--txt);font:inherit;font-size:15px;resize:vertical;min-height:88px;transition:.15s}
+  textarea:focus{outline:none;border-color:var(--gold)}
+
+  .color-row{display:flex;gap:14px;flex-wrap:wrap}
+  .color-cell{flex:1;min-width:130px}
+  .color-input{display:flex;align-items:center;gap:10px;background:var(--bg-2);border:1px solid var(--line-2);
+    border-radius:11px;padding:7px 11px}
+  .color-input input[type=color]{width:34px;height:34px;border:none;background:none;padding:0;border-radius:8px;cursor:pointer}
+  .color-input span{font-family:ui-monospace,Menlo,monospace;font-size:13px;color:var(--txt-dim)}
+
+  .swatches{display:flex;gap:8px;margin-top:10px;flex-wrap:wrap}
+  .preset{width:26px;height:26px;border-radius:7px;cursor:pointer;border:2px solid var(--line-2);transition:.15s}
+  .preset:hover{transform:scale(1.1)}
+
+  details.adv{margin-top:6px;border-top:1px solid var(--line);padding-top:16px}
+  details.adv summary{cursor:pointer;font-size:14px;font-weight:700;color:var(--gold-2);list-style:none;display:flex;align-items:center;gap:8px}
+  details.adv summary::-webkit-details-marker{display:none}
+  details.adv summary .chev{transition:.2s}
+  details.adv[open] summary .chev{transform:rotate(90deg)}
+
+  .logo-drop{border:1.5px dashed var(--line-2);border-radius:12px;padding:16px;text-align:center;cursor:pointer;
+    color:var(--txt-mute);font-size:13px;transition:.15s}
+  .logo-drop:hover{border-color:var(--gold)}
+  .logo-drop.has{color:var(--gold-2)}
+
+  /* بطاقة المعاينة */
+  .preview-card{background:linear-gradient(180deg,var(--card),var(--card-2));border:1px solid var(--line);
+    border-radius:18px;padding:24px;text-align:center;position:sticky;top:80px}
+  .qr-box{background:#fff;border-radius:14px;padding:16px;display:inline-block;margin-bottom:18px;min-height:220px;
+    display:grid;place-items:center;transition:background .2s}
+  #qr{display:block;max-width:100%;width:256px;height:256px;border-radius:4px}
+  .dl-row{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+
+  .privacy{text-align:center;color:var(--txt-mute);font-size:12.5px;margin-top:22px;line-height:2}
+  .ad{margin:26px auto 0;border:1px dashed var(--line-2);border-radius:14px;min-height:80px;
+    display:flex;align-items:center;justify-content:center;gap:10px;color:var(--txt-mute);font-size:13px;
+    background:repeating-linear-gradient(45deg,transparent,transparent 12px,rgba(255,255,255,.012) 12px,rgba(255,255,255,.012) 24px)}
+  .warn{background:color-mix(in srgb,var(--red) 12%,transparent);color:var(--red);padding:12px 15px;border-radius:11px;font-size:13.5px;margin-top:12px;display:none}
+</style>
+<link rel="icon" href="../favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="../assets/icon-32.png">
+<link rel="apple-touch-icon" href="../assets/icon-180.png">
+<link rel="manifest" href="../manifest.webmanifest">
+<meta name="theme-color" content="#0a0b0f">
+<link rel="canonical" href="https://007.gallery/services/qr.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="007.gallery">
+<meta property="og:locale" content="ar_AR">
+<meta property="og:title" content="مولّد QR احترافي — 007.gallery">
+<meta property="og:description" content="أنشئ رموز QR أنيقة بشعارك وألوانك بدقة تصل 4096px — مجاناً وفورياً.">
+<meta property="og:url" content="https://007.gallery/services/qr.html">
+<meta property="og:image" content="https://007.gallery/assets/og-cover.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="مولّد QR احترافي — 007.gallery">
+<meta name="twitter:description" content="أنشئ رموز QR أنيقة بشعارك وألوانك بدقة تصل 4096px — مجاناً وفورياً.">
+<meta name="twitter:image" content="https://007.gallery/assets/og-cover.png">
+<script data-project="007.gallery" data-project-ar="٠٠٧ جاليري" data-site="https://007.gallery" data-version="1.0.0" data-creator="Artist Altayeb Amer" data-creator-ar="الفنان الطيب عامر" data-domains="007.gallery" src="../assets/guardian.js" data-comment="Processed locally in the browser — no upload, no server. Image rights remain with the image owner." defer></script>
+<meta name="author" content="Artist Altayeb Amer">
+<meta name="creator" content="Artist Altayeb Amer">
+<meta name="designer" content="Artist Altayeb Amer / الفنان الطيب عامر">
+<meta name="copyright" content="© 2026 Artist Altayeb Amer">
+<meta name="owner" content="Artist Altayeb Amer">
+<meta name="publisher" content="007.gallery — Artist Altayeb Amer">
+<meta name="dcterms.creator" content="Artist Altayeb Amer">
+<meta name="dcterms.rights" content="© 2026 Artist Altayeb Amer">
+<meta name="dcterms.rightsHolder" content="Artist Altayeb Amer">
+<meta name="application-name" content="007.gallery">
+<meta name="guardian" content="ALTAYEB GUARDIAN v4.0 — Artist Altayeb Amer">
+<link rel="author" href="../humans.txt">
+<script src="../assets/ads.js" defer></script>
+<script src="../assets/artgallery.js" defer></script>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap nav">
+    <a class="brand" href="../index.html"><span class="logo">007</span><span>007<b>.gallery</b></span></a>
+    <div class="nav-actions">
+      <button class="btn btn-lang" id="langBtn" onclick="toggleLang()">EN</button>
+      <a class="btn btn-ghost" href="../index.html">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" id="homeArrow"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+        <span data-ar>كل الأدوات</span><span data-en>All tools</span>
+      </a>
+    </div>
+  </div>
+</header>
+
+<main class="wrap" style="padding-bottom:40px">
+  <div class="tool-hero">
+    <span class="pill"><span class="dot"></span><span data-ar>فوري · بدقة عالية · بلا حدود</span><span data-en>Instant · high-res · unlimited</span></span>
+    <h1><span data-ar>مولّد <span>QR</span> احترافي</span><span data-en>Pro <span>QR</span> generator</span></h1>
+    <p><span data-ar>اكتب رابطاً أو نصاً، خصّص الألوان وأضف شعارك — يتحدّث فوراً.</span><span data-en>Type a link or text, customize colors and add your logo — updates instantly.</span></p>
+  </div>
+
+  <div class="layout">
+    <!-- عناصر التحكم -->
+    <div class="panel">
+      <div class="field">
+        <label><span data-ar>النص أو الرابط</span><span data-en>Text or link</span></label>
+        <textarea id="text" placeholder="https://007.gallery">https://007.gallery</textarea>
+      </div>
+
+      <div class="field">
+        <div class="color-row">
+          <div class="color-cell">
+            <label><span data-ar>لون الرمز</span><span data-en>Code color</span></label>
+            <div class="color-input">
+              <input type="color" id="fg" value="#0a0b0f">
+              <span id="fgHex">#0a0b0f</span>
+            </div>
+          </div>
+          <div class="color-cell">
+            <label><span data-ar>لون الخلفية</span><span data-en>Background</span></label>
+            <div class="color-input">
+              <input type="color" id="bg" value="#ffffff">
+              <span id="bgHex">#ffffff</span>
+            </div>
+          </div>
+        </div>
+        <div class="swatches" id="presets">
+          <span class="preset" data-fg="#0a0b0f" data-bg="#ffffff" style="background:linear-gradient(135deg,#0a0b0f 50%,#fff 50%)" title="كلاسيكي"></span>
+          <span class="preset" data-fg="#d4af37" data-bg="#0a0b0f" style="background:linear-gradient(135deg,#d4af37 50%,#0a0b0f 50%)" title="ذهبي"></span>
+          <span class="preset" data-fg="#1d4ed8" data-bg="#eff6ff" style="background:linear-gradient(135deg,#1d4ed8 50%,#eff6ff 50%)" title="أزرق"></span>
+          <span class="preset" data-fg="#047857" data-bg="#ecfdf5" style="background:linear-gradient(135deg,#047857 50%,#ecfdf5 50%)" title="أخضر"></span>
+          <span class="preset" data-fg="#9d174d" data-bg="#fdf2f8" style="background:linear-gradient(135deg,#9d174d 50%,#fdf2f8 50%)" title="وردي"></span>
+          <span class="preset" data-fg="#ffffff" data-bg="#0f172a" style="background:linear-gradient(135deg,#fff 50%,#0f172a 50%)" title="ليلي"></span>
+        </div>
+      </div>
+
+      <details class="adv">
+        <summary><span class="chev">›</span> <span data-ar>خيارات متقدمة وشعار</span><span data-en>Advanced & logo</span></summary>
+        <div style="margin-top:16px">
+          <div class="field">
+            <label><span data-ar>الشعار في المنتصف (اختياري)</span><span data-en>Center logo (optional)</span></label>
+            <div class="logo-drop" id="logoDrop">
+              <span id="logoLabel"><span data-ar>انقر لاختيار شعار (PNG/SVG)</span><span data-en>Click to pick a logo (PNG/SVG)</span></span>
+              <input type="file" id="logoIn" accept="image/*" hidden>
+            </div>
+            <button class="btn btn-ghost" id="logoClear" style="margin-top:8px;display:none;font-size:13px;padding:6px 12px"><span data-ar>إزالة الشعار</span><span data-en>Remove logo</span></button>
+          </div>
+          <div class="color-row">
+            <div class="color-cell">
+              <label><span data-ar>الدقة (بكسل)</span><span data-en>Resolution (px)</span></label>
+              <select id="size">
+                <option value="512">512</option>
+                <option value="1024" selected>1024</option>
+                <option value="2048">2048</option>
+                <option value="4096">4096 (Ultra HD)</option>
+              </select>
+            </div>
+            <div class="color-cell">
+              <label><span data-ar>مستوى تصحيح الخطأ</span><span data-en>Error correction</span></label>
+              <select id="ecc">
+                <option value="M"><span>M</span></option>
+                <option value="Q">Q</option>
+                <option value="H" selected>H</option>
+              </select>
+            </div>
+          </div>
+          <div class="color-cell" style="margin-top:14px">
+            <label><span data-ar>الهامش</span><span data-en>Margin</span> — <b id="marginVal">2</b></label>
+            <input type="range" id="margin" min="0" max="8" value="2">
+          </div>
+        </div>
+      </details>
+      <div class="warn" id="warn"></div>
+    </div>
+
+    <!-- المعاينة -->
+    <div class="preview-card">
+      <div class="qr-box" id="qrBox"><canvas id="qr" width="256" height="256"></canvas></div>
+      <div class="dl-row">
+        <button class="btn btn-primary" id="dlPng"><span data-ar>تنزيل PNG</span><span data-en>Download PNG</span></button>
+        <button class="btn" id="dlSvg"><span data-ar>تنزيل SVG</span><span data-en>Download SVG</span></button>
+      </div>
+    </div>
+  </div>
+
+  <div data-ad-slot="rectangle" style="margin-inline:auto"></div>
+
+  <div data-art-gallery></div>
+
+  <div class="ad"><b style="color:var(--txt-dim)"><span data-ar>مساحة إعلانية — رد المعروف</span><span data-en>Ad space — support us</span></b> · <span data-ar>تُبقي الأداة مجانية</span><span data-en>keeps this tool free</span></div>
+
+  <p class="privacy">
+    <span data-ar>🔒 يُنشأ الرمز داخل متصفحك بالكامل — لا يُرسل نصّك أو رابطك إلى أي خادم.</span>
+    <span data-en>🔒 The code is generated entirely in your browser — your text/link is never sent to any server.</span>
+  </p>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap foot">
+    <a class="brand" href="../index.html"><span class="logo">007</span><span>007<b>.gallery</b></span></a>
+    <p>© 2026 007.gallery · <span data-ar>كل الحقوق محفوظة</span><span data-en>All rights reserved</span> · <a href="../privacy.html" style="color:var(--gold-2)"><span data-ar>سياسة الخصوصية</span><span data-en>Privacy</span></a> · <a href="../articles/index.html" style="color:var(--gold-2)"><span data-ar>المقالات</span><span data-en>Guides</span></a> · <a href="../projects.html" style="color:var(--gold-2)"><span data-ar>المشاريع</span><span data-en>Projects</span></a> · <a href="../contact.html" style="color:var(--gold-2)"><span data-ar>تواصل</span><span data-en>Contact</span></a></p>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.js"></script>
+<script>
+"use strict";
+const $=s=>document.querySelector(s);
+let logoImg=null;
+// دعم النص العربي/متعدد البايت (UTF-8)
+if(typeof qrcode!=='undefined' && qrcode.stringToBytesFuncs && qrcode.stringToBytesFuncs['UTF-8']){
+  qrcode.stringToBytes = qrcode.stringToBytesFuncs['UTF-8'];
+}
+
+/* ---------- اللغة ---------- */
+function toggleLang(){
+  const h=document.documentElement,en=h.getAttribute('lang')==='en';
+  h.setAttribute('lang',en?'ar':'en');h.setAttribute('dir',en?'rtl':'ltr');
+  $('#langBtn').textContent=en?'EN':'ع';
+  $('#homeArrow').style.transform=en?'rotate(180deg)':'none';
+  try{localStorage.setItem('gallery_lang',en?'ar':'en');}catch(e){}
+}
+window.toggleLang=toggleLang;
+try{ if(localStorage.getItem('gallery_lang')==='en') toggleLang(); }catch(e){}
+
+/* ---------- توليد QR ---------- */
+let debounce;
+function scheduleRender(){ clearTimeout(debounce); debounce=setTimeout(render,120); }
+
+// يبني مصفوفة QR ويعيد {count, isDark(r,c)}
+function buildMatrix(text,ecc){
+  const qr=qrcode(0,ecc);        // 0 = اختيار الحجم تلقائياً
+  qr.addData(text);
+  qr.make();
+  const count=qr.getModuleCount();
+  return {count, isDark:(r,c)=>qr.isDark(r,c)};
+}
+
+function render(){
+  const text=$('#text').value||' ';
+  const fg=$('#fg').value, bg=$('#bg').value;
+  const size=parseInt($('#size').value);
+  const ecc=$('#ecc').value;
+  const margin=parseInt($('#margin').value);
+  $('#warn').style.display='none';
+
+  if(typeof qrcode==='undefined'){
+    $('#warn').style.display='block';
+    $('#warn').innerHTML='<span data-ar>تعذّر تحميل مكتبة QR. تأكّد من اتصالك بالإنترنت وأعد التحميل.</span><span data-en>Could not load the QR library. Check your connection and reload.</span>';
+    return;
+  }
+  let m;
+  try{ m=buildMatrix(text,ecc); }
+  catch(e){
+    $('#warn').style.display='block';
+    $('#warn').innerHTML='<span data-ar>النص طويل جداً لرمز QR واحد. اختصره قليلاً.</span><span data-en>Text is too long for a single QR code. Shorten it.</span>';
+    return;
+  }
+
+  const total=m.count+margin*2;
+  const cell=Math.floor(size/total);
+  const dim=cell*total;                 // أبعاد دقيقة بلا كسور
+  const off=document.createElement('canvas'); off.width=off.height=dim;
+  const ctx=off.getContext('2d');
+  ctx.fillStyle=bg; ctx.fillRect(0,0,dim,dim);
+  ctx.fillStyle=fg;
+  for(let r=0;r<m.count;r++)for(let c=0;c<m.count;c++){
+    if(m.isDark(r,c)) ctx.fillRect((c+margin)*cell,(r+margin)*cell,cell,cell);
+  }
+  // شعار في المنتصف
+  if(logoImg){
+    const s=Math.round(dim*0.22), x=(dim-s)/2, y=(dim-s)/2, pad=Math.round(s*0.12);
+    ctx.fillStyle=bg;
+    roundRect(ctx,x-pad,y-pad,s+pad*2,s+pad*2,Math.round(s*0.16)); ctx.fill();
+    ctx.drawImage(logoImg,x,y,s,s);
+  }
+  const disp=$('#qr'); disp.width=dim; disp.height=dim;
+  disp.getContext('2d').drawImage(off,0,0);
+  $('#qrBox').style.background=bg;
+  window.__qrCanvas=off;
+}
+function roundRect(ctx,x,y,w,h,r){
+  ctx.beginPath();
+  ctx.moveTo(x+r,y);ctx.arcTo(x+w,y,x+w,y+h,r);ctx.arcTo(x+w,y+h,x,y+h,r);
+  ctx.arcTo(x,y+h,x,y,r);ctx.arcTo(x,y,x+w,y,r);ctx.closePath();
+}
+
+/* ---------- الإدخال ---------- */
+['input','change'].forEach(ev=>{
+  $('#text').addEventListener(ev,scheduleRender);
+  ['size','ecc','margin'].forEach(id=>$('#'+id).addEventListener(ev,scheduleRender));
+});
+$('#fg').addEventListener('input',e=>{$('#fgHex').textContent=e.target.value;scheduleRender();});
+$('#bg').addEventListener('input',e=>{$('#bgHex').textContent=e.target.value;scheduleRender();});
+$('#margin').addEventListener('input',e=>$('#marginVal').textContent=e.target.value);
+
+$('#presets').addEventListener('click',e=>{
+  const p=e.target.closest('.preset'); if(!p) return;
+  $('#fg').value=p.dataset.fg; $('#bg').value=p.dataset.bg;
+  $('#fgHex').textContent=p.dataset.fg; $('#bgHex').textContent=p.dataset.bg;
+  render();
+});
+
+/* ---------- الشعار ---------- */
+$('#logoDrop').onclick=()=>$('#logoIn').click();
+$('#logoIn').onchange=e=>{
+  const f=e.target.files[0]; if(!f) return;
+  const img=new Image();
+  img.onload=()=>{ logoImg=img; $('#logoDrop').classList.add('has');
+    $('#logoLabel').innerHTML='<span data-ar>✓ تم اختيار الشعار</span><span data-en>✓ Logo added</span>';
+    $('#logoClear').style.display='inline-flex'; render(); };
+  img.src=URL.createObjectURL(f);
+};
+$('#logoClear').onclick=()=>{
+  logoImg=null; $('#logoDrop').classList.remove('has'); $('#logoIn').value='';
+  $('#logoLabel').innerHTML='<span data-ar>انقر لاختيار شعار (PNG/SVG)</span><span data-en>Click to pick a logo (PNG/SVG)</span>';
+  $('#logoClear').style.display='none'; render();
+};
+
+/* ---------- التنزيل ---------- */
+$('#dlPng').onclick=()=>{
+  if(!window.__qrCanvas) return;
+  // رمز QR ينشئه الموقع نفسه → النسبة صحيحة (generated=true)
+  GUARDIAN.downloadCanvas(window.__qrCanvas,'007-gallery-qr.png','QR Generator',true);
+};
+$('#dlSvg').onclick=()=>{
+  if(typeof qrcode==='undefined') return;
+  const text=$('#text').value||' ', fg=$('#fg').value, bg=$('#bg').value;
+  const margin=parseInt($('#margin').value);
+  let m; try{ m=buildMatrix(text,$('#ecc').value); }catch(e){ return; }
+  const total=m.count+margin*2;
+  let rects='';
+  for(let r=0;r<m.count;r++)for(let c=0;c<m.count;c++){
+    if(m.isDark(r,c)) rects+=`<rect x="${c+margin}" y="${r+margin}" width="1" height="1"/>`;
+  }
+  const svg=`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${total} ${total}" width="1024" height="1024" shape-rendering="crispEdges">`
+    +`<rect width="${total}" height="${total}" fill="${bg}"/><g fill="${fg}">${rects}</g></svg>`;
+  const blob=new Blob([svg],{type:'image/svg+xml'});
+  const a=document.createElement('a');
+  a.download='007-gallery-qr.svg'; a.href=URL.createObjectURL(blob); a.click();
+  setTimeout(()=>URL.revokeObjectURL(a.href),10000);
+};
+
+/* أول توليد */
+window.addEventListener('load',render);
+if(typeof QRCode!=='undefined') render();
+</script>
+</body>
+</html>

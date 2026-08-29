@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<!--
+  ════════════════════════════════════════════════════════════
+   007.gallery
+   Creator : Artist Altayeb Amer
+   المبتكر  : الفنان الطيب عامر
+   Source  : https://007.gallery
+   © 2026 Artist Altayeb Amer — All rights reserved.
+   Protected by ALTAYEB GUARDIAN v4.0
+  ════════════════════════════════════════════════════════════
+-->
+
+<html lang="ar" dir="rtl" data-creator="Artist Altayeb Amer" data-creator-ar="الفنان الطيب عامر" data-source="https://007.gallery" data-guardian="4.0">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>فحص التشغيل — 007.gallery</title>
+<link rel="stylesheet" href="../assets/brand.css">
+<style>
+  .tool-hero{text-align:center;padding:30px 0 16px}
+  .tool-hero h1{font-size:clamp(22px,4vw,32px);font-weight:900}
+  .tool-hero p{color:var(--txt-dim);margin-top:8px;font-size:15px}
+  table{width:100%;border-collapse:collapse;margin-top:8px}
+  td{padding:11px 10px;border-bottom:1px solid var(--line);font-size:14px;vertical-align:top}
+  td:first-child{color:var(--txt-dim);width:190px}
+  td b{font-family:ui-monospace,Menlo,monospace;font-size:13px}
+  .ok{color:var(--green);font-weight:700}
+  .bad{color:var(--red);font-weight:700}
+  .warnc{color:var(--gold-2);font-weight:700}
+  .log{background:var(--bg-2);border:1px solid var(--line-2);border-radius:12px;padding:14px;
+    font-family:ui-monospace,Menlo,monospace;font-size:12.5px;white-space:pre-wrap;word-break:break-word;
+    max-height:320px;overflow:auto;margin-top:14px;direction:ltr;text-align:left;line-height:1.7}
+  .actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px;justify-content:center}
+</style>
+<script data-project="007.gallery" data-project-ar="٠٠٧ جاليري" data-site="https://007.gallery" data-version="1.0.0" data-creator="Artist Altayeb Amer" data-creator-ar="الفنان الطيب عامر" data-domains="007.gallery" src="../assets/guardian.js" data-comment="Processed locally in the browser — no upload, no server. Image rights remain with the image owner." defer></script>
+<meta name="author" content="Artist Altayeb Amer">
+<meta name="creator" content="Artist Altayeb Amer">
+<meta name="designer" content="Artist Altayeb Amer / الفنان الطيب عامر">
+<meta name="copyright" content="© 2026 Artist Altayeb Amer">
+<meta name="owner" content="Artist Altayeb Amer">
+<meta name="publisher" content="007.gallery — Artist Altayeb Amer">
+<meta name="dcterms.creator" content="Artist Altayeb Amer">
+<meta name="dcterms.rights" content="© 2026 Artist Altayeb Amer">
+<meta name="dcterms.rightsHolder" content="Artist Altayeb Amer">
+<meta name="application-name" content="007.gallery">
+<meta name="guardian" content="ALTAYEB GUARDIAN v4.0 — Artist Altayeb Amer">
+<link rel="author" href="../humans.txt">
+<script src="../assets/ads.js" defer></script>
+</head>
+<body>
+<header class="site-header"><div class="wrap nav">
+  <a class="brand" href="../index.html"><span class="logo">007</span><span>007<b>.gallery</b></span></a>
+  <a class="btn btn-ghost" href="../index.html"><span data-ar>كل الأدوات</span><span data-en>All tools</span></a>
+</div></header>
+
+<main class="wrap" style="padding-bottom:40px">
+  <div class="tool-hero">
+    <h1>🩺 فحص تشغيل الذكاء الاصطناعي</h1>
+    <p>يفحص متصفحك ويجرّب تحميل النموذج فعلياً — النتائج تظهر هنا مباشرة.</p>
+  </div>
+
+  <div class="panel">
+    <table id="env"></table>
+  </div>
+
+  <div class="actions">
+    <button class="btn btn-primary btn-lg" id="run">▶ ابدأ فحص تحميل النموذج</button>
+    <button class="btn" id="copy">📋 نسخ التقرير</button>
+  </div>
+
+  <div class="log" id="log">في انتظار بدء الفحص…</div>
+</main>
+
+<script type="module">
+import { AutoModel, AutoProcessor, RawImage, env }
+  from 'https://cdn.jsdelivr.net/npm/@huggingface/transformers@3.5.1';
+env.allowLocalModels=false;
+
+const $=s=>document.querySelector(s);
+const lines=[];
+function log(s){ lines.push(s); $('#log').textContent=lines.join('\n'); $('#log').scrollTop=1e9; }
+
+function row(k,v,cls){ return `<tr><td>${k}</td><td><b class="${cls||''}">${v}</b></td></tr>`; }
+
+const results={};
+(async()=>{
+  let html='';
+  // المتصفح
+  const ua=navigator.userAgent;
+  const chrome=(ua.match(/Chrome\/([\d.]+)/)||[])[1]||'—';
+  results.ua=ua;
+  html+=row('المتصفح', 'Chrome '+chrome, 'ok');
+  html+=row('النظام', navigator.platform||'—');
+  html+=row('البروتوكول', location.protocol, location.protocol==='http:'||location.protocol==='https:'?'ok':'bad');
+  html+=row('crossOriginIsolated', String(window.crossOriginIsolated), window.crossOriginIsolated?'ok':'warnc');
+  html+=row('SharedArrayBuffer', typeof SharedArrayBuffer!=='undefined'?'متاح':'غير متاح',
+            typeof SharedArrayBuffer!=='undefined'?'ok':'warnc');
+  html+=row('WebAssembly', typeof WebAssembly==='object'?'مدعوم':'غير مدعوم',
+            typeof WebAssembly==='object'?'ok':'bad');
+  html+=row('عدد الأنوية', navigator.hardwareConcurrency||'—');
+
+  // WebGPU
+  let gpuInfo='غير موجود', gpuCls='bad';
+  results.gpu={present:!!navigator.gpu, adapter:false};
+  if(navigator.gpu){
+    try{
+      const ad=await navigator.gpu.requestAdapter();
+      if(ad){
+        results.gpu.adapter=true;
+        let name='محوّل متاح';
+        try{ const i=await ad.requestAdapterInfo?.(); if(i&&(i.vendor||i.architecture)) name=`${i.vendor||''} ${i.architecture||''}`.trim(); }catch(e){}
+        gpuInfo='✅ '+name; gpuCls='ok';
+      }else{ gpuInfo='⚠️ navigator.gpu موجود لكن لا يوجد محوّل (كرت الشاشة محظور)'; gpuCls='warnc'; }
+    }catch(e){ gpuInfo='⚠️ خطأ: '+e.message; gpuCls='warnc'; }
+  }
+  html+=row('WebGPU', gpuInfo, gpuCls);
+  $('#env').innerHTML=html;
+
+  log('✔ فحص البيئة اكتمل.');
+  log('WebGPU: '+gpuInfo.replace(/[✅⚠️]/g,'').trim());
+  if(gpuCls!=='ok') log('→ سيُستخدم المعالج (CPU/WASM) وهو أبطأ لكنه يعمل.');
+  log('اضغط «ابدأ فحص تحميل النموذج» للمتابعة.');
+})();
+
+$('#run').onclick=async ()=>{
+  $('#run').disabled=true;
+  const t0=performance.now();
+  try{
+    // 1) هل نملك محوّل WebGPU؟
+    let useGpu=false;
+    try{ useGpu = !!(navigator.gpu && await navigator.gpu.requestAdapter()); }catch(e){}
+    log('\n──────────────');
+    log('1) المسار المختار: '+(useGpu?'WebGPU':'CPU (wasm)'));
+
+    let model=null, dev='';
+    if(useGpu){
+      try{
+        log('2) تحميل النموذج عبر WebGPU…');
+        model=await AutoModel.from_pretrained('briaai/RMBG-1.4',{device:'webgpu',dtype:'fp32',
+          config:{model_type:'custom'}, progress_callback:p=>{ if(p.status==='progress'&&p.total)
+            log(`   … ${p.file||''} ${(100*p.loaded/p.total).toFixed(0)}%`); }});
+        dev='webgpu'; log('   ✅ نجح WebGPU');
+      }catch(e){ log('   ❌ فشل WebGPU: '+e.message); model=null; }
+    }
+    if(!model){
+      log('3) تحميل النموذج عبر المعالج (wasm/q8)…');
+      model=await AutoModel.from_pretrained('briaai/RMBG-1.4',{device:'wasm',dtype:'q8',
+        config:{model_type:'custom'}, progress_callback:p=>{ if(p.status==='progress'&&p.total)
+          log(`   … ${p.file||''} ${(100*p.loaded/p.total).toFixed(0)}%`); }});
+      dev='wasm'; log('   ✅ نجح المعالج');
+    }
+
+    log('4) تحميل المعالج المسبق (processor)…');
+    const processor=await AutoProcessor.from_pretrained('briaai/RMBG-1.4',{config:{
+      do_normalize:true,do_pad:false,do_rescale:true,do_resize:true,
+      image_mean:[0.5,0.5,0.5],image_std:[1,1,1],
+      feature_extractor_type:'ImageFeatureExtractor',
+      resample:2,rescale_factor:0.00392156862745098,size:{width:1024,height:1024}}});
+    log('   ✅ تم');
+
+    log('5) تجربة استدلال فعلية على صورة اختبار…');
+    const cv=document.createElement('canvas');cv.width=cv.height=256;
+    const c=cv.getContext('2d');c.fillStyle='#88ccff';c.fillRect(0,0,256,256);
+    c.fillStyle='#cc3333';c.beginPath();c.arc(128,128,70,0,7);c.fill();
+    const url=cv.toDataURL('image/png');
+    const img=await RawImage.fromURL(url);
+    const {pixel_values}=await processor(img);
+    const {output}=await model({input:pixel_values});
+    const mask=await RawImage.fromTensor(output[0].mul(255).to('uint8')).resize(img.width,img.height);
+    let inside=0,outside=0;
+    for(let y=0;y<256;y++)for(let x=0;x<256;x++){
+      const v=mask.data[y*256+x], d=Math.hypot(x-128,y-128);
+      if(d<50) inside+=v; else if(d>110) outside+=v;
+    }
+    const ok = inside/ (Math.PI*50*50) > 100 && outside/(256*256) < 60;
+    log(`   قناع: داخل الدائرة=${(inside/(Math.PI*50*50)).toFixed(0)} خارجها=${(outside/(256*256)).toFixed(0)}`);
+    log(ok?'   ✅ الاستدلال صحيح — النموذج يعزل الموضوع!':'   ⚠️ الاستدلال تم لكن القناع غير متوقّع');
+
+    const secs=((performance.now()-t0)/1000).toFixed(1);
+    log(`\n🎉 النتيجة النهائية: يعمل عبر «${dev==='webgpu'?'WebGPU':'المعالج'}» في ${secs} ثانية.`);
+  }catch(e){
+    log('\n❌ فشل: '+(e&&e.message||e));
+    log('التفاصيل: '+(e&&e.stack||'').split('\n').slice(0,4).join('\n'));
+  }
+  $('#run').disabled=false;
+};
+
+$('#copy').onclick=async ()=>{
+  const txt=[...document.querySelectorAll('#env tr')].map(r=>r.children[0].textContent+': '+r.children[1].textContent).join('\n')
+    +'\n\n'+lines.join('\n');
+  try{ await navigator.clipboard.writeText(txt); $('#copy').textContent='✓ نُسخ'; setTimeout(()=>$('#copy').textContent='📋 نسخ التقرير',1600); }
+  catch(e){ alert('انسخ يدوياً من الصندوق.'); }
+};
+</script>
+</body>
+</html>

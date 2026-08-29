@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<!--
+  ════════════════════════════════════════════════════════════
+   007.gallery
+   Creator : Artist Altayeb Amer
+   المبتكر  : الفنان الطيب عامر
+   Source  : https://007.gallery
+   © 2026 Artist Altayeb Amer — All rights reserved.
+   Protected by ALTAYEB GUARDIAN v4.0
+  ════════════════════════════════════════════════════════════
+-->
+
+<html lang="ar" dir="rtl" data-creator="Artist Altayeb Amer" data-creator-ar="الفنان الطيب عامر" data-source="https://007.gallery" data-guardian="4.0">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>تحويل وضغط الصور — 007.gallery</title>
+<meta name="description" content="حوّل واضغط وغيّر حجم صورك بين WebP وJPG وPNG — محلياً في متصفحك، بدون رفع.">
+<link rel="stylesheet" href="../assets/brand.css">
+<style>
+  /* --- خاص بصفحة الأداة --- */
+  .tool-hero{text-align:center;padding:36px 0 18px}
+  .tool-hero h1{font-size:clamp(24px,4vw,36px);font-weight:900;letter-spacing:-.4px}
+  .tool-hero h1 span{background:linear-gradient(120deg,var(--gold),var(--gold-2));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .tool-hero p{color:var(--txt-dim);margin-top:10px;font-size:15px}
+
+  /* منطقة الإفلات — كبيرة وواضحة (سهلة حتى للأطفال) */
+  .drop{
+    background:linear-gradient(180deg,var(--card),var(--card-2));
+    border:2px dashed var(--line-2);border-radius:22px;padding:54px 24px;text-align:center;
+    transition:.2s;cursor:pointer
+  }
+  .drop.over{border-color:var(--gold);background:var(--gold-soft);transform:scale(1.005)}
+  .drop .ring{
+    width:78px;height:78px;border-radius:50%;margin:0 auto 16px;display:grid;place-items:center;
+    background:var(--gold-soft);border:1px solid rgba(212,175,55,.25)
+  }
+  .drop .ring svg{width:36px;height:36px;stroke:var(--gold-2);fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+  .drop b{display:block;font-size:20px;margin-bottom:6px}
+  .drop small{color:var(--txt-mute);font-size:13px}
+  .picks{display:flex;gap:10px;justify-content:center;margin-top:18px;flex-wrap:wrap}
+
+  .warn{background:color-mix(in srgb,var(--red) 12%,transparent);color:var(--red);
+    padding:13px 16px;border-radius:12px;margin-bottom:16px;font-size:14px;display:none}
+
+  /* شريط التحكم المبسّط */
+  .controls{margin-top:20px;display:none}
+  .controls.show{display:block}
+  .row{display:flex;align-items:center;gap:18px;flex-wrap:wrap}
+  .row-lbl{font-size:14px;font-weight:700;color:var(--txt-dim);min-width:70px}
+
+  /* خيارات متقدمة (مطوية) */
+  details.adv{margin-top:16px;border-top:1px solid var(--line);padding-top:16px}
+  details.adv summary{cursor:pointer;font-size:14px;font-weight:700;color:var(--gold-2);list-style:none;display:flex;align-items:center;gap:8px}
+  details.adv summary::-webkit-details-marker{display:none}
+  details.adv summary .chev{transition:.2s}
+  details.adv[open] summary .chev{transform:rotate(90deg)}
+  .opts{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px;margin-top:16px}
+
+  .actions{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-top:22px}
+  .stats{margin-inline-start:auto;font-size:13px;color:var(--txt-dim)}
+  .stats b{color:var(--green)}
+  .track{height:5px;background:var(--line);border-radius:5px;overflow:hidden;margin-top:16px;display:none}
+  .track i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--gold),var(--gold-2));transition:width .2s}
+
+  /* القائمة */
+  .list-card{margin-top:16px;display:none}
+  ul.files{list-style:none;max-height:440px;overflow:auto}
+  ul.files li{display:flex;align-items:center;gap:13px;padding:12px 4px;border-bottom:1px solid var(--line)}
+  ul.files li:last-child{border-bottom:0}
+  .thumb{width:44px;height:44px;border-radius:10px;object-fit:cover;background:var(--bg-2);flex:none;border:1px solid var(--line)}
+  .info{min-width:0;flex:1}
+  .nm{font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .nm .new{color:var(--gold-2);font-family:ui-monospace,Menlo,monospace}
+  .nm .old{color:var(--txt-mute);font-size:12px}
+  .meta{font-size:12px;color:var(--txt-dim);margin-top:2px}
+  .meta .save{color:var(--green);font-weight:700}
+  .meta .bad{color:var(--red)}
+  .dl{flex:none;font-size:13px;font-weight:700;color:var(--gold-2);border:1px solid var(--line-2);padding:7px 13px;border-radius:9px;transition:.15s}
+  .dl:hover{border-color:var(--gold);background:var(--gold-soft)}
+
+  .privacy{text-align:center;color:var(--txt-mute);font-size:12.5px;margin-top:22px;line-height:2}
+
+  /* شريط إعلاني رد المعروف */
+  .ad{margin:26px auto 0;border:1px dashed var(--line-2);border-radius:14px;min-height:80px;
+    display:flex;align-items:center;justify-content:center;gap:10px;color:var(--txt-mute);font-size:13px;
+    background:repeating-linear-gradient(45deg,transparent,transparent 12px,rgba(255,255,255,.012) 12px,rgba(255,255,255,.012) 24px)}
+</style>
+<link rel="icon" href="../favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="../assets/icon-32.png">
+<link rel="apple-touch-icon" href="../assets/icon-180.png">
+<link rel="manifest" href="../manifest.webmanifest">
+<meta name="theme-color" content="#0a0b0f">
+<link rel="canonical" href="https://007.gallery/services/convert-compress.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="007.gallery">
+<meta property="og:locale" content="ar_AR">
+<meta property="og:title" content="تحويل وضغط الصور — 007.gallery">
+<meta property="og:description" content="حوّل واضغط وغيّر حجم صورك بين WebP وJPG وPNG دفعة واحدة — محلياً بلا رفع.">
+<meta property="og:url" content="https://007.gallery/services/convert-compress.html">
+<meta property="og:image" content="https://007.gallery/assets/og-cover.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="تحويل وضغط الصور — 007.gallery">
+<meta name="twitter:description" content="حوّل واضغط وغيّر حجم صورك بين WebP وJPG وPNG دفعة واحدة — محلياً بلا رفع.">
+<meta name="twitter:image" content="https://007.gallery/assets/og-cover.png">
+<script data-project="007.gallery" data-project-ar="٠٠٧ جاليري" data-site="https://007.gallery" data-version="1.0.0" data-creator="Artist Altayeb Amer" data-creator-ar="الفنان الطيب عامر" data-domains="007.gallery" src="../assets/guardian.js" data-comment="Processed locally in the browser — no upload, no server. Image rights remain with the image owner." defer></script>
+<meta name="author" content="Artist Altayeb Amer">
+<meta name="creator" content="Artist Altayeb Amer">
+<meta name="designer" content="Artist Altayeb Amer / الفنان الطيب عامر">
+<meta name="copyright" content="© 2026 Artist Altayeb Amer">
+<meta name="owner" content="Artist Altayeb Amer">
+<meta name="publisher" content="007.gallery — Artist Altayeb Amer">
+<meta name="dcterms.creator" content="Artist Altayeb Amer">
+<meta name="dcterms.rights" content="© 2026 Artist Altayeb Amer">
+<meta name="dcterms.rightsHolder" content="Artist Altayeb Amer">
+<meta name="application-name" content="007.gallery">
+<meta name="guardian" content="ALTAYEB GUARDIAN v4.0 — Artist Altayeb Amer">
+<link rel="author" href="../humans.txt">
+<script src="../assets/ads.js" defer></script>
+<script src="../assets/artgallery.js" defer></script>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap nav">
+    <a class="brand" href="../index.html"><span class="logo">007</span><span>007<b>.gallery</b></span></a>
+    <div class="nav-actions">
+      <button class="btn btn-lang" id="langBtn" onclick="toggleLang()">EN</button>
+      <a class="btn btn-ghost" href="../index.html">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" id="homeArrow"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+        <span data-ar>كل الأدوات</span><span data-en>All tools</span>
+      </a>
+    </div>
+  </div>
+</header>
+
+<main class="wrap" style="padding-bottom:40px">
+  <div class="tool-hero">
+    <span class="pill"><span class="dot"></span><span data-ar>يعمل في متصفحك · لا يُرفع أي ملف</span><span data-en>Runs in your browser · nothing is uploaded</span></span>
+    <h1><span data-ar>تحويل وضغط <span>الصور</span></span><span data-en>Convert & compress <span>images</span></span></h1>
+    <p><span data-ar>اسحب صورك، اختر الصيغة، وحمّلها — بهذه البساطة.</span><span data-en>Drop your images, pick a format, and download — that simple.</span></p>
+  </div>
+
+  <div class="warn" id="warn"></div>
+
+  <!-- 1) الإفلات -->
+  <div class="drop" id="drop">
+    <div class="ring"><svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M17 8l-5-5-5 5"/><path d="M12 3v13"/></svg></div>
+    <b><span data-ar>أفلت صورك هنا</span><span data-en>Drop your images here</span></b>
+    <small><span data-ar>PNG · JPG · WebP · GIF · BMP · TIFF — أو مجلد كامل</span><span data-en>PNG · JPG · WebP · GIF · BMP · TIFF — or a whole folder</span></small>
+    <div class="picks">
+      <button class="btn" id="pickFiles"><span data-ar>اختيار صور</span><span data-en>Choose images</span></button>
+      <button class="btn btn-ghost" id="pickDir"><span data-ar>اختيار مجلد</span><span data-en>Choose folder</span></button>
+    </div>
+    <input type="file" id="fileIn" multiple accept="image/*" hidden>
+    <input type="file" id="dirIn" webkitdirectory directory multiple hidden>
+  </div>
+
+  <!-- 2) التحكم المبسّط -->
+  <div class="controls panel" id="controls">
+    <div class="row" style="justify-content:space-between">
+      <div class="row" style="gap:14px">
+        <span class="row-lbl"><span data-ar>الصيغة</span><span data-en>Format</span></span>
+        <div class="seg" id="fmt">
+          <button data-fmt="webp" class="on">WebP</button>
+          <button data-fmt="jpeg">JPG</button>
+          <button data-fmt="png">PNG</button>
+        </div>
+      </div>
+      <div class="row" style="gap:12px;min-width:220px;flex:1;max-width:340px" id="qWrap">
+        <span class="row-lbl"><span data-ar>الجودة</span><span data-en>Quality</span></span>
+        <input type="range" id="q" min="1" max="100" value="82" style="flex:1">
+        <b id="qv" style="color:var(--gold-2);min-width:34px;text-align:center">82</b>
+      </div>
+    </div>
+
+    <details class="adv">
+      <summary><span class="chev">›</span> <span data-ar>خيارات متقدمة</span><span data-en>Advanced options</span></summary>
+      <div class="opts">
+        <div>
+          <label><span data-ar>أقصى عرض (بكسل)</span><span data-en>Max width (px)</span> — <b>0 = <span data-ar>بلا تغيير</span><span data-en>no change</span></b></label>
+          <input type="number" id="maxw" value="0" min="0" step="100">
+        </div>
+        <div>
+          <label><span data-ar>أقصى ارتفاع (بكسل)</span><span data-en>Max height (px)</span></label>
+          <input type="number" id="maxh" value="0" min="0" step="100">
+        </div>
+        <div>
+          <label><span data-ar>خلفية الشفافية</span><span data-en>Transparency background</span></label>
+          <select id="bg">
+            <option value="" selected data-label-ar="إبقاء الشفافية" data-label-en="Keep transparent">إبقاء الشفافية · Keep transparent</option>
+            <option value="#ffffff" data-label-ar="أبيض" data-label-en="White">أبيض · White</option>
+            <option value="#000000" data-label-ar="أسود" data-label-en="Black">أسود · Black</option>
+          </select>
+        </div>
+        <div>
+          <label><span data-ar>نمط التسمية</span><span data-en>Naming</span></label>
+          <select id="mode">
+            <option value="keep" selected data-label-ar="الاسم الأصلي" data-label-en="Original name">الاسم الأصلي · Original</option>
+            <option value="pattern" data-label-ar="ترقيم تسلسلي" data-label-en="Sequential number">ترقيم تسلسلي · Sequential</option>
+            <option value="folder" data-label-ar="اسم المجلد + ترقيم" data-label-en="Folder + number">اسم المجلد + ترقيم · Folder + number</option>
+          </select>
+        </div>
+        <div class="pat">
+          <label><span data-ar>الاسم الأساسي</span><span data-en>Base name</span></label>
+          <input type="text" id="prefix" value="image" placeholder="product">
+        </div>
+        <div class="pat">
+          <label><span data-ar>يبدأ من</span><span data-en>Start at</span> · <span data-ar>عدد الخانات</span><span data-en>Digits</span></label>
+          <div class="row" style="gap:8px"><input type="number" id="start" value="1" min="0" style="flex:1"><input type="number" id="pad" value="2" min="1" max="6" style="flex:1"></div>
+        </div>
+      </div>
+    </details>
+
+    <div class="actions">
+      <button class="btn btn-primary btn-lg" id="go"><span data-ar>ابدأ التحويل</span><span data-en>Start converting</span></button>
+      <button class="btn" id="zip" disabled><span data-ar>تنزيل الكل (ZIP)</span><span data-en>Download all (ZIP)</span></button>
+      <button class="btn btn-ghost" id="clear" disabled><span data-ar>مسح</span><span data-en>Clear</span></button>
+      <span class="stats" id="stats"></span>
+    </div>
+    <div class="track" id="track"><i></i></div>
+  </div>
+
+  <!-- 3) القائمة -->
+  <div class="list-card panel" id="listCard"><ul class="files" id="list"></ul></div>
+
+  <div data-ad-slot="rectangle" style="margin-inline:auto"></div>
+
+  <div data-art-gallery></div>
+
+  <div class="ad"><b style="color:var(--txt-dim)"><span data-ar>مساحة إعلانية — رد المعروف</span><span data-en>Ad space — support us</span></b> · <span data-ar>تُبقي الأداة مجانية</span><span data-en>keeps this tool free</span></div>
+
+  <p class="privacy">
+    <span data-ar>🔒 كل المعالجة تتم داخل متصفحك — لا يغادر أي ملف جهازك، ولا حاجة لإنترنت.</span>
+    <span data-en>🔒 All processing happens inside your browser — no file leaves your device, no internet needed.</span>
+  </p>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap foot">
+    <a class="brand" href="../index.html"><span class="logo">007</span><span>007<b>.gallery</b></span></a>
+    <p>© 2026 007.gallery · <span data-ar>كل الحقوق محفوظة</span><span data-en>All rights reserved</span> · <a href="../privacy.html" style="color:var(--gold-2)"><span data-ar>سياسة الخصوصية</span><span data-en>Privacy</span></a> · <a href="../articles/index.html" style="color:var(--gold-2)"><span data-ar>المقالات</span><span data-en>Guides</span></a> · <a href="../projects.html" style="color:var(--gold-2)"><span data-ar>المشاريع</span><span data-en>Projects</span></a> · <a href="../contact.html" style="color:var(--gold-2)"><span data-ar>تواصل</span><span data-en>Contact</span></a></p>
+  </div>
+</footer>
+
+<script>
+"use strict";
+const $ = s => document.querySelector(s);
+let items = [];
+let fmt = 'webp';
+
+const human = n => { const u=['B','KB','MB','GB']; let i=0;
+  while(Math.abs(n)>=1024 && i<u.length-1){n/=1024;i++;} return n.toFixed(1)+' '+u[i]; };
+const IMG_RE = /\.(png|jpe?g|gif|bmp|tiff?|webp|avif|heic)$/i;
+const isImg = f => (f.type && f.type.startsWith('image/')) || IMG_RE.test(f.name);
+const natcmp = new Intl.Collator(undefined,{numeric:true,sensitivity:'base'}).compare;
+const EXT = {webp:'webp', jpeg:'jpg', png:'png'};
+const MIME = {webp:'image/webp', jpeg:'image/jpeg', png:'image/png'};
+
+/* ---------- اللغة ---------- */
+function toggleLang(){
+  const h = document.documentElement;
+  const en = h.getAttribute('lang')==='en';
+  h.setAttribute('lang', en?'ar':'en');
+  h.setAttribute('dir',  en?'rtl':'ltr');
+  $('#langBtn').textContent = en?'EN':'ع';
+  $('#homeArrow').style.transform = en?'rotate(180deg)':'none';
+  syncSelectLabels();
+  try{ localStorage.setItem('gallery_lang', en?'ar':'en'); }catch(e){}
+}
+function syncSelectLabels(){
+  const en = document.documentElement.getAttribute('lang')==='en';
+  document.querySelectorAll('option[data-label-ar]').forEach(o=>{
+    o.textContent = en ? o.dataset.labelEn : o.dataset.labelAr;
+  });
+}
+try{ if(localStorage.getItem('gallery_lang')==='en') toggleLang(); }catch(e){}
+syncSelectLabels();
+
+/* ---------- فحص دعم WebP ---------- */
+function webpSupported(){
+  const c=document.createElement('canvas');c.width=c.height=2;
+  return c.toDataURL('image/webp').startsWith('data:image/webp');
+}
+const WEBP_OK = webpSupported();
+
+/* ---------- تبديل الصيغة ---------- */
+$('#fmt').addEventListener('click', e=>{
+  const b = e.target.closest('button[data-fmt]'); if(!b) return;
+  if(b.dataset.fmt==='webp' && !WEBP_OK){ showWarn('webp'); return; }
+  fmt = b.dataset.fmt;
+  $('#fmt').querySelectorAll('button').forEach(x=>x.classList.toggle('on', x===b));
+  $('#qWrap').style.opacity = fmt==='png' ? .4 : 1;      // PNG بلا جودة
+  $('#qWrap').style.pointerEvents = fmt==='png' ? 'none' : 'auto';
+  rename();
+});
+
+function showWarn(kind){
+  const w=$('#warn'); w.style.display='block';
+  const en = document.documentElement.getAttribute('lang')==='en';
+  if(kind==='webp') w.innerHTML = en
+    ? 'Your browser cannot create WebP. Use <b>Chrome</b>, <b>Edge</b> or <b>Firefox</b> — or pick JPG/PNG.'
+    : 'متصفحك لا يدعم إنتاج WebP. استخدم <b>Chrome</b> أو <b>Edge</b> أو <b>Firefox</b> — أو اختر JPG/PNG.';
+  else w.textContent = kind;
+  setTimeout(()=>{w.style.display='none';},7000);
+}
+if(!WEBP_OK){ // انتقل تلقائياً إلى JPG
+  fmt='jpeg';
+  $('#fmt').querySelectorAll('button').forEach(x=>x.classList.toggle('on', x.dataset.fmt==='jpeg'));
+}
+
+/* ---------- الإدخال ---------- */
+const drop=$('#drop');
+$('#pickFiles').onclick=()=>$('#fileIn').click();
+$('#pickDir').onclick =()=>$('#dirIn').click();
+drop.onclick = e=>{ if(e.target.closest('button')) return; $('#fileIn').click(); };
+$('#fileIn').onchange=e=>addFiles([...e.target.files].map(f=>({file:f,path:f.name})));
+$('#dirIn').onchange =e=>addFiles([...e.target.files].map(f=>({file:f,path:f.webkitRelativePath||f.name})));
+
+['dragenter','dragover','drop'].forEach(ev=>window.addEventListener(ev,e=>e.preventDefault()));
+['dragenter','dragover'].forEach(ev=>drop.addEventListener(ev,e=>{
+  e.preventDefault(); if(e.dataTransfer)e.dataTransfer.dropEffect='copy'; drop.classList.add('over');
+}));
+['dragleave','dragend'].forEach(ev=>drop.addEventListener(ev,()=>drop.classList.remove('over')));
+
+window.addEventListener('drop', async e=>{
+  e.preventDefault(); drop.classList.remove('over');
+  const dt=e.dataTransfer; if(!dt) return;
+  const plain=[...(dt.files||[])].map(f=>({file:f,path:f.webkitRelativePath||f.name}));
+  const entries=[...(dt.items||[])].map(it=>it.webkitGetAsEntry&&it.webkitGetAsEntry()).filter(Boolean);
+  let out=[];
+  if(entries.length){ try{ await Promise.all(entries.map(en=>walk(en,'',out))); }catch(_){ out=[]; } }
+  if(!out.length) out=plain;
+  if(!out.length){ showWarn(document.documentElement.getAttribute('lang')==='en'
+      ? 'Could not read the drop. Use the buttons below.' : 'تعذّر قراءة ما أفلتّه. استخدم الأزرار بالأسفل.'); return; }
+  addFiles(out);
+});
+
+function walk(entry,prefix,out){
+  return new Promise(resolve=>{
+    if(entry.isFile){ entry.file(f=>{out.push({file:f,path:prefix+entry.name});resolve();},resolve); }
+    else if(entry.isDirectory){
+      const rd=entry.createReader(); const all=[];
+      const read=()=>rd.readEntries(async ents=>{
+        if(!ents.length){ await Promise.all(all.map(en=>walk(en,prefix+entry.name+'/',out))); return resolve(); }
+        all.push(...ents); read();
+      },resolve); read();
+    } else resolve();
+  });
+}
+
+function addFiles(list){
+  const fresh=list.filter(x=>isImg(x.file)).sort((a,b)=>natcmp(a.path,b.path));
+  fresh.forEach(x=>{
+    const li=document.createElement('li');
+    li.innerHTML=`<img class="thumb" alt=""><div class="info">
+      <div class="nm"><span class="new"></span> <span class="old"></span></div>
+      <div class="meta"></div></div>`;
+    li.querySelector('.old').textContent='← '+x.path;
+    li.querySelector('.meta').innerHTML=`<bdi dir="ltr">${human(x.file.size)}</bdi>`;
+    if(x.file.size<25e6) li.querySelector('.thumb').src=URL.createObjectURL(x.file);
+    $('#list').appendChild(li);
+    items.push({...x,el:li,state:'idle',origSize:x.file.size});
+  });
+  $('#listCard').style.display = items.length?'block':'none';
+  $('#controls').classList.toggle('show', items.length>0);
+  rename(); sync();
+}
+
+/* ---------- التسمية ---------- */
+function rename(){
+  const mode=$('#mode').value, sep='_';
+  const prefix=$('#prefix').value.trim()||'image';
+  const start=parseInt($('#start').value)||0;
+  const pad=Math.max(1,parseInt($('#pad').value)||1);
+  const ext=EXT[fmt];
+  const used=new Map(), counters=new Map();
+  items.forEach(it=>{
+    let name;
+    if(mode==='keep'){ name=it.path.split('/').pop().replace(/\.[^.]+$/,''); }
+    else{
+      const parts=it.path.split('/');
+      const group=mode==='folder'&&parts.length>1?parts[parts.length-2]:' ';
+      const base =mode==='folder'&&parts.length>1?parts[parts.length-2]:prefix;
+      const n=(counters.get(group)??start-1)+1; counters.set(group,n);
+      name=base+sep+String(n).padStart(pad,'0');
+    }
+    let final=name+'.'+ext,i=2;
+    while(used.has(final)){ final=`${name}-${i++}.${ext}`; }
+    used.set(final,1); it.newName=final;
+    it.el.querySelector('.new').textContent=final;
+    const a=it.el.querySelector('.dl'); if(a) a.download=final;
+  });
+}
+['mode','prefix','start','pad'].forEach(id=>{
+  $('#'+id).addEventListener('input',rename); $('#'+id).addEventListener('change',rename);
+});
+$('#q').oninput=e=>$('#qv').textContent=e.target.value;
+
+/* ---------- التحويل ---------- */
+async function convertOne(it){
+  const q=parseInt($('#q').value)/100;
+  const maxW=parseInt($('#maxw').value)||0, maxH=parseInt($('#maxh').value)||0;
+  let bg=$('#bg').value;
+  if(fmt==='jpeg' && !bg) bg='#ffffff';           // JPG لا يدعم الشفافية
+  const bmp=await createImageBitmap(it.file);
+  let {width:w,height:h}=bmp;
+  const r=Math.min(maxW?maxW/w:1, maxH?maxH/h:1, 1);
+  w=Math.max(1,Math.round(w*r)); h=Math.max(1,Math.round(h*r));
+  const cv=document.createElement('canvas'); cv.width=w; cv.height=h;
+  const ctx=cv.getContext('2d'); ctx.imageSmoothingQuality='high';
+  if(bg){ ctx.fillStyle=bg; ctx.fillRect(0,0,w,h); }
+  ctx.drawImage(bmp,0,0,w,h); bmp.close();
+  let blob=await new Promise((res,rej)=>
+    cv.toBlob(b=>b?res(b):rej(new Error('encode failed')), MIME[fmt], fmt==='png'?undefined:q));
+  // بصمة المصدر: PNG عبر قطع tEXt/iTXt، وJPEG عبر مقطع COM (جديد في GUARDIAN v4.0).
+  // WebP لا يمرّ بالختم — يعيده stampBlob كما هو دون مساس.
+  if(window.GUARDIAN) blob=await GUARDIAN.stampBlob(blob,'Convert & Compress');
+  return {blob,w,h};
+}
+
+$('#go').onclick=async ()=>{
+  const queue=items.filter(i=>i.state==='idle');
+  if(!queue.length) return;
+  $('#go').disabled=true; $('#track').style.display='block';
+  const en=document.documentElement.getAttribute('lang')==='en';
+  let done=0;
+  for(const it of queue){
+    it.el.querySelector('.meta').textContent = en?'Converting…':'جارٍ التحويل…';
+    try{
+      const {blob,w,h}=await convertOne(it);
+      Object.assign(it,{blob,size:blob.size,state:'done'});
+      it.url=URL.createObjectURL(blob);
+      const pct=100*(it.origSize-blob.size)/it.origSize;
+      it.el.querySelector('.meta').innerHTML=
+        `<bdi dir="ltr">${human(it.origSize)} → ${human(blob.size)} · ${w}×${h}</bdi> · `+
+        (pct>=0?`<span class="save">${en?'smaller by':'أصغر بنسبة'} ${pct.toFixed(0)}%</span>`
+               :`<span class="bad">${en?'larger by':'أكبر بنسبة'} ${(-pct).toFixed(0)}%</span>`);
+      let a=it.el.querySelector('.dl');
+      if(!a){ a=document.createElement('a'); a.className='dl'; it.el.appendChild(a); }
+      a.href=it.url; a.download=it.newName; a.textContent=en?'Download':'تنزيل';
+    }catch(e){
+      it.state='error';
+      it.el.querySelector('.meta').innerHTML=`<span class="bad">${en?'Failed':'تعذّر التحويل'} — ${e.message}</span>`;
+    }
+    done++; $('#track').firstElementChild.style.width=(100*done/queue.length)+'%';
+    sync(); await new Promise(r=>setTimeout(r,0));
+  }
+  $('#track').style.display='none'; sync();
+};
+
+function sync(){
+  const en=document.documentElement.getAttribute('lang')==='en';
+  const done=items.filter(i=>i.state==='done');
+  $('#go').disabled=!items.some(i=>i.state==='idle');
+  $('#zip').disabled=done.length===0;
+  $('#clear').disabled=items.length===0;
+  if(done.length){
+    const a=done.reduce((s,i)=>s+i.origSize,0), b=done.reduce((s,i)=>s+i.size,0);
+    $('#stats').innerHTML=`${done.length} ${en?'images':'صورة'} · <bdi dir="ltr">${human(a)} → ${human(b)}</bdi>`
+      +` · ${en?'saved':'توفير'} <b>${(100*(a-b)/a).toFixed(0)}%</b>`;
+  } else $('#stats').textContent='';
+}
+
+$('#clear').onclick=()=>{
+  items.forEach(i=>i.url&&URL.revokeObjectURL(i.url));
+  items=[]; $('#list').innerHTML=''; $('#listCard').style.display='none';
+  $('#controls').classList.remove('show');
+  $('#fileIn').value=$('#dirIn').value=''; sync();
+};
+
+/* ---------- كاتب ZIP مصغّر ---------- */
+const CRC=(()=>{const t=new Uint32Array(256);
+  for(let n=0;n<256;n++){let c=n;for(let k=0;k<8;k++)c=c&1?0xEDB88320^(c>>>1):c>>>1;t[n]=c>>>0;}return t;})();
+function crc32(u8){let c=0xFFFFFFFF;for(let i=0;i<u8.length;i++)c=CRC[(c^u8[i])&0xFF]^(c>>>8);return(c^0xFFFFFFFF)>>>0;}
+async function makeZip(entries){
+  const enc=new TextEncoder(),chunks=[],central=[];let offset=0;
+  const u16=v=>[v&255,(v>>8)&255], u32=v=>[v&255,(v>>8)&255,(v>>16)&255,(v>>>24)&255];
+  for(const {name,blob} of entries){
+    const data=new Uint8Array(await blob.arrayBuffer());
+    const nb=enc.encode(name),crc=crc32(data);
+    const head=new Uint8Array([...u32(0x04034b50),...u16(20),...u16(0x0800),...u16(0),
+      ...u16(0),...u16(0),...u32(crc),...u32(data.length),...u32(data.length),...u16(nb.length),...u16(0)]);
+    chunks.push(head,nb,data);
+    central.push(new Uint8Array([...u32(0x02014b50),...u16(20),...u16(20),...u16(0x0800),
+      ...u16(0),...u16(0),...u16(0),...u32(crc),...u32(data.length),...u32(data.length),
+      ...u16(nb.length),...u16(0),...u16(0),...u16(0),...u16(0),...u32(0),...u32(offset)]),nb);
+    offset+=head.length+nb.length+data.length;
+  }
+  const cdSize=central.reduce((s,c)=>s+c.length,0);
+  const end=new Uint8Array([...u32(0x06054b50),...u16(0),...u16(0),
+    ...u16(entries.length),...u16(entries.length),...u32(cdSize),...u32(offset),...u16(0)]);
+  return new Blob([...chunks,...central,end],{type:'application/zip'});
+}
+$('#zip').onclick=async ()=>{
+  const en=document.documentElement.getAttribute('lang')==='en';
+  const done=items.filter(i=>i.state==='done');
+  $('#zip').disabled=true; const t=$('#zip').querySelector('span[data-'+(en?'en':'ar')+']');
+  try{
+    const zip=await makeZip(done.map(i=>({name:i.newName,blob:i.blob})));
+    const a=document.createElement('a'); a.href=URL.createObjectURL(zip); a.download='007-gallery-images.zip'; a.click();
+    setTimeout(()=>URL.revokeObjectURL(a.href),30000);
+  }catch(e){ alert((en?'ZIP failed: ':'تعذّر إنشاء ZIP: ')+e.message); }
+  $('#zip').disabled=false;
+};
+
+rename(); sync();
+</script>
+</body>
+</html>

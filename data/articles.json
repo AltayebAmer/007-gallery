@@ -1,0 +1,75 @@
+{
+  "updated": "2026-08-20",
+  "articles": [
+    {
+      "slug": "remove-background-free",
+      "date": "2026-08-20",
+      "icon": "✂️",
+      "title_ar": "كيف تزيل خلفية أي صورة مجاناً وبدون برامج",
+      "title_en": "How to Remove Any Image Background Free — No Software",
+      "desc_ar": "دليل عملي لإزالة خلفية الصور بالذكاء الاصطناعي داخل المتصفح، بدون تثبيت برامج وبدون رفع صورك لأي خادم.",
+      "desc_en": "A practical guide to removing image backgrounds with AI inside your browser — no installs, no uploads.",
+      "tool": "services/background-removal.html"
+    },
+    {
+      "slug": "webp-vs-png-vs-jpg",
+      "date": "2026-08-20",
+      "icon": "🗂️",
+      "title_ar": "WebP أم PNG أم JPG؟ دليل اختيار صيغة الصورة الصحيحة",
+      "title_en": "WebP vs PNG vs JPG: Choosing the Right Image Format",
+      "desc_ar": "شرح واضح للفروق بين صيغ الصور الثلاث الأشهر، ومتى تستخدم كل واحدة لتوفير الحجم دون خسارة الجودة.",
+      "desc_en": "A clear comparison of the three most common image formats and when to use each to cut file size without losing quality.",
+      "tool": "services/convert-compress.html"
+    },
+    {
+      "slug": "upscale-image-without-losing-quality",
+      "date": "2026-08-20",
+      "icon": "🔍",
+      "title_ar": "كيف تكبّر صورة صغيرة دون أن تفقد جودتها",
+      "title_en": "How to Enlarge a Small Image Without Losing Quality",
+      "desc_ar": "لماذا تتشوّه الصور عند التكبير، وكيف يحلّ الذكاء الاصطناعي هذه المشكلة القديمة داخل متصفحك.",
+      "desc_en": "Why images break when enlarged, and how AI solves this old problem right inside your browser.",
+      "tool": "services/upscale.html"
+    },
+    {
+      "slug": "extract-text-from-image-ocr-arabic",
+      "date": "2026-08-20",
+      "icon": "📝",
+      "title_ar": "استخراج النص من الصور بالعربية: دليل OCR الكامل",
+      "title_en": "Extracting Text from Images in Arabic: A Complete OCR Guide",
+      "desc_ar": "كيف تحوّل صورة أو مستنداً ممسوحاً إلى نص قابل للتحرير والنسخ — بالعربية والإنجليزية ومجاناً.",
+      "desc_en": "How to turn an image or scanned document into editable, copyable text — in Arabic and English, for free.",
+      "tool": "services/ocr.html"
+    },
+    {
+      "slug": "free-qr-code-with-logo",
+      "date": "2026-08-20",
+      "icon": "🔳",
+      "title_ar": "كيف تصنع رمز QR احترافياً بشعارك وألوانك",
+      "title_en": "How to Make a Professional QR Code With Your Logo",
+      "desc_ar": "دليل عملي لإنشاء رموز QR أنيقة تعمل بموثوقية — مع شرح مستويات تصحيح الخطأ وأخطاء شائعة تُفسد الرمز.",
+      "desc_en": "A practical guide to elegant QR codes that actually scan — error-correction levels and the mistakes that break them.",
+      "tool": "services/qr.html"
+    },
+    {
+      "slug": "protect-images-watermark-guide",
+      "date": "2026-08-20",
+      "icon": "🛡️",
+      "title_ar": "كيف تحمي صورك على الإنترنت: دليل العلامة المائية",
+      "title_en": "How to Protect Your Images Online: A Watermarking Guide",
+      "desc_ar": "متى تستخدم العلامة المائية وكيف تصمّمها بحيث تحمي عملك دون أن تُفسد جماله.",
+      "desc_en": "When to watermark, and how to design one that protects your work without ruining it.",
+      "tool": "services/watermark.html"
+    },
+    {
+      "slug": "why-browser-ai-tools-are-safer",
+      "date": "2026-08-20",
+      "icon": "🔒",
+      "title_ar": "لماذا أدوات الذكاء الاصطناعي في المتصفح أكثر أماناً؟",
+      "title_en": "Why Browser-Based AI Tools Are Safer for Your Privacy",
+      "desc_ar": "الفرق بين المعالجة المحلية والسحابية، وماذا يحدث لصورك حين ترفعها إلى موقع مجاني.",
+      "desc_en": "The difference between local and cloud processing, and what really happens when you upload to a free site.",
+      "tool": "index.html"
+    }
+  ]
+}

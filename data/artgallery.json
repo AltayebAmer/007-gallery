@@ -1,0 +1,97 @@
+{
+  "site": "https://altayebamer.com",
+  "note": "خانات معرض الفنان — أضف رابط صورة في img لعرض لوحة حقيقية بدل الخلفية المتدرّجة",
+  "items": [
+    {
+      "id": "calligraphy",
+      "url": "https://altayebamer.com/gallery/calligraphy",
+      "title_ar": "الخط العربي",
+      "title_en": "Calligraphy",
+      "desc_ar": "جماليات الحرف العربي",
+      "desc_en": "The beauty of Arabic letterforms",
+      "icon": "✒️",
+      "c1": "#1a1330",
+      "c2": "#4a3384",
+      "accent": "#c9a3ff",
+      "img": ""
+    },
+    {
+      "id": "portrait",
+      "url": "https://altayebamer.com/gallery/portrait",
+      "title_ar": "البورتريه الفني",
+      "title_en": "Fine Art Portrait",
+      "desc_ar": "ملامح تحكي حكاية",
+      "desc_en": "Faces that tell a story",
+      "icon": "🖼️",
+      "c1": "#2a1414",
+      "c2": "#6b3030",
+      "accent": "#ff9d9d",
+      "img": ""
+    },
+    {
+      "id": "horses",
+      "url": "https://altayebamer.com/gallery/horses",
+      "title_ar": "الخيول العربية",
+      "title_en": "Arabian Horses",
+      "desc_ar": "أصالة وجموح",
+      "desc_en": "Nobility and fire",
+      "icon": "🐎",
+      "c1": "#2a2410",
+      "c2": "#6b5a1c",
+      "accent": "#f0d264",
+      "img": ""
+    },
+    {
+      "id": "design",
+      "url": "https://altayebamer.com/gallery/design",
+      "title_ar": "التصميم البصري",
+      "title_en": "Visual Design",
+      "desc_ar": "هوية تُرى وتُذكر",
+      "desc_en": "Identity that is seen and remembered",
+      "icon": "🎨",
+      "c1": "#101a2e",
+      "c2": "#254a80",
+      "accent": "#79b8ff",
+      "img": ""
+    },
+    {
+      "id": "ai",
+      "url": "https://altayebamer.com/gallery/ai",
+      "title_ar": "الذكاء الاصطناعي الإبداعي",
+      "title_en": "Creative AI",
+      "desc_ar": "حين تلتقي الآلة بالخيال",
+      "desc_en": "Where machine meets imagination",
+      "icon": "🤖",
+      "c1": "#0d2a24",
+      "c2": "#12604b",
+      "accent": "#4fe0b0",
+      "img": ""
+    },
+    {
+      "id": "photography",
+      "url": "https://altayebamer.com/gallery/photography",
+      "title_ar": "التطبيقات البصرية",
+      "title_en": "Visual Applications",
+      "desc_ar": "الفن في خدمة الواقع",
+      "desc_en": "Art in the service of the real",
+      "icon": "📷",
+      "c1": "#1c1c26",
+      "c2": "#454560",
+      "accent": "#c5c5e0",
+      "img": ""
+    },
+    {
+      "id": "education",
+      "url": "https://altayebamer.com/gallery/education",
+      "title_ar": "التعليم الفني",
+      "title_en": "Art Education",
+      "desc_ar": "المعرفة تُورَّث",
+      "desc_en": "Knowledge worth passing on",
+      "icon": "📐",
+      "c1": "#2a1a10",
+      "c2": "#7a4620",
+      "accent": "#ffb27a",
+      "img": ""
+    }
+  ]
+}

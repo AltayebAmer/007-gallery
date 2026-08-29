@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<!--
+  ════════════════════════════════════════════════════════════
+   007.gallery
+   Creator : Artist Altayeb Amer
+   المبتكر  : الفنان الطيب عامر
+   Source  : https://007.gallery
+   © 2026 Artist Altayeb Amer — All rights reserved.
+   Protected by ALTAYEB GUARDIAN v4.0
+  ════════════════════════════════════════════════════════════
+-->
+
+<html lang="ar" dir="rtl" data-creator="Artist Altayeb Amer" data-creator-ar="الفنان الطيب عامر" data-source="https://007.gallery" data-guardian="4.0">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>العلامة المائية — 007.gallery</title>
+<meta name="description" content="أضف علامتك المائية (نص أو شعار) على صورك دفعة واحدة، أو اطمس منطقة لإخفائها — محلياً في متصفحك.">
+<link rel="stylesheet" href="../assets/brand.css">
+<style>
+  .tool-hero{text-align:center;padding:30px 0 16px}
+  .tool-hero h1{font-size:clamp(24px,4vw,36px);font-weight:900;letter-spacing:-.4px}
+  .tool-hero h1 span{background:linear-gradient(120deg,var(--gold),var(--gold-2));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .tool-hero p{color:var(--txt-dim);margin-top:10px;font-size:15px}
+
+  .mode-tabs{display:flex;justify-content:center;margin:6px 0 22px}
+  .mode-tabs .seg{width:auto}
+
+  .drop{background:linear-gradient(180deg,var(--card),var(--card-2));border:2px dashed var(--line-2);
+    border-radius:22px;padding:48px 24px;text-align:center;transition:.2s;cursor:pointer}
+  .drop.over{border-color:var(--gold);background:var(--gold-soft);transform:scale(1.005)}
+  .drop .ring{width:74px;height:74px;border-radius:50%;margin:0 auto 15px;display:grid;place-items:center;
+    background:var(--gold-soft);border:1px solid rgba(212,175,55,.25)}
+  .drop .ring svg{width:34px;height:34px;stroke:var(--gold-2);fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+  .drop b{display:block;font-size:19px;margin-bottom:6px}
+  .drop small{color:var(--txt-mute);font-size:13px}
+  .picks{display:flex;gap:10px;justify-content:center;margin-top:16px;flex-wrap:wrap}
+
+  .layout{display:none;grid-template-columns:1fr 340px;gap:20px;align-items:start;margin-top:8px}
+  .layout.show{display:grid}
+  @media(max-width:820px){.layout{grid-template-columns:1fr}}
+
+  .preview-card{background:var(--bg-2);border:1px solid var(--line);border-radius:16px;padding:14px;
+    display:grid;place-items:center;min-height:300px;position:relative;overflow:hidden}
+  .preview-card canvas{max-width:100%;max-height:60vh;border-radius:8px;display:block}
+  #blurCanvas{cursor:crosshair;touch-action:none}
+
+  .field{margin-bottom:16px}
+  .seg.type{width:100%}
+  .seg.type button{flex:1}
+  .range-row{display:flex;align-items:center;gap:12px}
+  .range-row input[type=range]{flex:1}
+  .range-row b{color:var(--gold-2);min-width:42px;text-align:center;font-size:13px}
+  textarea.wm{width:100%;padding:11px;border:1px solid var(--line-2);border-radius:11px;background:var(--bg-2);color:var(--txt);font:inherit;font-size:15px;resize:vertical;min-height:56px}
+  textarea.wm:focus{outline:none;border-color:var(--gold)}
+
+  .grid9{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;max-width:130px}
+  .grid9 button{aspect-ratio:1;border:1px solid var(--line-2);background:var(--bg-2);border-radius:8px;cursor:pointer;transition:.15s;display:grid;place-items:center}
+  .grid9 button.on{border-color:var(--gold);background:var(--gold-soft)}
+  .grid9 button i{width:8px;height:8px;border-radius:50%;background:var(--txt-mute)}
+  .grid9 button.on i{background:var(--gold-2)}
+
+  .logo-drop{border:1.5px dashed var(--line-2);border-radius:11px;padding:14px;text-align:center;cursor:pointer;color:var(--txt-mute);font-size:13px;transition:.15s}
+  .logo-drop:hover{border-color:var(--gold)}
+  .logo-drop.has{color:var(--gold-2)}
+
+  .actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:8px}
+  .thumbs{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+  .thumbs img{width:52px;height:52px;object-fit:cover;border-radius:8px;border:1px solid var(--line-2);cursor:pointer;transition:.15s}
+  .thumbs img.on{border-color:var(--gold);transform:scale(1.05)}
+  .count{font-size:13px;color:var(--txt-dim);margin-top:10px}
+
+  .hint{font-size:12.5px;color:var(--txt-mute);margin-top:8px;line-height:1.8}
+  .warn{background:color-mix(in srgb,var(--red) 12%,transparent);color:var(--red);padding:12px 15px;border-radius:11px;font-size:13.5px;margin-bottom:14px;display:none}
+  .privacy{text-align:center;color:var(--txt-mute);font-size:12.5px;margin-top:22px;line-height:2}
+  .ad{margin:26px auto 0;border:1px dashed var(--line-2);border-radius:14px;min-height:80px;
+    display:flex;align-items:center;justify-content:center;gap:10px;color:var(--txt-mute);font-size:13px;
+    background:repeating-linear-gradient(45deg,transparent,transparent 12px,rgba(255,255,255,.012) 12px,rgba(255,255,255,.012) 24px)}
+</style>
+<link rel="icon" href="../favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="../assets/icon-32.png">
+<link rel="apple-touch-icon" href="../assets/icon-180.png">
+<link rel="manifest" href="../manifest.webmanifest">
+<meta name="theme-color" content="#0a0b0f">
+<link rel="canonical" href="https://007.gallery/services/watermark.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="007.gallery">
+<meta property="og:locale" content="ar_AR">
+<meta property="og:title" content="العلامة المائية — 007.gallery">
+<meta property="og:description" content="أضف علامتك المائية على صورك دفعة واحدة أو اطمس منطقة لإخفائها — مجاناً في متصفحك.">
+<meta property="og:url" content="https://007.gallery/services/watermark.html">
+<meta property="og:image" content="https://007.gallery/assets/og-cover.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="العلامة المائية — 007.gallery">
+<meta name="twitter:description" content="أضف علامتك المائية على صورك دفعة واحدة أو اطمس منطقة لإخفائها — مجاناً في متصفحك.">
+<meta name="twitter:image" content="https://007.gallery/assets/og-cover.png">
+<script data-project="007.gallery" data-project-ar="٠٠٧ جاليري" data-site="https://007.gallery" data-version="1.0.0" data-creator="Artist Altayeb Amer" data-creator-ar="الفنان الطيب عامر" data-domains="007.gallery" src="../assets/guardian.js" data-comment="Processed locally in the browser — no upload, no server. Image rights remain with the image owner." defer></script>
+<meta name="author" content="Artist Altayeb Amer">
+<meta name="creator" content="Artist Altayeb Amer">
+<meta name="designer" content="Artist Altayeb Amer / الفنان الطيب عامر">
+<meta name="copyright" content="© 2026 Artist Altayeb Amer">
+<meta name="owner" content="Artist Altayeb Amer">
+<meta name="publisher" content="007.gallery — Artist Altayeb Amer">
+<meta name="dcterms.creator" content="Artist Altayeb Amer">
+<meta name="dcterms.rights" content="© 2026 Artist Altayeb Amer">
+<meta name="dcterms.rightsHolder" content="Artist Altayeb Amer">
+<meta name="application-name" content="007.gallery">
+<meta name="guardian" content="ALTAYEB GUARDIAN v4.0 — Artist Altayeb Amer">
+<link rel="author" href="../humans.txt">
+<script src="../assets/ads.js" defer></script>
+<script src="../assets/artgallery.js" defer></script>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap nav">
+    <a class="brand" href="../index.html"><span class="logo">007</span><span>007<b>.gallery</b></span></a>
+    <div class="nav-actions">
+      <button class="btn btn-lang" id="langBtn" onclick="toggleLang()">EN</button>
+      <a class="btn btn-ghost" href="../index.html">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" id="homeArrow"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+        <span data-ar>كل الأدوات</span><span data-en>All tools</span>
+      </a>
+    </div>
+  </div>
+</header>
+
+<main class="wrap" style="padding-bottom:40px">
+  <div class="tool-hero">
+    <span class="pill"><span class="dot"></span><span data-ar>يعمل في متصفحك · لا يُرفع أي ملف</span><span data-en>Runs in your browser · nothing is uploaded</span></span>
+    <h1><span data-ar>العلامة <span>المائية</span></span><span data-en><span>Watermark</span> studio</span></h1>
+    <p><span data-ar>أضف علامتك على صورك دفعة واحدة، أو اطمس منطقة لإخفاء علامة أو معلومة حساسة.</span><span data-en>Brand your images in one batch, or blur a region to hide a mark or sensitive info.</span></p>
+  </div>
+
+  <div class="mode-tabs">
+    <div class="seg" id="mode">
+      <button data-mode="add" class="on"><span data-ar>➕ إضافة علامة</span><span data-en>➕ Add watermark</span></button>
+      <button data-mode="blur"><span data-ar>🔲 طمس منطقة</span><span data-en>🔲 Blur a region</span></button>
+    </div>
+  </div>
+
+  <div class="warn" id="warn"></div>
+
+  <!-- الإفلات -->
+  <div class="drop" id="drop">
+    <div class="ring"><svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M17 8l-5-5-5 5"/><path d="M12 3v13"/></svg></div>
+    <b id="dropTitle"><span data-ar>أفلت صورك هنا</span><span data-en>Drop your images here</span></b>
+    <small id="dropSub"><span data-ar>PNG · JPG · WebP — صورة أو عدة صور دفعة واحدة</span><span data-en>PNG · JPG · WebP — one image or many at once</span></small>
+    <div class="picks"><button class="btn btn-primary" id="pickFiles"><span data-ar>اختيار صور</span><span data-en>Choose images</span></button></div>
+    <input type="file" id="fileIn" accept="image/*" multiple hidden>
+  </div>
+
+  <!-- منطقة العمل -->
+  <div class="layout" id="layout">
+    <div class="preview-card">
+      <canvas id="previewCanvas"></canvas>
+      <canvas id="blurCanvas" style="display:none"></canvas>
+    </div>
+
+    <!-- لوحة تحكم: إضافة علامة -->
+    <div class="panel" id="addPanel">
+      <div class="field">
+        <div class="seg type" id="wmType">
+          <button data-t="text" class="on"><span data-ar>نص</span><span data-en>Text</span></button>
+          <button data-t="logo"><span data-ar>شعار</span><span data-en>Logo</span></button>
+        </div>
+      </div>
+
+      <div id="textOpts">
+        <div class="field">
+          <label><span data-ar>نص العلامة</span><span data-en>Watermark text</span></label>
+          <textarea class="wm" id="wmText">© 007.gallery</textarea>
+        </div>
+        <div class="field">
+          <label><span data-ar>اللون</span><span data-en>Color</span></label>
+          <div class="range-row"><input type="color" id="wmColor" value="#ffffff" style="width:44px;height:34px;border:none;background:none;padding:0;border-radius:8px;cursor:pointer">
+            <span class="muted" style="font-size:13px" id="wmColorHex">#ffffff</span></div>
+        </div>
+      </div>
+
+      <div id="logoOpts" style="display:none">
+        <div class="field">
+          <label><span data-ar>ملف الشعار</span><span data-en>Logo file</span></label>
+          <div class="logo-drop" id="logoDrop"><span id="logoLabel"><span data-ar>انقر لاختيار شعار (PNG شفاف مفضّل)</span><span data-en>Click to pick a logo (transparent PNG preferred)</span></span>
+            <input type="file" id="logoIn" accept="image/*" hidden></div>
+        </div>
+      </div>
+
+      <div class="field">
+        <label><span data-ar>الحجم</span><span data-en>Size</span></label>
+        <div class="range-row"><input type="range" id="wmSize" min="2" max="30" value="8"><b id="wmSizeVal">8%</b></div>
+      </div>
+      <div class="field">
+        <label><span data-ar>الشفافية</span><span data-en>Opacity</span></label>
+        <div class="range-row"><input type="range" id="wmOpacity" min="5" max="100" value="45"><b id="wmOpacityVal">45%</b></div>
+      </div>
+      <div class="field">
+        <label><span data-ar>الدوران</span><span data-en>Rotation</span></label>
+        <div class="range-row"><input type="range" id="wmRot" min="-90" max="90" value="0"><b id="wmRotVal">0°</b></div>
+      </div>
+      <div class="field">
+        <label class="check"><input type="checkbox" id="wmTile"> <span data-ar>تكرار على كامل الصورة</span><span data-en>Tile across whole image</span></label>
+      </div>
+      <div class="field" id="posField">
+        <label><span data-ar>الموضع</span><span data-en>Position</span></label>
+        <div class="grid9" id="posGrid">
+          <button data-pos="tl"><i></i></button><button data-pos="tc"><i></i></button><button data-pos="tr"><i></i></button>
+          <button data-pos="ml"><i></i></button><button data-pos="mc"><i></i></button><button data-pos="mr"><i></i></button>
+          <button data-pos="bl"><i></i></button><button data-pos="bc"><i></i></button><button data-pos="br" class="on"><i></i></button>
+        </div>
+      </div>
+
+      <div class="actions">
+        <button class="btn btn-primary" id="dlOne"><span data-ar>تنزيل الحالية</span><span data-en>Download current</span></button>
+        <button class="btn" id="dlAll"><span data-ar>تنزيل الكل (ZIP)</span><span data-en>Download all (ZIP)</span></button>
+      </div>
+      <div class="count" id="count"></div>
+      <div class="thumbs" id="thumbs"></div>
+      <button class="btn btn-ghost" id="reset" style="margin-top:12px;width:100%"><span data-ar>صور أخرى</span><span data-en>New images</span></button>
+    </div>
+
+    <!-- لوحة تحكم: طمس -->
+    <div class="panel" id="blurPanel" style="display:none">
+      <p class="hint"><span data-ar>اسحب لرسم مستطيل فوق الجزء الذي تريد طمسه. كرّر لعدة مناطق.</span><span data-en>Drag to draw a rectangle over the part you want to blur. Repeat for more areas.</span></p>
+      <div class="field" style="margin-top:14px">
+        <label><span data-ar>الأسلوب</span><span data-en>Style</span></label>
+        <div class="seg type" id="blurStyle">
+          <button data-s="pixelate" class="on"><span data-ar>بكسلة</span><span data-en>Pixelate</span></button>
+          <button data-s="blur"><span data-ar>ضباب</span><span data-en>Blur</span></button>
+        </div>
+      </div>
+      <div class="field">
+        <label><span data-ar>الشدّة</span><span data-en>Strength</span></label>
+        <div class="range-row"><input type="range" id="blurStrength" min="6" max="40" value="18"><b id="blurStrengthVal">18</b></div>
+      </div>
+      <div class="actions">
+        <button class="btn" id="undoBlur"><span data-ar>تراجع</span><span data-en>Undo</span></button>
+        <button class="btn" id="clearBlur"><span data-ar>مسح الكل</span><span data-en>Clear all</span></button>
+      </div>
+      <div class="actions">
+        <button class="btn btn-primary" id="dlBlur" style="flex:1"><span data-ar>تنزيل الصورة</span><span data-en>Download image</span></button>
+      </div>
+      <button class="btn btn-ghost" id="resetBlur" style="margin-top:12px;width:100%"><span data-ar>صورة أخرى</span><span data-en>New image</span></button>
+    </div>
+  </div>
+
+  <div data-ad-slot="rectangle" style="margin-inline:auto"></div>
+
+  <div data-art-gallery></div>
+
+  <div class="ad"><b style="color:var(--txt-dim)"><span data-ar>مساحة إعلانية — رد المعروف</span><span data-en>Ad space — support us</span></b> · <span data-ar>تُبقي الأداة مجانية</span><span data-en>keeps this tool free</span></div>
+
+  <p class="privacy"><span data-ar>🔒 كل المعالجة تتم داخل متصفحك — لا يغادر أي ملف جهازك.</span><span data-en>🔒 All processing happens in your browser — no file leaves your device.</span></p>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap foot">
+    <a class="brand" href="../index.html"><span class="logo">007</span><span>007<b>.gallery</b></span></a>
+    <p>© 2026 007.gallery · <span data-ar>كل الحقوق محفوظة</span><span data-en>All rights reserved</span> · <a href="../privacy.html" style="color:var(--gold-2)"><span data-ar>سياسة الخصوصية</span><span data-en>Privacy</span></a> · <a href="../articles/index.html" style="color:var(--gold-2)"><span data-ar>المقالات</span><span data-en>Guides</span></a> · <a href="../projects.html" style="color:var(--gold-2)"><span data-ar>المشاريع</span><span data-en>Projects</span></a> · <a href="../contact.html" style="color:var(--gold-2)"><span data-ar>تواصل</span><span data-en>Contact</span></a></p>
+  </div>
+</footer>
+
+<script>
+"use strict";
+const $=s=>document.querySelector(s);
+const T=()=>document.documentElement.getAttribute('lang')==='en';
+let mode='add';
+
+function toggleLang(){
+  const h=document.documentElement,en=h.getAttribute('lang')==='en';
+  h.setAttribute('lang',en?'ar':'en');h.setAttribute('dir',en?'rtl':'ltr');
+  $('#langBtn').textContent=en?'EN':'ع';
+  $('#homeArrow').style.transform=en?'rotate(180deg)':'none';
+  try{localStorage.setItem('gallery_lang',en?'ar':'en');}catch(e){}
+}
+window.toggleLang=toggleLang;
+try{ if(localStorage.getItem('gallery_lang')==='en') toggleLang(); }catch(e){}
+
+/* ============ الحالة ============ */
+let images=[];         // {name, img(HTMLImageElement)}  لوضع الإضافة
+let curIndex=0;
+let wmType='text', logoImg=null, position='br';
+let blurImg=null, blurRegions=[], blurBase=null;  // لوضع الطمس
+
+/* ============ تبديل الوضع ============ */
+$('#mode').addEventListener('click',e=>{
+  const b=e.target.closest('button[data-mode]'); if(!b) return;
+  mode=b.dataset.mode;
+  $('#mode').querySelectorAll('button').forEach(x=>x.classList.toggle('on',x===b));
+  // إعادة ضبط الواجهة
+  reset(); resetBlur();
+  $('#addPanel').style.display = mode==='add'?'block':'none';
+  $('#blurPanel').style.display= mode==='blur'?'block':'none';
+  $('#previewCanvas').style.display = mode==='add'?'block':'none';
+  $('#blurCanvas').style.display = mode==='blur'?'block':'none';
+  $('#fileIn').multiple = mode==='add';
+});
+
+/* ============ الإدخال ============ */
+const drop=$('#drop');
+$('#pickFiles').onclick=e=>{e.stopPropagation();$('#fileIn').click();};
+drop.onclick=e=>{ if(e.target.closest('button'))return; $('#fileIn').click(); };
+$('#fileIn').onchange=e=>handleFiles([...e.target.files]);
+['dragenter','dragover','drop'].forEach(ev=>window.addEventListener(ev,e=>e.preventDefault()));
+['dragenter','dragover'].forEach(ev=>drop.addEventListener(ev,e=>{e.preventDefault();drop.classList.add('over');}));
+['dragleave','dragend'].forEach(ev=>drop.addEventListener(ev,()=>drop.classList.remove('over')));
+window.addEventListener('drop',e=>{
+  e.preventDefault();drop.classList.remove('over');
+  const fs=[...(e.dataTransfer?.files||[])].filter(x=>x.type.startsWith('image/'));
+  if(fs.length) handleFiles(fs);
+});
+
+function loadImg(file){
+  return new Promise((res,rej)=>{
+    const img=new Image();
+    img.onload=()=>res(img); img.onerror=rej;
+    img.src=URL.createObjectURL(file);
+  });
+}
+async function handleFiles(files){
+  $('#warn').style.display='none';
+  if(mode==='add'){
+    images=[];
+    for(const f of files){ try{ images.push({name:f.name.replace(/\.[^.]+$/,''), img:await loadImg(f)}); }catch(e){} }
+    if(!images.length){ showWarn('تعذّر تحميل الصور.','Could not load images.'); return; }
+    curIndex=0;
+    $('#drop').style.display='none'; $('#layout').classList.add('show');
+    buildThumbs(); renderAdd();
+  }else{
+    try{ blurImg=await loadImg(files[0]); }catch(e){ showWarn('تعذّر تحميل الصورة.','Could not load image.'); return; }
+    blurRegions=[];
+    $('#drop').style.display='none'; $('#layout').classList.add('show');
+    initBlur();
+  }
+}
+function showWarn(ar,en){ const w=$('#warn'); w.style.display='block'; w.innerHTML=`<span data-ar>${ar}</span><span data-en>${en}</span>`; }
+
+/* ============ وضع الإضافة ============ */
+function buildThumbs(){
+  const t=$('#thumbs'); t.innerHTML='';
+  images.forEach((im,i)=>{
+    const el=document.createElement('img'); el.src=im.img.src; el.className=i===curIndex?'on':'';
+    el.onclick=()=>{ curIndex=i; buildThumbs(); renderAdd(); };
+    t.appendChild(el);
+  });
+  $('#count').innerHTML = images.length>1
+    ? `<span data-ar>${images.length} صور — تُطبَّق الإعدادات على الكل</span><span data-en>${images.length} images — settings apply to all</span>`
+    : '';
+}
+
+function drawWatermark(ctx, W, H){
+  const opacity=parseInt($('#wmOpacity').value)/100;
+  const sizePct=parseInt($('#wmSize').value)/100;
+  const rot=parseInt($('#wmRot').value)*Math.PI/180;
+  const tile=$('#wmTile').checked;
+  ctx.save();
+  ctx.globalAlpha=opacity;
+
+  // جهّز "ختم" العلامة على قماش مؤقت
+  let stampW,stampH,stamp;
+  if(wmType==='text'){
+    const text=$('#wmText').value||' ';
+    const fontPx=Math.max(10, Math.round(H*sizePct));
+    const lines=text.split('\n');
+    const tmp=document.createElement('canvas'); const tctx=tmp.getContext('2d');
+    tctx.font=`bold ${fontPx}px 'Segoe UI',system-ui,Arial,sans-serif`;
+    const widths=lines.map(l=>tctx.measureText(l).width);
+    stampW=Math.max(...widths)+fontPx*0.4; stampH=fontPx*1.25*lines.length+fontPx*0.3;
+    tmp.width=Math.ceil(stampW); tmp.height=Math.ceil(stampH);
+    tctx.font=`bold ${fontPx}px 'Segoe UI',system-ui,Arial,sans-serif`;
+    tctx.textBaseline='top'; tctx.fillStyle=$('#wmColor').value;
+    tctx.shadowColor='rgba(0,0,0,.35)'; tctx.shadowBlur=fontPx*0.08;
+    lines.forEach((l,i)=>tctx.fillText(l, fontPx*0.2, fontPx*0.15 + i*fontPx*1.25));
+    stamp=tmp;
+  }else{
+    if(!logoImg){ ctx.restore(); return; }
+    const scale=(H*sizePct*3)/logoImg.height;
+    stampW=logoImg.width*scale; stampH=logoImg.height*scale;
+    const tmp=document.createElement('canvas'); tmp.width=Math.ceil(stampW); tmp.height=Math.ceil(stampH);
+    tmp.getContext('2d').drawImage(logoImg,0,0,stampW,stampH); stamp=tmp;
+  }
+
+  if(tile){
+    const stepX=stampW*1.8, stepY=stampH*2.4;
+    for(let y=-H;y<H*2;y+=stepY){
+      for(let x=-W;x<W*2;x+=stepX){
+        ctx.save(); ctx.translate(x+stampW/2, y+stampH/2); ctx.rotate(rot||-0.4);
+        ctx.drawImage(stamp,-stampW/2,-stampH/2); ctx.restore();
+      }
+    }
+  }else{
+    const m=Math.round(Math.min(W,H)*0.03);
+    const px={l:m, c:(W-stampW)/2, r:W-stampW-m};
+    const py={t:m, m:(H-stampH)/2, b:H-stampH-m};
+    const hx=position[1]==='l'?px.l:position[1]==='c'?px.c:px.r;
+    const vy=position[0]==='t'?py.t:position[0]==='m'?py.m:py.b;
+    ctx.save(); ctx.translate(hx+stampW/2, vy+stampH/2); ctx.rotate(rot);
+    ctx.drawImage(stamp,-stampW/2,-stampH/2); ctx.restore();
+  }
+  ctx.restore();
+}
+
+/* المعاينة تُرسم بدقة مخفّضة حتى تبقى سريعة على الجوال،
+   أما التنزيل فيُرسم بالدقة الكاملة دائماً. */
+const PREVIEW_MAX = 1400;
+function renderToCanvas(imgObj, maxSide){
+  const {img}=imgObj;
+  let w=img.naturalWidth, h=img.naturalHeight;
+  if(maxSide){
+    const k=Math.min(1, maxSide/Math.max(w,h));
+    w=Math.max(1,Math.round(w*k)); h=Math.max(1,Math.round(h*k));
+  }
+  const cv=document.createElement('canvas'); cv.width=w; cv.height=h;
+  const ctx=cv.getContext('2d'); ctx.imageSmoothingQuality='high';
+  ctx.drawImage(img,0,0,w,h);
+  drawWatermark(ctx, w, h);
+  return cv;
+}
+/* ملاحظة: لا نستخدم علماً منطقياً (boolean) مع requestAnimationFrame،
+   لأنه لا يُستدعى إن كان التبويب مخفياً فيعلق العلم ويتجمّد التحديث نهائياً.
+   بدلاً منه نلغي الطلب السابق ونجدول واحداً جديداً — آمن دائماً. */
+let _rafId=0;
+function drawPreview(){
+  if(!images.length) return;
+  const prev=renderToCanvas(images[curIndex], PREVIEW_MAX);
+  const disp=$('#previewCanvas'); disp.width=prev.width; disp.height=prev.height;
+  disp.getContext('2d').drawImage(prev,0,0);
+}
+function renderAdd(){
+  if(!images.length) return;
+  if(_rafId) cancelAnimationFrame(_rafId);
+  _rafId=requestAnimationFrame(()=>{ _rafId=0; drawPreview(); });
+  // شبكة أمان: إن لم يُستدعَ rAF (تبويب مخفي) ارسم بعد مهلة قصيرة
+  setTimeout(()=>{ if(_rafId){ cancelAnimationFrame(_rafId); _rafId=0; drawPreview(); } }, 250);
+}
+
+/* عناصر التحكم */
+$('#wmType').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;
+  wmType=b.dataset.t; $('#wmType').querySelectorAll('button').forEach(x=>x.classList.toggle('on',x===b));
+  $('#textOpts').style.display=wmType==='text'?'block':'none';
+  $('#logoOpts').style.display=wmType==='logo'?'block':'none'; renderAdd();});
+['wmText','wmSize','wmOpacity','wmRot','wmColor'].forEach(id=>{
+  $('#'+id).addEventListener('input',()=>{
+    $('#wmSizeVal').textContent=$('#wmSize').value+'%';
+    $('#wmOpacityVal').textContent=$('#wmOpacity').value+'%';
+    $('#wmRotVal').textContent=$('#wmRot').value+'°';
+    $('#wmColorHex').textContent=$('#wmColor').value;
+    renderAdd();
+  });
+});
+$('#wmTile').addEventListener('change',()=>{ $('#posField').style.opacity=$('#wmTile').checked?.4:1; renderAdd(); });
+$('#posGrid').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;
+  position=b.dataset.pos; $('#posGrid').querySelectorAll('button').forEach(x=>x.classList.toggle('on',x===b)); renderAdd();});
+$('#logoDrop').onclick=()=>$('#logoIn').click();
+$('#logoIn').onchange=e=>{const f=e.target.files[0];if(!f)return;
+  const img=new Image(); img.onload=()=>{logoImg=img; $('#logoDrop').classList.add('has');
+    $('#logoLabel').innerHTML='<span data-ar>✓ تم اختيار الشعار</span><span data-en>✓ Logo added</span>'; renderAdd();};
+  img.src=URL.createObjectURL(f);};
+
+$('#dlOne').onclick=()=>{
+  const cv=renderToCanvas(images[curIndex]);   // دقة كاملة
+  GUARDIAN.downloadCanvas(cv, images[curIndex].name+'_wm.png','Watermark');
+};
+$('#dlAll').onclick=async ()=>{
+  const en=T(); const btn=$('#dlAll'); btn.disabled=true;
+  try{
+    const entries=[];
+    for(const im of images){ const cv=renderToCanvas(im);
+      const blob=await GUARDIAN.stampedPngBlob(cv,'Watermark');
+      entries.push({name:im.name+'_wm.png', blob}); }
+    const zip=await makeZip(entries);
+    const a=document.createElement('a'); a.href=URL.createObjectURL(zip); a.download='007-gallery-watermarked.zip'; a.click();
+    setTimeout(()=>URL.revokeObjectURL(a.href),30000);
+  }catch(e){ alert((en?'ZIP failed: ':'تعذّر ZIP: ')+e.message); }
+  btn.disabled=false;
+};
+$('#reset').onclick=reset;
+function reset(){
+  images=[]; curIndex=0; $('#thumbs').innerHTML=''; $('#count').textContent='';
+  if(mode==='add'){ $('#layout').classList.remove('show'); $('#drop').style.display='block'; }
+  $('#fileIn').value='';
+}
+
+/* ============ وضع الطمس ============ */
+let dispScale=1;
+function initBlur(){
+  const cv=$('#blurCanvas'); cv.width=blurImg.naturalWidth; cv.height=blurImg.naturalHeight;
+  const ctx=cv.getContext('2d'); ctx.drawImage(blurImg,0,0);
+  blurBase=ctx.getImageData(0,0,cv.width,cv.height);
+  blurRegions=[]; redrawBlur();
+}
+function applyRegion(ctx,r){
+  const style=$('#blurStyle').querySelector('.on').dataset.s;
+  const strength=parseInt($('#blurStrength').value);
+  const {x,y,w,h}=r; if(w<2||h<2) return;
+  if(style==='blur'){
+    const tmp=document.createElement('canvas'); tmp.width=w; tmp.height=h;
+    const tctx=tmp.getContext('2d');
+    tctx.filter=`blur(${Math.round(strength/2)}px)`;
+    tctx.drawImage($('#blurCanvas'), x,y,w,h, 0,0,w,h);
+    ctx.drawImage(tmp,x,y);
+  }else{
+    const px=Math.max(3,Math.round(strength/2));
+    const sw=Math.max(1,Math.round(w/px)), sh=Math.max(1,Math.round(h/px));
+    const tmp=document.createElement('canvas'); tmp.width=sw; tmp.height=sh;
+    const tctx=tmp.getContext('2d'); tctx.imageSmoothingEnabled=false;
+    tctx.drawImage($('#blurCanvas'), x,y,w,h, 0,0,sw,sh);
+    ctx.imageSmoothingEnabled=false;
+    ctx.drawImage(tmp, 0,0,sw,sh, x,y,w,h);
+    ctx.imageSmoothingEnabled=true;
+  }
+}
+function redrawBlur(){
+  const cv=$('#blurCanvas'); const ctx=cv.getContext('2d');
+  ctx.putImageData(blurBase,0,0);
+  blurRegions.forEach(r=>applyRegion(ctx,r));
+}
+// رسم بالسحب
+let dragging=false, start=null;
+function canvasPos(e){
+  const cv=$('#blurCanvas'); const rect=cv.getBoundingClientRect();
+  const sx=cv.width/rect.width, sy=cv.height/rect.height;
+  const cx=(e.touches?e.touches[0].clientX:e.clientX)-rect.left;
+  const cy=(e.touches?e.touches[0].clientY:e.clientY)-rect.top;
+  return {x:cx*sx, y:cy*sy};
+}
+function onDown(e){ if(mode!=='blur'||!blurImg)return; e.preventDefault(); dragging=true; start=canvasPos(e); }
+function onMove(e){ if(!dragging)return; e.preventDefault();
+  const p=canvasPos(e); const r=norm(start,p); redrawBlur();
+  const ctx=$('#blurCanvas').getContext('2d');
+  ctx.strokeStyle='#d4af37'; ctx.lineWidth=Math.max(2,$('#blurCanvas').width/300); ctx.setLineDash([8,6]);
+  ctx.strokeRect(r.x,r.y,r.w,r.h); ctx.setLineDash([]);
+}
+function onUp(e){ if(!dragging)return; dragging=false;
+  const p=canvasPos(e.changedTouches?{clientX:e.changedTouches[0].clientX,clientY:e.changedTouches[0].clientY}:e);
+  const r=norm(start,p); if(r.w>3&&r.h>3){ blurRegions.push(r); } redrawBlur();
+}
+function norm(a,b){ return {x:Math.min(a.x,b.x),y:Math.min(a.y,b.y),w:Math.abs(a.x-b.x),h:Math.abs(a.y-b.y)}; }
+const bc=$('#blurCanvas');
+bc.addEventListener('mousedown',onDown); window.addEventListener('mousemove',onMove); window.addEventListener('mouseup',onUp);
+bc.addEventListener('touchstart',onDown,{passive:false}); bc.addEventListener('touchmove',onMove,{passive:false}); bc.addEventListener('touchend',onUp);
+
+$('#blurStyle').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;
+  $('#blurStyle').querySelectorAll('button').forEach(x=>x.classList.toggle('on',x===b)); redrawBlur();});
+$('#blurStrength').addEventListener('input',()=>{ $('#blurStrengthVal').textContent=$('#blurStrength').value; redrawBlur(); });
+$('#undoBlur').onclick=()=>{ blurRegions.pop(); redrawBlur(); };
+$('#clearBlur').onclick=()=>{ blurRegions=[]; redrawBlur(); };
+$('#dlBlur').onclick=()=>{ redrawBlur();
+  GUARDIAN.downloadCanvas($('#blurCanvas'),'007-gallery-blurred.png','Region Blur'); };
+$('#resetBlur').onclick=resetBlur;
+function resetBlur(){ blurImg=null; blurRegions=[]; blurBase=null;
+  if(mode==='blur'){ $('#layout').classList.remove('show'); $('#drop').style.display='block'; }
+  $('#fileIn').value=''; }
+
+/* ============ كاتب ZIP مصغّر ============ */
+const CRC=(()=>{const t=new Uint32Array(256);
+  for(let n=0;n<256;n++){let c=n;for(let k=0;k<8;k++)c=c&1?0xEDB88320^(c>>>1):c>>>1;t[n]=c>>>0;}return t;})();
+function crc32(u8){let c=0xFFFFFFFF;for(let i=0;i<u8.length;i++)c=CRC[(c^u8[i])&0xFF]^(c>>>8);return(c^0xFFFFFFFF)>>>0;}
+async function makeZip(entries){
+  const enc=new TextEncoder(),chunks=[],central=[];let offset=0;
+  const u16=v=>[v&255,(v>>8)&255], u32=v=>[v&255,(v>>8)&255,(v>>16)&255,(v>>>24)&255];
+  for(const {name,blob} of entries){
+    const data=new Uint8Array(await blob.arrayBuffer()); const nb=enc.encode(name),crc=crc32(data);
+    const head=new Uint8Array([...u32(0x04034b50),...u16(20),...u16(0x0800),...u16(0),
+      ...u16(0),...u16(0),...u32(crc),...u32(data.length),...u32(data.length),...u16(nb.length),...u16(0)]);
+    chunks.push(head,nb,data);
+    central.push(new Uint8Array([...u32(0x02014b50),...u16(20),...u16(20),...u16(0x0800),
+      ...u16(0),...u16(0),...u16(0),...u32(crc),...u32(data.length),...u32(data.length),
+      ...u16(nb.length),...u16(0),...u16(0),...u16(0),...u16(0),...u32(0),...u32(offset)]),nb);
+    offset+=head.length+nb.length+data.length;
+  }
+  const cd=central.reduce((s,c)=>s+c.length,0);
+  const end=new Uint8Array([...u32(0x06054b50),...u16(0),...u16(0),
+    ...u16(entries.length),...u16(entries.length),...u32(cd),...u32(offset),...u16(0)]);
+  return new Blob([...chunks,...central,end],{type:'application/zip'});
+}
+</script>
+</body>
+</html>

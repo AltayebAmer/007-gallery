@@ -1,0 +1,27 @@
+# ترويسات Cloudflare Pages / Netlify — 007.gallery
+
+/*
+  X-Creator: Artist Altayeb Amer
+  X-Author: Artist Altayeb Amer (al-Fannan al-Tayeb Amer)
+  X-Copyright: (c) 2026 Artist Altayeb Amer - https://007.gallery
+  X-Guardian: ALTAYEB GUARDIAN v4.0
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: SAMEORIGIN
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: geolocation=(), microphone=(), camera=(), payment=()
+
+# ملاحظة: أُزيلت ترويسات COOP/COEP عمداً.
+# السبب: القيمة credentialless مدعومة في Chrome فقط، وعلى Safari/iOS
+# (وهو محرّك كل المتصفحات على iPhone/iPad بما فيها Chrome) كانت تمنع
+# تحميل النماذج من CDN خارجي فتفشل الأدوات تماماً.
+# التعدّد في الخيوط مكسب سرعة، لكن عمل الأداة أصلاً أهم منه.
+
+
+
+# أصول ثابتة: تخزين طويل
+/assets/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# منع فهرسة صفحة الفحص
+/services/_diagnostics.html
+  X-Robots-Tag: noindex, nofollow

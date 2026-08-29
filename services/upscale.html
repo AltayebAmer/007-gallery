@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<!--
+  ════════════════════════════════════════════════════════════
+   007.gallery
+   Creator : Artist Altayeb Amer
+   المبتكر  : الفنان الطيب عامر
+   Source  : https://007.gallery
+   © 2026 Artist Altayeb Amer — All rights reserved.
+   Protected by ALTAYEB GUARDIAN v4.0
+  ════════════════════════════════════════════════════════════
+-->
+
+<html lang="ar" dir="rtl" data-creator="Artist Altayeb Amer" data-creator-ar="الفنان الطيب عامر" data-source="https://007.gallery" data-guardian="4.0">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>تكبير ودقة الصور — 007.gallery</title>
+<meta name="description" content="ضاعف حجم صورك ووضوحها بالذكاء الاصطناعي — محلياً في متصفحك عبر WebGPU، بدون رفع.">
+<link rel="stylesheet" href="../assets/brand.css">
+<style>
+  .tool-hero{text-align:center;padding:32px 0 14px}
+  .tool-hero h1{font-size:clamp(24px,4vw,36px);font-weight:900;letter-spacing:-.4px}
+  .tool-hero h1 span{background:linear-gradient(120deg,var(--gold),var(--gold-2));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .tool-hero p{color:var(--txt-dim);margin-top:10px;font-size:15px}
+
+  .drop{background:linear-gradient(180deg,var(--card),var(--card-2));border:2px dashed var(--line-2);
+    border-radius:22px;padding:54px 24px;text-align:center;transition:.2s;cursor:pointer}
+  .drop.over{border-color:var(--gold);background:var(--gold-soft);transform:scale(1.005)}
+  .drop .ring{width:78px;height:78px;border-radius:50%;margin:0 auto 16px;display:grid;place-items:center;
+    background:var(--gold-soft);border:1px solid rgba(212,175,55,.25)}
+  .drop .ring svg{width:36px;height:36px;stroke:var(--gold-2);fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+  .drop b{display:block;font-size:20px;margin-bottom:6px}
+  .drop small{color:var(--txt-mute);font-size:13px}
+  .picks{display:flex;gap:10px;justify-content:center;margin-top:18px;flex-wrap:wrap}
+
+  .note{max-width:560px;margin:14px auto 0;font-size:12.5px;color:var(--txt-mute);text-align:center;line-height:1.9}
+
+  .stage{display:none;margin-top:8px}
+  .stage.show{display:block}
+  .canvas-wrap{position:relative;border-radius:18px;overflow:hidden;border:1px solid var(--line);
+    background:var(--bg-2);display:grid;place-items:center;min-height:320px}
+  .canvas-wrap canvas,.canvas-wrap img{max-width:100%;max-height:60vh;display:block;image-rendering:pixelated}
+  #resultCanvas{display:none}
+
+  .status{display:none;align-items:center;gap:12px;justify-content:center;margin:16px 0;color:var(--txt-dim);font-size:14px}
+  .status.show{display:flex}
+  .spinner{width:20px;height:20px;border:2.5px solid var(--line-2);border-top-color:var(--gold-2);border-radius:50%;animation:spin .8s linear infinite}
+  @keyframes spin{to{transform:rotate(360deg)}}
+  .bar{height:6px;background:var(--line);border-radius:6px;overflow:hidden;max-width:420px;margin:12px auto 0;display:none}
+  .bar.show{display:block}
+  .bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--gold),var(--gold-2));transition:width .25s}
+
+  .dims{text-align:center;font-size:13px;color:var(--txt-dim);margin-top:14px}
+  .dims b{color:var(--gold-2)}
+  .actions{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-top:14px;justify-content:center}
+  .toggle-view{display:inline-flex;background:var(--bg-2);border:1px solid var(--line-2);border-radius:12px;padding:4px;gap:4px}
+  .toggle-view button{border:none;background:transparent;color:var(--txt-dim);font:inherit;font-weight:700;font-size:13.5px;padding:8px 16px;border-radius:9px;cursor:pointer;transition:.15s}
+  .toggle-view button.on{background:linear-gradient(135deg,var(--gold),var(--gold-2));color:#0a0b0f}
+
+  .warn{background:color-mix(in srgb,var(--red) 12%,transparent);color:var(--red);padding:13px 16px;border-radius:12px;margin-bottom:16px;font-size:14px;display:none}
+  .device-badge{font-size:12px;padding:4px 10px;border-radius:999px;background:var(--gold-soft);border:1px solid rgba(212,175,55,.25);color:var(--gold-2);font-weight:700}
+  .privacy{text-align:center;color:var(--txt-mute);font-size:12.5px;margin-top:22px;line-height:2}
+  .ad{margin:26px auto 0;border:1px dashed var(--line-2);border-radius:14px;min-height:80px;
+    display:flex;align-items:center;justify-content:center;gap:10px;color:var(--txt-mute);font-size:13px;
+    background:repeating-linear-gradient(45deg,transparent,transparent 12px,rgba(255,255,255,.012) 12px,rgba(255,255,255,.012) 24px)}
+</style>
+<link rel="icon" href="../favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="../assets/icon-32.png">
+<link rel="apple-touch-icon" href="../assets/icon-180.png">
+<link rel="manifest" href="../manifest.webmanifest">
+<meta name="theme-color" content="#0a0b0f">
+<link rel="canonical" href="https://007.gallery/services/upscale.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="007.gallery">
+<meta property="og:locale" content="ar_AR">
+<meta property="og:title" content="تكبير ودقة الصور — 007.gallery">
+<meta property="og:description" content="ضاعف حجم صورك ووضوحها بالذكاء الاصطناعي محلياً في متصفحك، مجاناً.">
+<meta property="og:url" content="https://007.gallery/services/upscale.html">
+<meta property="og:image" content="https://007.gallery/assets/og-cover.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="تكبير ودقة الصور — 007.gallery">
+<meta name="twitter:description" content="ضاعف حجم صورك ووضوحها بالذكاء الاصطناعي محلياً في متصفحك، مجاناً.">
+<meta name="twitter:image" content="https://007.gallery/assets/og-cover.png">
+<script data-project="007.gallery" data-project-ar="٠٠٧ جاليري" data-site="https://007.gallery" data-version="1.0.0" data-creator="Artist Altayeb Amer" data-creator-ar="الفنان الطيب عامر" data-domains="007.gallery" src="../assets/guardian.js" data-comment="Processed locally in the browser — no upload, no server. Image rights remain with the image owner." defer></script>
+<meta name="author" content="Artist Altayeb Amer">
+<meta name="creator" content="Artist Altayeb Amer">
+<meta name="designer" content="Artist Altayeb Amer / الفنان الطيب عامر">
+<meta name="copyright" content="© 2026 Artist Altayeb Amer">
+<meta name="owner" content="Artist Altayeb Amer">
+<meta name="publisher" content="007.gallery — Artist Altayeb Amer">
+<meta name="dcterms.creator" content="Artist Altayeb Amer">
+<meta name="dcterms.rights" content="© 2026 Artist Altayeb Amer">
+<meta name="dcterms.rightsHolder" content="Artist Altayeb Amer">
+<meta name="application-name" content="007.gallery">
+<meta name="guardian" content="ALTAYEB GUARDIAN v4.0 — Artist Altayeb Amer">
+<link rel="author" href="../humans.txt">
+<script src="../assets/ads.js" defer></script>
+<script src="../assets/artgallery.js" defer></script>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap nav">
+    <a class="brand" href="../index.html"><span class="logo">007</span><span>007<b>.gallery</b></span></a>
+    <div class="nav-actions">
+      <span class="device-badge" id="deviceBadge" hidden></span>
+      <button class="btn btn-lang" id="langBtn" onclick="toggleLang()">EN</button>
+      <a class="btn btn-ghost" href="../index.html">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" id="homeArrow"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+        <span data-ar>كل الأدوات</span><span data-en>All tools</span>
+      </a>
+    </div>
+  </div>
+</header>
+
+<main class="wrap" style="padding-bottom:40px">
+  <div class="tool-hero">
+    <span class="pill"><span class="dot"></span><span data-ar>يعمل في متصفحك بالذكاء الاصطناعي · لا يُرفع أي ملف</span><span data-en>AI runs in your browser · nothing is uploaded</span></span>
+    <h1><span data-ar>تكبير ودقة <span>الصور</span></span><span data-en>Upscale & <span>enhance</span></span></h1>
+    <p><span data-ar>أفلت صورة صغيرة، وسيضاعف الذكاء الاصطناعي حجمها ووضوحها.</span><span data-en>Drop a small image; AI doubles its size and sharpness.</span></p>
+  </div>
+
+  <div class="warn" id="warn"></div>
+
+  <div class="drop" id="drop">
+    <div class="ring"><svg viewBox="0 0 24 24"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg></div>
+    <b><span data-ar>أفلت صورة هنا</span><span data-en>Drop an image here</span></b>
+    <small><span data-ar>PNG · JPG · WebP — الأفضل للصور الصغيرة أو الباهتة</span><span data-en>PNG · JPG · WebP — best for small or soft images</span></small>
+    <div class="picks"><button class="btn btn-primary" id="pickFiles"><span data-ar>اختيار صورة</span><span data-en>Choose image</span></button></div>
+    <input type="file" id="fileIn" accept="image/*" hidden>
+  </div>
+  <p class="note">
+    <span data-ar>💡 النسخة المجانية في المتصفح تكبّر ×2 بالذكاء الاصطناعي. لتكبير ×4 بجودة أعلى على جهازك، استخدم أداة التكبير المحلية في مجلد <b>local-tools</b>.</span>
+    <span data-en>💡 The free in-browser version upscales ×2 with AI. For ×4 higher quality on your machine, use the local upscaler in the <b>local-tools</b> folder.</span>
+  </p>
+
+  <div class="stage" id="stage">
+    <div class="status" id="status"><span class="spinner"></span><span id="statusText"></span></div>
+    <div class="bar" id="bar"><i></i></div>
+
+    <div class="canvas-wrap">
+      <img id="origImg" alt="">
+      <canvas id="resultCanvas"></canvas>
+    </div>
+
+    <div class="dims" id="dims"></div>
+
+    <div class="actions" id="actions" style="display:none">
+      <div class="toggle-view" id="toggleView">
+        <button data-view="result" class="on"><span data-ar>بعد</span><span data-en>After</span></button>
+        <button data-view="orig"><span data-ar>قبل</span><span data-en>Before</span></button>
+      </div>
+      <button class="btn btn-primary btn-lg" id="download"><span data-ar>تنزيل الصورة</span><span data-en>Download image</span></button>
+      <button class="btn btn-ghost" id="reset"><span data-ar>صورة أخرى</span><span data-en>New image</span></button>
+    </div>
+  </div>
+
+  <div data-ad-slot="rectangle" style="margin-inline:auto"></div>
+
+  <div data-art-gallery></div>
+
+  <div class="ad"><b style="color:var(--txt-dim)"><span data-ar>مساحة إعلانية — رد المعروف</span><span data-en>Ad space — support us</span></b> · <span data-ar>تُبقي الأداة مجانية</span><span data-en>keeps this tool free</span></div>
+
+  <p class="privacy">
+    <span data-ar>🔒 النموذج يُحمّل مرة واحدة ويُخزّن في متصفحك، ثم تتم كل المعالجة على جهازك — لا تغادر صورتك.</span>
+    <span data-en>🔒 The AI model downloads once and is cached; all processing then runs on your device — your image never leaves it.</span>
+  </p>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap foot">
+    <a class="brand" href="../index.html"><span class="logo">007</span><span>007<b>.gallery</b></span></a>
+    <p>© 2026 007.gallery · <span data-ar>كل الحقوق محفوظة</span><span data-en>All rights reserved</span> · <a href="../privacy.html" style="color:var(--gold-2)"><span data-ar>سياسة الخصوصية</span><span data-en>Privacy</span></a> · <a href="../articles/index.html" style="color:var(--gold-2)"><span data-ar>المقالات</span><span data-en>Guides</span></a> · <a href="../projects.html" style="color:var(--gold-2)"><span data-ar>المشاريع</span><span data-en>Projects</span></a> · <a href="../contact.html" style="color:var(--gold-2)"><span data-ar>تواصل</span><span data-en>Contact</span></a></p>
+  </div>
+</footer>
+
+<script type="module">
+import { pipeline, env } from 'https://cdn.jsdelivr.net/npm/@huggingface/transformers@3.5.1';
+
+const $=s=>document.querySelector(s);
+const T=()=>document.documentElement.getAttribute('lang')==='en';
+env.allowLocalModels=false;
+
+let upscaler=null, device='wasm';
+let origImageEl=null;
+
+window.toggleLang=function(){
+  const h=document.documentElement,en=h.getAttribute('lang')==='en';
+  h.setAttribute('lang',en?'ar':'en');h.setAttribute('dir',en?'rtl':'ltr');
+  $('#langBtn').textContent=en?'EN':'ع';
+  $('#homeArrow').style.transform=en?'rotate(180deg)':'none';
+  try{localStorage.setItem('gallery_lang',en?'ar':'en');}catch(e){}
+};
+try{ if(localStorage.getItem('gallery_lang')==='en') window.toggleLang(); }catch(e){}
+
+function setStatus(ar,en,spin=true){ $('#status').classList.add('show');
+  if(window.ADS) ADS.showWaiting('#bar');
+  $('#statusText').innerHTML=`<span data-ar>${ar}</span><span data-en>${en}</span>`;
+  $('#status').querySelector('.spinner').style.display=spin?'block':'none'; }
+function hideStatus(){ $('#status').classList.remove('show'); $('#bar').classList.remove('show'); if(window.ADS) ADS.hideWaiting(); }
+function showWarn(ar,en){ const w=$('#warn'); w.style.display='block';
+  w.innerHTML=`<span data-ar>${ar}</span><span data-en>${en}</span>`; }
+
+
+/* ── حدود الذاكرة ─────────────────────────────────────────
+   Swin2SR شرِه جداً للذاكرة: كل بكسل مُدخَل ينتج ٤ بكسلات
+   مع تفعيل الانتباه (attention). على المعالج ينهار WASM بسرعة،
+   فيظهر خطأ رقمي مثل 34359736 (مؤشّر انهيار، وليس رسالة).
+   لذلك نصغّر الصورة تلقائياً بدل رفضها. */
+function upscaleLimits(gpu){
+  return gpu ? { maxPixels: 1024*1024, label:'WebGPU' }
+             : { maxPixels:  640*640,  label:'CPU'    };
+}
+async function fitImage(url, maxPixels){
+  const img = await new Promise((res,rej)=>{ const i=new Image();
+    i.onload=()=>res(i); i.onerror=rej; i.src=url; });
+  const px = img.naturalWidth*img.naturalHeight;
+  if(px <= maxPixels) return {url, w:img.naturalWidth, h:img.naturalHeight, shrunk:false};
+  const k = Math.sqrt(maxPixels/px);
+  const w = Math.max(1,Math.round(img.naturalWidth*k));
+  const h = Math.max(1,Math.round(img.naturalHeight*k));
+  const cv = document.createElement('canvas'); cv.width=w; cv.height=h;
+  const cx = cv.getContext('2d'); cx.imageSmoothingQuality='high';
+  cx.drawImage(img,0,0,w,h);
+  return {url: cv.toDataURL('image/png'), w, h, shrunk:true};
+}
+
+// لا يكفي وجود navigator.gpu — يجب التأكد من وجود محوّل فعلي (بعض كروت الشاشة محظورة)
+async function hasWebGPU(){
+  try{
+    if(!navigator.gpu) return false;
+    const adapter=await navigator.gpu.requestAdapter();
+    return !!adapter;
+  }catch(e){ return false; }
+}
+
+async function ensureModel(){
+  if(upscaler) return;
+  const id='Xenova/swin2SR-classical-sr-x2-64';   // مُكبِّر ×2 يعمل بالمتصفح
+  if(await hasWebGPU()){
+    try{
+      setStatus('جارٍ تحميل نموذج التكبير (WebGPU)…','Loading upscaler model (WebGPU)…');
+      upscaler=await pipeline('image-to-image',id,{device:'webgpu',progress_callback:onProgress});
+      device='webgpu';
+    }catch(e){ console.warn('WebGPU failed, using CPU:',e); upscaler=null; }
+  }
+  if(!upscaler){   // تراجع صريح إلى المعالج
+    setStatus('جارٍ تحميل نموذج التكبير (المعالج)…','Loading upscaler model (CPU)…');
+    upscaler=await pipeline('image-to-image',id,{device:'wasm',progress_callback:onProgress});
+    device='wasm';
+  }
+  const b=$('#deviceBadge'); b.hidden=false; b.textContent=device==='webgpu'?'⚡ WebGPU':'CPU';
+}
+function onProgress(p){ if(p.status==='progress'&&p.total){
+  $('#bar').classList.add('show'); $('#bar').firstElementChild.style.width=(100*p.loaded/p.total)+'%'; } }
+
+async function process(file){
+  $('#stage').classList.add('show'); $('#actions').style.display='none'; $('#dims').textContent='';
+  const url=URL.createObjectURL(file);
+  origImageEl=new Image(); origImageEl.src=url;
+  $('#origImg').src=url; $('#origImg').style.display='block'; $('#resultCanvas').style.display='none';
+  try{
+    await ensureModel();
+    await new Promise(r=>{ if(origImageEl.complete) r(); else origImageEl.onload=r; });
+    const iw=origImageEl.naturalWidth, ih=origImageEl.naturalHeight;
+    // صغّر تلقائياً بما يناسب ذاكرة المسار المستخدم (معالج أم WebGPU)
+    const lim=upscaleLimits(device==='webgpu');
+    const fit=await fitImage(url, lim.maxPixels);
+    if(fit.shrunk){
+      setStatus(`صُغّرت الصورة إلى ${fit.w}×${fit.h} لتناسب ذاكرة ${lim.label}…`,
+                `Resized to ${fit.w}×${fit.h} to fit ${lim.label} memory…`);
+    } else {
+      setStatus('جارٍ التكبير بالذكاء الاصطناعي…','Upscaling with AI…');
+    }
+    const out=await upscaler(fit.url);             // RawImage
+    const cv=$('#resultCanvas');
+    const oc=out.toCanvas();
+    cv.width=oc.width; cv.height=oc.height;
+    cv.getContext('2d').drawImage(oc,0,0);
+    // إن صُغّرت الصورة أولاً، أظهر المسار الحقيقي بوضوح بدل إيهام المستخدم بتصغير
+    $('#dims').innerHTML = fit.shrunk
+      ? `<bdi dir="ltr">${iw}×${ih} → ${fit.w}×${fit.h} → <b>${oc.width}×${oc.height}</b></bdi>`
+      : `<bdi dir="ltr">${iw}×${ih} → <b>${oc.width}×${oc.height}</b></bdi>`;
+    hideStatus();
+    $('#actions').style.display='flex';
+    showView('result');
+  }catch(e){
+    hideStatus(); $('#drop').style.display='block'; $('#stage').classList.remove('show');
+    console.error(e);
+    const msg=String(e&&e.message||e);
+    if(/no available backend|backend found|webgpu|wasm|ORT|InferenceSession/i.test(msg))
+      showWarn('متصفحك لا يدعم تشغيل الذكاء الاصطناعي محلياً. جرّب أحدث Chrome أو Edge على الحاسوب (يُفضّل WebGPU)، أو استخدم الأداة المحلية.',
+               'Your browser can\'t run the AI locally. Try the latest Chrome or Edge on desktop (WebGPU), or use the local tool.');
+    else if(/fetch|network|load/i.test(msg))
+      showWarn('تعذّر تحميل النموذج. تأكّد من اتصالك بالإنترنت (يُحمّل مرة واحدة ثم يعمل دون إنترنت).',
+               'Could not load the model. Check your connection (downloads once, then works offline).');
+    else if(/^\d+$/.test(msg.trim()) || /memory|allocat|out of|OOM|Aborted|RuntimeError/i.test(msg))
+      showWarn('نفدت ذاكرة المتصفح أثناء التكبير. جرّب صورة أصغر بكثير، أو أغلق التبويبات الأخرى، '+
+               'أو استخدم أداة التكبير المحلية للحصول على ×4 بجودة أعلى.',
+               'The browser ran out of memory while upscaling. Try a much smaller image, close other tabs, '+
+               'or use the local upscaler for higher-quality ×4.');
+    else showWarn('حدث خطأ أثناء المعالجة: '+msg,'Processing error: '+msg);
+  }
+}
+
+function showView(v){
+  const res=v==='result';
+  $('#resultCanvas').style.display=res?'block':'none';
+  $('#origImg').style.display=res?'none':'block';
+  $('#toggleView').querySelectorAll('button').forEach(b=>b.classList.toggle('on',b.dataset.view===v));
+}
+$('#toggleView').addEventListener('click',e=>{const b=e.target.closest('button');if(b)showView(b.dataset.view);});
+
+const drop=$('#drop');
+$('#pickFiles').onclick=()=>$('#fileIn').click();
+drop.onclick=e=>{ if(e.target.closest('button'))return; $('#fileIn').click(); };
+$('#fileIn').onchange=e=>{ const f=e.target.files[0]; if(f) start(f); };
+['dragenter','dragover','drop'].forEach(ev=>window.addEventListener(ev,e=>e.preventDefault()));
+['dragenter','dragover'].forEach(ev=>drop.addEventListener(ev,e=>{e.preventDefault();drop.classList.add('over');}));
+['dragleave','dragend'].forEach(ev=>drop.addEventListener(ev,()=>drop.classList.remove('over')));
+window.addEventListener('drop',e=>{
+  e.preventDefault();drop.classList.remove('over');
+  const f=[...(e.dataTransfer?.files||[])].find(x=>x.type.startsWith('image/'));
+  if(f) start(f);
+});
+function start(file){ $('#warn').style.display='none'; $('#drop').style.display='none'; process(file); }
+
+$('#download').onclick=()=>{
+  GUARDIAN.downloadCanvas($('#resultCanvas'),'007-gallery-upscaled.png','Upscale');
+};
+$('#reset').onclick=()=>{
+  $('#stage').classList.remove('show'); $('#drop').style.display='block'; $('#fileIn').value='';
+};
+</script>
+</body>
+</html>

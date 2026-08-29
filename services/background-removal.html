@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<!--
+  ════════════════════════════════════════════════════════════
+   007.gallery
+   Creator : Artist Altayeb Amer
+   المبتكر  : الفنان الطيب عامر
+   Source  : https://007.gallery
+   © 2026 Artist Altayeb Amer — All rights reserved.
+   Protected by ALTAYEB GUARDIAN v4.0
+  ════════════════════════════════════════════════════════════
+-->
+
+<html lang="ar" dir="rtl" data-creator="Artist Altayeb Amer" data-creator-ar="الفنان الطيب عامر" data-source="https://007.gallery" data-guardian="4.0">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>إزالة الخلفية — 007.gallery</title>
+<meta name="description" content="أزل خلفية أي صورة تلقائياً بالذكاء الاصطناعي — محلياً في متصفحك عبر WebGPU، بدون رفع.">
+<link rel="stylesheet" href="../assets/brand.css">
+<style>
+  .tool-hero{text-align:center;padding:32px 0 14px}
+  .tool-hero h1{font-size:clamp(24px,4vw,36px);font-weight:900;letter-spacing:-.4px}
+  .tool-hero h1 span{background:linear-gradient(120deg,var(--gold),var(--gold-2));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .tool-hero p{color:var(--txt-dim);margin-top:10px;font-size:15px}
+
+  .drop{background:linear-gradient(180deg,var(--card),var(--card-2));border:2px dashed var(--line-2);
+    border-radius:22px;padding:54px 24px;text-align:center;transition:.2s;cursor:pointer}
+  .drop.over{border-color:var(--gold);background:var(--gold-soft);transform:scale(1.005)}
+  .drop .ring{width:78px;height:78px;border-radius:50%;margin:0 auto 16px;display:grid;place-items:center;
+    background:var(--gold-soft);border:1px solid rgba(212,175,55,.25)}
+  .drop .ring svg{width:36px;height:36px;stroke:var(--gold-2);fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+  .drop b{display:block;font-size:20px;margin-bottom:6px}
+  .drop small{color:var(--txt-mute);font-size:13px}
+  .picks{display:flex;gap:10px;justify-content:center;margin-top:18px;flex-wrap:wrap}
+
+  /* منطقة العمل */
+  .stage{display:none;margin-top:8px}
+  .stage.show{display:block}
+  .canvas-wrap{position:relative;border-radius:18px;overflow:hidden;border:1px solid var(--line);
+    background:
+      conic-gradient(#0000 90deg,#ffffff08 0 180deg,#0000 0 270deg,#ffffff08 0) 0 0/26px 26px,
+      var(--bg-2);
+    display:grid;place-items:center;min-height:320px}
+  .canvas-wrap canvas,.canvas-wrap img{max-width:100%;max-height:62vh;display:block}
+  #resultCanvas{display:none}
+
+  /* شريط الحالة أثناء تحميل النموذج */
+  .status{display:none;align-items:center;gap:12px;justify-content:center;margin:16px 0;color:var(--txt-dim);font-size:14px}
+  .status.show{display:flex}
+  .spinner{width:20px;height:20px;border:2.5px solid var(--line-2);border-top-color:var(--gold-2);border-radius:50%;animation:spin .8s linear infinite}
+  @keyframes spin{to{transform:rotate(360deg)}}
+  .bar{height:6px;background:var(--line);border-radius:6px;overflow:hidden;max-width:420px;margin:12px auto 0;display:none}
+  .bar.show{display:block}
+  .bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--gold),var(--gold-2));transition:width .25s}
+
+  .actions{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-top:20px;justify-content:center}
+  .toggle-view{display:inline-flex;background:var(--bg-2);border:1px solid var(--line-2);border-radius:12px;padding:4px;gap:4px}
+  .toggle-view button{border:none;background:transparent;color:var(--txt-dim);font:inherit;font-weight:700;font-size:13.5px;padding:8px 16px;border-radius:9px;cursor:pointer;transition:.15s}
+  .toggle-view button.on{background:linear-gradient(135deg,var(--gold),var(--gold-2));color:#0a0b0f}
+
+  /* اختيار خلفية للنتيجة */
+  .bg-picker{display:flex;gap:8px;align-items:center;flex-wrap:wrap;justify-content:center;margin-top:16px}
+  .swatch{width:30px;height:30px;border-radius:8px;border:2px solid var(--line-2);cursor:pointer;transition:.15s}
+  .swatch.on{border-color:var(--gold);transform:scale(1.08)}
+  .swatch.transparent{background:
+    conic-gradient(#666 90deg,#fff 0 180deg,#666 0 270deg,#fff 0) 0 0/14px 14px}
+
+  .warn{background:color-mix(in srgb,var(--red) 12%,transparent);color:var(--red);
+    padding:13px 16px;border-radius:12px;margin-bottom:16px;font-size:14px;display:none}
+  .device-badge{font-size:12px;padding:4px 10px;border-radius:999px;background:var(--gold-soft);
+    border:1px solid rgba(212,175,55,.25);color:var(--gold-2);font-weight:700}
+
+  .privacy{text-align:center;color:var(--txt-mute);font-size:12.5px;margin-top:22px;line-height:2}
+  .ad{margin:26px auto 0;border:1px dashed var(--line-2);border-radius:14px;min-height:80px;
+    display:flex;align-items:center;justify-content:center;gap:10px;color:var(--txt-mute);font-size:13px;
+    background:repeating-linear-gradient(45deg,transparent,transparent 12px,rgba(255,255,255,.012) 12px,rgba(255,255,255,.012) 24px)}
+</style>
+<link rel="icon" href="../favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="../assets/icon-32.png">
+<link rel="apple-touch-icon" href="../assets/icon-180.png">
+<link rel="manifest" href="../manifest.webmanifest">
+<meta name="theme-color" content="#0a0b0f">
+<link rel="canonical" href="https://007.gallery/services/background-removal.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="007.gallery">
+<meta property="og:locale" content="ar_AR">
+<meta property="og:title" content="إزالة الخلفية مجاناً — 007.gallery">
+<meta property="og:description" content="أزل خلفية أي صورة تلقائياً بالذكاء الاصطناعي داخل متصفحك — بدون رفع وبخصوصية كاملة.">
+<meta property="og:url" content="https://007.gallery/services/background-removal.html">
+<meta property="og:image" content="https://007.gallery/assets/og-cover.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="إزالة الخلفية مجاناً — 007.gallery">
+<meta name="twitter:description" content="أزل خلفية أي صورة تلقائياً بالذكاء الاصطناعي داخل متصفحك — بدون رفع وبخصوصية كاملة.">
+<meta name="twitter:image" content="https://007.gallery/assets/og-cover.png">
+<script data-project="007.gallery" data-project-ar="٠٠٧ جاليري" data-site="https://007.gallery" data-version="1.0.0" data-creator="Artist Altayeb Amer" data-creator-ar="الفنان الطيب عامر" data-domains="007.gallery" src="../assets/guardian.js" data-comment="Processed locally in the browser — no upload, no server. Image rights remain with the image owner." defer></script>
+<meta name="author" content="Artist Altayeb Amer">
+<meta name="creator" content="Artist Altayeb Amer">
+<meta name="designer" content="Artist Altayeb Amer / الفنان الطيب عامر">
+<meta name="copyright" content="© 2026 Artist Altayeb Amer">
+<meta name="owner" content="Artist Altayeb Amer">
+<meta name="publisher" content="007.gallery — Artist Altayeb Amer">
+<meta name="dcterms.creator" content="Artist Altayeb Amer">
+<meta name="dcterms.rights" content="© 2026 Artist Altayeb Amer">
+<meta name="dcterms.rightsHolder" content="Artist Altayeb Amer">
+<meta name="application-name" content="007.gallery">
+<meta name="guardian" content="ALTAYEB GUARDIAN v4.0 — Artist Altayeb Amer">
+<link rel="author" href="../humans.txt">
+<script src="../assets/ads.js" defer></script>
+<script src="../assets/artgallery.js" defer></script>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap nav">
+    <a class="brand" href="../index.html"><span class="logo">007</span><span>007<b>.gallery</b></span></a>
+    <div class="nav-actions">
+      <span class="device-badge" id="deviceBadge" hidden></span>
+      <button class="btn btn-lang" id="langBtn" onclick="toggleLang()">EN</button>
+      <a class="btn btn-ghost" href="../index.html">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" id="homeArrow"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+        <span data-ar>كل الأدوات</span><span data-en>All tools</span>
+      </a>
+    </div>
+  </div>
+</header>
+
+<main class="wrap" style="padding-bottom:40px">
+  <div class="tool-hero">
+    <span class="pill"><span class="dot"></span><span data-ar>يعمل في متصفحك بالذكاء الاصطناعي · لا يُرفع أي ملف</span><span data-en>AI runs in your browser · nothing is uploaded</span></span>
+    <h1><span data-ar>إزالة <span>الخلفية</span></span><span data-en>Remove the <span>background</span></span></h1>
+    <p><span data-ar>أفلت صورة، وسيزيل الذكاء الاصطناعي خلفيتها تلقائياً في ثوانٍ.</span><span data-en>Drop an image and AI removes its background automatically in seconds.</span></p>
+  </div>
+
+  <div class="warn" id="warn"></div>
+
+  <!-- الإفلات -->
+  <div class="drop" id="drop">
+    <div class="ring"><svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M17 8l-5-5-5 5"/><path d="M12 3v13"/></svg></div>
+    <b><span data-ar>أفلت صورة هنا</span><span data-en>Drop an image here</span></b>
+    <small><span data-ar>PNG · JPG · WebP — أشخاص، منتجات، حيوانات…</span><span data-en>PNG · JPG · WebP — people, products, animals…</span></small>
+    <div class="picks">
+      <button class="btn btn-primary" id="pickFiles"><span data-ar>اختيار صورة</span><span data-en>Choose image</span></button>
+    </div>
+    <input type="file" id="fileIn" accept="image/*" hidden>
+  </div>
+
+  <!-- منطقة العمل -->
+  <div class="stage" id="stage">
+    <div class="status" id="status">
+      <span class="spinner"></span>
+      <span id="statusText"><span data-ar>جارٍ تجهيز الذكاء الاصطناعي…</span></span>
+    </div>
+    <div class="bar" id="bar"><i></i></div>
+
+    <div class="canvas-wrap">
+      <img id="origImg" alt="">
+      <canvas id="resultCanvas"></canvas>
+    </div>
+
+    <div class="bg-picker" id="bgPicker" style="display:none">
+      <span class="muted" style="font-size:13px"><span data-ar>خلفية النتيجة:</span><span data-en>Result background:</span></span>
+      <span class="swatch transparent on" data-bg="" title="Transparent"></span>
+      <span class="swatch" data-bg="#ffffff" style="background:#fff" title="White"></span>
+      <span class="swatch" data-bg="#000000" style="background:#000" title="Black"></span>
+      <span class="swatch" data-bg="#d4af37" style="background:#d4af37" title="Gold"></span>
+      <span class="swatch" data-bg="#3b82f6" style="background:#3b82f6" title="Blue"></span>
+      <span class="swatch" data-bg="#22c55e" style="background:#22c55e" title="Green"></span>
+    </div>
+
+    <div class="actions" id="actions" style="display:none">
+      <div class="toggle-view" id="toggleView">
+        <button data-view="result" class="on"><span data-ar>بعد</span><span data-en>After</span></button>
+        <button data-view="orig"><span data-ar>قبل</span><span data-en>Before</span></button>
+      </div>
+      <button class="btn btn-primary btn-lg" id="download"><span data-ar>تنزيل PNG</span><span data-en>Download PNG</span></button>
+      <button class="btn btn-ghost" id="reset"><span data-ar>صورة أخرى</span><span data-en>New image</span></button>
+    </div>
+  </div>
+
+  <div data-ad-slot="rectangle" style="margin-inline:auto"></div>
+
+  <div data-art-gallery></div>
+
+  <div class="ad"><b style="color:var(--txt-dim)"><span data-ar>مساحة إعلانية — رد المعروف</span><span data-en>Ad space — support us</span></b> · <span data-ar>تُبقي الأداة مجانية</span><span data-en>keeps this tool free</span></div>
+
+  <p class="privacy">
+    <span data-ar>🔒 النموذج يُحمّل مرة واحدة ويُخزّن في متصفحك، ثم تتم كل المعالجة على جهازك — لا تغادر صورتك أبداً.</span>
+    <span data-en>🔒 The AI model downloads once and is cached in your browser; all processing then runs on your device — your image never leaves it.</span>
+  </p>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap foot">
+    <a class="brand" href="../index.html"><span class="logo">007</span><span>007<b>.gallery</b></span></a>
+    <p>© 2026 007.gallery · <span data-ar>كل الحقوق محفوظة</span><span data-en>All rights reserved</span> · <a href="../privacy.html" style="color:var(--gold-2)"><span data-ar>سياسة الخصوصية</span><span data-en>Privacy</span></a> · <a href="../articles/index.html" style="color:var(--gold-2)"><span data-ar>المقالات</span><span data-en>Guides</span></a> · <a href="../projects.html" style="color:var(--gold-2)"><span data-ar>المشاريع</span><span data-en>Projects</span></a> · <a href="../contact.html" style="color:var(--gold-2)"><span data-ar>تواصل</span><span data-en>Contact</span></a></p>
+  </div>
+</footer>
+
+<script type="module">
+import {
+  AutoModel, AutoProcessor, RawImage, env
+} from 'https://cdn.jsdelivr.net/npm/@huggingface/transformers@3.5.1';
+
+const $ = s => document.querySelector(s);
+const T = () => document.documentElement.getAttribute('lang')==='en';
+
+env.allowLocalModels = false;   // نموذج من الشبكة، يُخزَّن تلقائياً في متصفح الزائر
+
+let model=null, processor=null, device='wasm';
+let MODEL_SIZE=1024, PROFILE=null;
+let currentImage=null;          // RawImage الأصلية
+let maskData=null;              // Uint8ClampedArray (قناة alpha) بحجم الصورة
+let curBg='';                   // خلفية النتيجة
+
+/* ---------- اللغة ---------- */
+window.toggleLang=function(){
+  const h=document.documentElement, en=h.getAttribute('lang')==='en';
+  h.setAttribute('lang',en?'ar':'en'); h.setAttribute('dir',en?'rtl':'ltr');
+  $('#langBtn').textContent=en?'EN':'ع';
+  $('#homeArrow').style.transform=en?'rotate(180deg)':'none';
+  try{localStorage.setItem('gallery_lang',en?'ar':'en');}catch(e){}
+};
+try{ if(localStorage.getItem('gallery_lang')==='en') window.toggleLang(); }catch(e){}
+
+/* ---------- الحالة ---------- */
+function setStatus(ar,en,spin=true){
+  $('#status').classList.add('show');
+  if(window.ADS) ADS.showWaiting('#bar');
+  $('#statusText').innerHTML = `<span data-ar>${ar}</span><span data-en>${en}</span>`;
+  $('#status').querySelector('.spinner').style.display = spin?'block':'none';
+}
+function hideStatus(){ $('#status').classList.remove('show'); $('#bar').classList.remove('show'); if(window.ADS) ADS.hideWaiting(); }
+function showWarn(ar,en){
+  const w=$('#warn'); w.style.display='block';
+  w.innerHTML=`<span data-ar>${ar}</span><span data-en>${en}</span>`;
+}
+
+/* ---------- تحميل النموذج (مرة واحدة، عند أول صورة) ---------- */
+
+/* ── تكيّف مع قدرات الجهاز ─────────────────────────────────
+   الهواتف والأجهزة اللوحية تحدّ ذاكرة المتصفح بشدة.
+   نصغّر الصورة ودقة المعالجة تلقائياً لتفادي انهيار الصفحة. */
+function deviceProfile(){
+  const mem = navigator.deviceMemory || 4;               // غيغابايت (تقديري)
+  const smallScreen = Math.min(screen.width, screen.height) <= 820;
+  const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent) || smallScreen;
+  // RMBG-1.4 مدرّب على 1024×1024 — تخفيضها يُفسد القناع تماماً.
+  // نوفّر الذاكرة بتصغير الصورة المُدخَلة فقط، لا بدقة النموذج.
+  if(isMobile || mem <= 4) return { modelSize:1024, maxPixels: 1600*1600, label:'mobile' };
+  return { modelSize:1024, maxPixels: 4000*4000, label:'desktop' };
+}
+/* يصغّر الصورة قبل المعالجة ويعيد dataURL */
+async function fitImage(url, maxPixels){
+  const img = await new Promise((res,rej)=>{ const i=new Image();
+    i.onload=()=>res(i); i.onerror=rej; i.src=url; });
+  const px = img.naturalWidth*img.naturalHeight;
+  if(px <= maxPixels) return url;
+  const k = Math.sqrt(maxPixels/px);
+  const w = Math.max(1,Math.round(img.naturalWidth*k));
+  const h = Math.max(1,Math.round(img.naturalHeight*k));
+  const cv = document.createElement('canvas'); cv.width=w; cv.height=h;
+  const cx = cv.getContext('2d'); cx.imageSmoothingQuality='high';
+  cx.drawImage(img,0,0,w,h);
+  return cv.toDataURL('image/png');
+}
+
+
+/* تنبيه صادق للأجهزة الضعيفة قبل أن يضيّع المستخدم وقته */
+function mobileNotice(){
+  const p = deviceProfile();
+  if(p.label !== 'mobile') return;
+  const el = document.createElement('div');
+  el.style.cssText = 'background:rgba(212,175,55,.10);border:1px solid rgba(212,175,55,.3);'+
+    'border-radius:13px;padding:13px 16px;margin-bottom:16px;font-size:13.5px;line-height:1.85;color:#eef1f7';
+  el.innerHTML = '<span data-ar>📱 <b>أنت على جهاز محمول.</b> هذه الأداة تشغّل نموذج ذكاء اصطناعي '+
+    'داخل متصفحك، وقد تستغرق <b>دقيقة أو أكثر</b> أو تفشل على الأجهزة القديمة. '+
+    'للحصول على أفضل نتيجة استخدم حاسوباً، وأبقِ هذه الصفحة مفتوحة أثناء المعالجة.</span>'+
+    '<span data-en>📱 <b>You are on a mobile device.</b> This tool runs an AI model inside your browser '+
+    'and may take <b>a minute or more</b> — or fail on older devices. For the best result use a computer, '+
+    'and keep this page open while it works.</span>';
+  const host = document.querySelector('#warn');
+  if(host && host.parentNode) host.parentNode.insertBefore(el, host.nextSibling);
+}
+if(document.readyState==='loading') document.addEventListener('DOMContentLoaded', mobileNotice);
+else mobileNotice();
+
+// لا يكفي وجود navigator.gpu — يجب التأكد من وجود محوّل فعلي (بعض كروت الشاشة محظورة)
+async function hasWebGPU(){
+  try{
+    if(!navigator.gpu) return false;
+    const adapter = await navigator.gpu.requestAdapter();
+    return !!adapter;
+  }catch(e){ return false; }
+}
+
+async function ensureModel(){
+  if(model) return;
+  PROFILE=deviceProfile(); MODEL_SIZE=PROFILE.modelSize;
+  const id='briaai/RMBG-1.4';
+  if(await hasWebGPU()){
+    try{
+      setStatus('جارٍ تحميل نموذج الذكاء الاصطناعي (WebGPU)…','Loading AI model (WebGPU)…');
+      model = await AutoModel.from_pretrained(id,{ device:'webgpu', dtype:'fp32',
+        progress_callback:onProgress, config:{ model_type:'custom' } });
+      device='webgpu';
+    }catch(e){ console.warn('WebGPU failed, using CPU:',e); model=null; }
+  }
+  if(!model){   // تراجع صريح إلى المعالج (وإلا اختار transformers.js WebGPU تلقائياً وفشل ثانية)
+    setStatus('جارٍ تحميل نموذج الذكاء الاصطناعي (المعالج)…','Loading AI model (CPU)…');
+    model = await AutoModel.from_pretrained(id,{ device:'wasm', dtype:'q8',
+      progress_callback:onProgress, config:{ model_type:'custom' } });
+    device='wasm';
+  }
+  processor = await AutoProcessor.from_pretrained(id,{ config:{
+    do_normalize:true, do_pad:false, do_rescale:true, do_resize:true,
+    image_mean:[0.5,0.5,0.5], image_std:[1,1,1],
+    feature_extractor_type:'ImageFeatureExtractor',
+    resample:2, rescale_factor:0.00392156862745098,
+    size:{ width:MODEL_SIZE, height:MODEL_SIZE },
+  }});
+  const badge=$('#deviceBadge'); badge.hidden=false;
+  badge.textContent = device==='webgpu' ? '⚡ WebGPU' : 'CPU';
+}
+function onProgress(p){
+  if(p.status==='progress' && p.total){
+    $('#bar').classList.add('show');
+    $('#bar').firstElementChild.style.width = (100*p.loaded/p.total)+'%';
+  }
+}
+
+/* ---------- المعالجة ---------- */
+async function removeBackground(file){
+  $('#stage').classList.add('show');
+  $('#actions').style.display='none';
+  $('#bgPicker').style.display='none';
+  const url=URL.createObjectURL(file);
+  $('#origImg').src=url; $('#origImg').style.display='block';
+  $('#resultCanvas').style.display='none';
+  try{
+    await ensureModel();
+    setStatus('جارٍ إزالة الخلفية…','Removing background…');
+    const fitted = await fitImage(url, (PROFILE||deviceProfile()).maxPixels);
+    currentImage = await RawImage.fromURL(fitted);
+    const { pixel_values } = await processor(currentImage);
+    const { output } = await model({ input: pixel_values });
+    // output: قناع بقيم [0..1] بحجم 1024؛ نعيد تحجيمه لحجم الصورة
+    const maskImg = await RawImage.fromTensor(output[0].mul(255).to('uint8'))
+                          .resize(currentImage.width, currentImage.height);
+    maskData = maskImg.data;   // Uint8, قناة واحدة
+    compose();
+    hideStatus();
+    $('#actions').style.display='flex';
+    $('#bgPicker').style.display='flex';
+    showView('result');
+  }catch(e){
+    hideStatus();
+    $('#drop').style.display='block';
+    $('#stage').classList.remove('show');
+    console.error(e);
+    const msg=String(e&&e.message||e);
+    if(/no available backend|backend found|webgpu|wasm|ORT|InferenceSession/i.test(msg)){
+      showWarn('متصفحك لا يدعم تشغيل الذكاء الاصطناعي محلياً. جرّب أحدث إصدار من <b>Chrome</b> أو <b>Edge</b> على الحاسوب (يُفضّل تفعيل WebGPU).',
+               'Your browser can\'t run the AI locally. Try the latest <b>Chrome</b> or <b>Edge</b> on desktop (WebGPU recommended).');
+    }else if(/fetch|network|Failed to fetch|load/i.test(msg)){
+      showWarn('تعذّر تحميل النموذج. تأكّد من اتصالك بالإنترنت (يُحمّل مرة واحدة فقط ثم يعمل دون إنترنت).',
+               'Could not load the model. Check your internet connection (it downloads once, then works offline).');
+    }else{
+      showWarn('حدث خطأ أثناء المعالجة: '+msg, 'Processing error: '+msg);
+    }
+  }
+}
+
+/* ---------- تركيب النتيجة على القماش ---------- */
+function compose(){
+  const w=currentImage.width, h=currentImage.height;
+  const cv=$('#resultCanvas'); cv.width=w; cv.height=h;
+  const ctx=cv.getContext('2d');
+  // ارسم الصورة الأصلية
+  const src=currentImage.toCanvas();
+  if(curBg){ ctx.fillStyle=curBg; ctx.fillRect(0,0,w,h); }
+  ctx.drawImage(src,0,0);
+  // طبّق القناع على قناة alpha
+  const img=ctx.getImageData(0,0,w,h);
+  const d=img.data;
+  if(curBg){
+    // خلفية صلبة: امزج البكسل مع لون الخلفية حسب القناع
+    const bg=hexToRgb(curBg);
+    for(let i=0,p=0;i<maskData.length;i++,p+=4){
+      const a=maskData[i]/255;
+      d[p]  =d[p]*a + bg.r*(1-a);
+      d[p+1]=d[p+1]*a + bg.g*(1-a);
+      d[p+2]=d[p+2]*a + bg.b*(1-a);
+      d[p+3]=255;
+    }
+  }else{
+    for(let i=0,p=0;i<maskData.length;i++,p+=4){ d[p+3]=maskData[i]; }
+  }
+  ctx.putImageData(img,0,0);
+}
+function hexToRgb(hex){
+  const n=parseInt(hex.slice(1),16); return {r:(n>>16)&255,g:(n>>8)&255,b:n&255};
+}
+
+/* ---------- العرض قبل/بعد ---------- */
+function showView(v){
+  const res=v==='result';
+  $('#resultCanvas').style.display=res?'block':'none';
+  $('#origImg').style.display=res?'none':'block';
+  $('#toggleView').querySelectorAll('button').forEach(b=>b.classList.toggle('on',b.dataset.view===v));
+}
+$('#toggleView').addEventListener('click',e=>{const b=e.target.closest('button');if(b)showView(b.dataset.view);});
+
+/* ---------- اختيار الخلفية ---------- */
+$('#bgPicker').addEventListener('click',e=>{
+  const s=e.target.closest('.swatch'); if(!s) return;
+  curBg=s.dataset.bg;
+  $('#bgPicker').querySelectorAll('.swatch').forEach(x=>x.classList.toggle('on',x===s));
+  if(maskData){ compose(); showView('result'); }
+});
+
+/* ---------- الإدخال ---------- */
+const drop=$('#drop');
+$('#pickFiles').onclick=()=>$('#fileIn').click();
+drop.onclick=e=>{ if(e.target.closest('button'))return; $('#fileIn').click(); };
+$('#fileIn').onchange=e=>{ const f=e.target.files[0]; if(f) start(f); };
+['dragenter','dragover','drop'].forEach(ev=>window.addEventListener(ev,e=>e.preventDefault()));
+['dragenter','dragover'].forEach(ev=>drop.addEventListener(ev,e=>{e.preventDefault();drop.classList.add('over');}));
+['dragleave','dragend'].forEach(ev=>drop.addEventListener(ev,()=>drop.classList.remove('over')));
+window.addEventListener('drop',e=>{
+  e.preventDefault(); drop.classList.remove('over');
+  const f=[...(e.dataTransfer?.files||[])].find(x=>x.type.startsWith('image/'));
+  if(f) start(f);
+});
+function start(file){ $('#warn').style.display='none'; $('#drop').style.display='none'; removeBackground(file); }
+
+/* ---------- تنزيل / إعادة ---------- */
+$('#download').onclick=()=>{
+  GUARDIAN.downloadCanvas($('#resultCanvas'),'007-gallery-no-bg.png','Background Removal');
+};
+$('#reset').onclick=()=>{
+  $('#stage').classList.remove('show');
+  $('#drop').style.display='block';
+  $('#fileIn').value=''; maskData=null; currentImage=null; curBg='';
+  $('#bgPicker').querySelectorAll('.swatch').forEach((x,i)=>x.classList.toggle('on',i===0));
+};
+</script>
+</body>
+</html>

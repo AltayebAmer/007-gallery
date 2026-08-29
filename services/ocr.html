@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<!--
+  ════════════════════════════════════════════════════════════
+   007.gallery
+   Creator : Artist Altayeb Amer
+   المبتكر  : الفنان الطيب عامر
+   Source  : https://007.gallery
+   © 2026 Artist Altayeb Amer — All rights reserved.
+   Protected by ALTAYEB GUARDIAN v4.0
+  ════════════════════════════════════════════════════════════
+-->
+
+<html lang="ar" dir="rtl" data-creator="Artist Altayeb Amer" data-creator-ar="الفنان الطيب عامر" data-source="https://007.gallery" data-guardian="4.0">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>استخراج النص من الصور (OCR) — 007.gallery</title>
+<meta name="description" content="حوّل الصور والمستندات إلى نص قابل للتحرير — عربي وإنجليزي، محلياً في متصفحك.">
+<link rel="stylesheet" href="../assets/brand.css">
+<style>
+  .tool-hero{text-align:center;padding:32px 0 18px}
+  .tool-hero h1{font-size:clamp(24px,4vw,36px);font-weight:900;letter-spacing:-.4px}
+  .tool-hero h1 span{background:linear-gradient(120deg,var(--gold),var(--gold-2));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .tool-hero p{color:var(--txt-dim);margin-top:10px;font-size:15px}
+
+  .drop{background:linear-gradient(180deg,var(--card),var(--card-2));border:2px dashed var(--line-2);
+    border-radius:22px;padding:48px 24px;text-align:center;transition:.2s;cursor:pointer}
+  .drop.over{border-color:var(--gold);background:var(--gold-soft);transform:scale(1.005)}
+  .drop .ring{width:74px;height:74px;border-radius:50%;margin:0 auto 15px;display:grid;place-items:center;
+    background:var(--gold-soft);border:1px solid rgba(212,175,55,.25)}
+  .drop .ring svg{width:34px;height:34px;stroke:var(--gold-2);fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+  .drop b{display:block;font-size:19px;margin-bottom:6px}
+  .drop small{color:var(--txt-mute);font-size:13px}
+
+  .lang-row{display:flex;gap:10px;align-items:center;justify-content:center;margin-top:18px;flex-wrap:wrap}
+  .lang-row .lbl{font-size:14px;font-weight:700;color:var(--txt-dim)}
+
+  .stage{display:none;margin-top:8px}
+  .stage.show{display:block}
+  .work{display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:start}
+  @media(max-width:760px){.work{grid-template-columns:1fr}}
+  .img-card,.text-card{background:linear-gradient(180deg,var(--card),var(--card-2));border:1px solid var(--line);border-radius:16px;padding:16px}
+  .img-card{display:grid;place-items:center;min-height:240px;background-color:var(--bg-2)}
+  .img-card img{max-width:100%;max-height:52vh;border-radius:10px;display:block}
+  .text-card h3{font-size:14px;color:var(--txt-dim);margin-bottom:10px;display:flex;justify-content:space-between;align-items:center}
+  textarea{width:100%;min-height:280px;padding:13px;border:1px solid var(--line-2);border-radius:12px;
+    background:var(--bg-2);color:var(--txt);font:inherit;font-size:15px;line-height:1.9;resize:vertical}
+  textarea:focus{outline:none;border-color:var(--gold)}
+
+  .status{display:none;align-items:center;gap:12px;justify-content:center;margin:16px 0;color:var(--txt-dim);font-size:14px}
+  .status.show{display:flex}
+  .spinner{width:20px;height:20px;border:2.5px solid var(--line-2);border-top-color:var(--gold-2);border-radius:50%;animation:spin .8s linear infinite}
+  @keyframes spin{to{transform:rotate(360deg)}}
+  .bar{height:6px;background:var(--line);border-radius:6px;overflow:hidden;max-width:460px;margin:12px auto 0;display:none}
+  .bar.show{display:block}
+  .bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--gold),var(--gold-2));transition:width .25s}
+
+  .actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
+  .privacy{text-align:center;color:var(--txt-mute);font-size:12.5px;margin-top:22px;line-height:2}
+  .warn{background:color-mix(in srgb,var(--red) 12%,transparent);color:var(--red);padding:13px 16px;border-radius:12px;margin-bottom:16px;font-size:14px;display:none}
+  .ad{margin:26px auto 0;border:1px dashed var(--line-2);border-radius:14px;min-height:80px;
+    display:flex;align-items:center;justify-content:center;gap:10px;color:var(--txt-mute);font-size:13px;
+    background:repeating-linear-gradient(45deg,transparent,transparent 12px,rgba(255,255,255,.012) 12px,rgba(255,255,255,.012) 24px)}
+  .copied{color:var(--green);font-size:12px;font-weight:700;opacity:0;transition:.2s}
+  .copied.show{opacity:1}
+</style>
+<link rel="icon" href="../favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="../assets/icon-32.png">
+<link rel="apple-touch-icon" href="../assets/icon-180.png">
+<link rel="manifest" href="../manifest.webmanifest">
+<meta name="theme-color" content="#0a0b0f">
+<link rel="canonical" href="https://007.gallery/services/ocr.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="007.gallery">
+<meta property="og:locale" content="ar_AR">
+<meta property="og:title" content="استخراج النص من الصور OCR — 007.gallery">
+<meta property="og:description" content="حوّل الصور والمستندات إلى نص قابل للتحرير — عربي وإنجليزي، مجاناً في متصفحك.">
+<meta property="og:url" content="https://007.gallery/services/ocr.html">
+<meta property="og:image" content="https://007.gallery/assets/og-cover.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="استخراج النص من الصور OCR — 007.gallery">
+<meta name="twitter:description" content="حوّل الصور والمستندات إلى نص قابل للتحرير — عربي وإنجليزي، مجاناً في متصفحك.">
+<meta name="twitter:image" content="https://007.gallery/assets/og-cover.png">
+<script data-project="007.gallery" data-project-ar="٠٠٧ جاليري" data-site="https://007.gallery" data-version="1.0.0" data-creator="Artist Altayeb Amer" data-creator-ar="الفنان الطيب عامر" data-domains="007.gallery" src="../assets/guardian.js" data-comment="Processed locally in the browser — no upload, no server. Image rights remain with the image owner." defer></script>
+<meta name="author" content="Artist Altayeb Amer">
+<meta name="creator" content="Artist Altayeb Amer">
+<meta name="designer" content="Artist Altayeb Amer / الفنان الطيب عامر">
+<meta name="copyright" content="© 2026 Artist Altayeb Amer">
+<meta name="owner" content="Artist Altayeb Amer">
+<meta name="publisher" content="007.gallery — Artist Altayeb Amer">
+<meta name="dcterms.creator" content="Artist Altayeb Amer">
+<meta name="dcterms.rights" content="© 2026 Artist Altayeb Amer">
+<meta name="dcterms.rightsHolder" content="Artist Altayeb Amer">
+<meta name="application-name" content="007.gallery">
+<meta name="guardian" content="ALTAYEB GUARDIAN v4.0 — Artist Altayeb Amer">
+<link rel="author" href="../humans.txt">
+<script src="../assets/ads.js" defer></script>
+<script src="../assets/artgallery.js" defer></script>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap nav">
+    <a class="brand" href="../index.html"><span class="logo">007</span><span>007<b>.gallery</b></span></a>
+    <div class="nav-actions">
+      <button class="btn btn-lang" id="langBtn" onclick="toggleLang()">EN</button>
+      <a class="btn btn-ghost" href="../index.html">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" id="homeArrow"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+        <span data-ar>كل الأدوات</span><span data-en>All tools</span>
+      </a>
+    </div>
+  </div>
+</header>
+
+<main class="wrap" style="padding-bottom:40px">
+  <div class="tool-hero">
+    <span class="pill"><span class="dot"></span><span data-ar>يعمل في متصفحك · لا يُرفع أي ملف</span><span data-en>Runs in your browser · nothing is uploaded</span></span>
+    <h1><span data-ar>استخراج <span>النص</span> من الصور</span><span data-en>Extract <span>text</span> from images</span></h1>
+    <p><span data-ar>حوّل الصور والمستندات إلى نص قابل للنسخ والتحرير — عربي وإنجليزي.</span><span data-en>Turn images and documents into copy-editable text — Arabic & English.</span></p>
+  </div>
+
+  <div class="warn" id="warn"></div>
+
+  <div class="drop" id="drop">
+    <div class="ring"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><line x1="10" y1="9" x2="8" y2="9"/></svg></div>
+    <b><span data-ar>أفلت صورة أو مستنداً هنا</span><span data-en>Drop an image or document here</span></b>
+    <small><span data-ar>PNG · JPG · WebP — لقطات شاشة، مستندات، لافتات…</span><span data-en>PNG · JPG · WebP — screenshots, documents, signs…</span></small>
+    <div class="lang-row">
+      <span class="lbl"><span data-ar>لغة النص:</span><span data-en>Text language:</span></span>
+      <select id="lang" style="max-width:200px">
+        <option value="ara+eng" selected>عربي + English</option>
+        <option value="ara">العربية فقط</option>
+        <option value="eng">English only</option>
+      </select>
+      <button class="btn btn-primary" id="pickFiles"><span data-ar>اختيار صورة</span><span data-en>Choose image</span></button>
+    </div>
+    <input type="file" id="fileIn" accept="image/*" hidden>
+  </div>
+
+  <div class="stage" id="stage">
+    <div class="status" id="status"><span class="spinner"></span><span id="statusText"></span></div>
+    <div class="bar" id="bar"><i></i></div>
+
+    <div class="work">
+      <div class="img-card"><img id="preview" alt=""></div>
+      <div class="text-card">
+        <h3>
+          <span><span data-ar>النص المستخرَج</span><span data-en>Extracted text</span></span>
+          <span class="copied" id="copied"><span data-ar>✓ نُسخ</span><span data-en>✓ Copied</span></span>
+        </h3>
+        <textarea id="out" placeholder="…" dir="auto"></textarea>
+        <div class="actions">
+          <button class="btn btn-primary" id="copy"><span data-ar>نسخ النص</span><span data-en>Copy text</span></button>
+          <button class="btn" id="dlTxt"><span data-ar>تنزيل .txt</span><span data-en>Download .txt</span></button>
+          <button class="btn btn-ghost" id="reset"><span data-ar>صورة أخرى</span><span data-en>New image</span></button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div data-ad-slot="rectangle" style="margin-inline:auto"></div>
+
+  <div data-art-gallery></div>
+
+  <div class="ad"><b style="color:var(--txt-dim)"><span data-ar>مساحة إعلانية — رد المعروف</span><span data-en>Ad space — support us</span></b> · <span data-ar>تُبقي الأداة مجانية</span><span data-en>keeps this tool free</span></div>
+
+  <p class="privacy">
+    <span data-ar>🔒 يُحمّل محرّك التعرّف مرة واحدة ويُخزّن في متصفحك، ثم تتم كل المعالجة على جهازك — لا تغادر صورتك.</span>
+    <span data-en>🔒 The recognition engine loads once and is cached; all processing then runs on your device — your image never leaves it.</span>
+  </p>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap foot">
+    <a class="brand" href="../index.html"><span class="logo">007</span><span>007<b>.gallery</b></span></a>
+    <p>© 2026 007.gallery · <span data-ar>كل الحقوق محفوظة</span><span data-en>All rights reserved</span> · <a href="../privacy.html" style="color:var(--gold-2)"><span data-ar>سياسة الخصوصية</span><span data-en>Privacy</span></a> · <a href="../articles/index.html" style="color:var(--gold-2)"><span data-ar>المقالات</span><span data-en>Guides</span></a> · <a href="../projects.html" style="color:var(--gold-2)"><span data-ar>المشاريع</span><span data-en>Projects</span></a> · <a href="../contact.html" style="color:var(--gold-2)"><span data-ar>تواصل</span><span data-en>Contact</span></a></p>
+  </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script>
+<script>
+"use strict";
+const $=s=>document.querySelector(s);
+const T=()=>document.documentElement.getAttribute('lang')==='en';
+
+function toggleLang(){
+  const h=document.documentElement,en=h.getAttribute('lang')==='en';
+  h.setAttribute('lang',en?'ar':'en');h.setAttribute('dir',en?'rtl':'ltr');
+  $('#langBtn').textContent=en?'EN':'ع';
+  $('#homeArrow').style.transform=en?'rotate(180deg)':'none';
+  try{localStorage.setItem('gallery_lang',en?'ar':'en');}catch(e){}
+}
+window.toggleLang=toggleLang;
+try{ if(localStorage.getItem('gallery_lang')==='en') toggleLang(); }catch(e){}
+
+function setStatus(ar,en){ $('#status').classList.add('show');
+  if(window.ADS) ADS.showWaiting('#bar');
+  $('#statusText').innerHTML=`<span data-ar>${ar}</span><span data-en>${en}</span>`; }
+function hideStatus(){ $('#status').classList.remove('show'); $('#bar').classList.remove('show'); if(window.ADS) ADS.hideWaiting(); }
+function showWarn(ar,en){ const w=$('#warn'); w.style.display='block';
+  w.innerHTML=`<span data-ar>${ar}</span><span data-en>${en}</span>`; }
+
+async function run(file){
+  $('#warn').style.display='none';
+  $('#drop').style.display='none';
+  $('#stage').classList.add('show');
+  $('#out').value='';
+  $('#preview').src=URL.createObjectURL(file);
+  if(typeof Tesseract==='undefined'){
+    hideStatus();
+    showWarn('تعذّر تحميل محرّك التعرّف. تأكّد من اتصالك بالإنترنت وأعد المحاولة.',
+             'Could not load the OCR engine. Check your connection and try again.');
+    return;
+  }
+  const lang=$('#lang').value;
+  setStatus('جارٍ تجهيز محرّك التعرّف…','Preparing the OCR engine…');
+  try{
+    const { data } = await Tesseract.recognize(file, lang, {
+      logger:m=>{
+        if(m.status==='recognizing text'){
+          $('#bar').classList.add('show');
+          $('#bar').firstElementChild.style.width=Math.round(m.progress*100)+'%';
+          setStatus('جارٍ قراءة النص…','Reading text…');
+        }else if(m.status && m.progress!=null){
+          setStatus('جارٍ التحميل…','Loading…');
+          $('#bar').classList.add('show');
+          $('#bar').firstElementChild.style.width=Math.round(m.progress*100)+'%';
+        }
+      }
+    });
+    hideStatus();
+    const txt=(data.text||'').trim();
+    $('#out').value = txt || (T()?'(No text detected)':'(لم يُعثر على نص)');
+  }catch(e){
+    hideStatus();
+    console.error(e);
+    showWarn('حدث خطأ أثناء القراءة: '+(e.message||e), 'Recognition error: '+(e.message||e));
+  }
+}
+
+/* الإدخال */
+const drop=$('#drop');
+$('#pickFiles').onclick=e=>{ e.stopPropagation(); $('#fileIn').click(); };
+drop.onclick=e=>{ if(e.target.closest('button')||e.target.closest('select'))return; $('#fileIn').click(); };
+$('#fileIn').onchange=e=>{ const f=e.target.files[0]; if(f) run(f); };
+['dragenter','dragover','drop'].forEach(ev=>window.addEventListener(ev,e=>e.preventDefault()));
+['dragenter','dragover'].forEach(ev=>drop.addEventListener(ev,e=>{e.preventDefault();drop.classList.add('over');}));
+['dragleave','dragend'].forEach(ev=>drop.addEventListener(ev,()=>drop.classList.remove('over')));
+window.addEventListener('drop',e=>{
+  e.preventDefault();drop.classList.remove('over');
+  const f=[...(e.dataTransfer?.files||[])].find(x=>x.type.startsWith('image/'));
+  if(f) run(f);
+});
+
+/* الإجراءات */
+$('#copy').onclick=async ()=>{
+  try{ await navigator.clipboard.writeText($('#out').value); }
+  catch(e){ $('#out').select(); document.execCommand('copy'); }
+  const c=$('#copied'); c.classList.add('show'); setTimeout(()=>c.classList.remove('show'),1600);
+};
+$('#dlTxt').onclick=()=>{
+  const blob=new Blob([$('#out').value],{type:'text/plain;charset=utf-8'});
+  const a=document.createElement('a'); a.download='007-gallery-text.txt'; a.href=URL.createObjectURL(blob); a.click();
+  setTimeout(()=>URL.revokeObjectURL(a.href),10000);
+};
+$('#reset').onclick=()=>{
+  $('#stage').classList.remove('show'); $('#drop').style.display='block';
+  $('#fileIn').value=''; $('#out').value='';
+};
+</script>
+</body>
+</html>
