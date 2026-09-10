@@ -76,6 +76,26 @@
   .ad{margin:26px auto 0;border:1px dashed var(--line-2);border-radius:14px;min-height:80px;
     display:flex;align-items:center;justify-content:center;gap:10px;color:var(--txt-mute);font-size:13px;
     background:repeating-linear-gradient(45deg,transparent,transparent 12px,rgba(255,255,255,.012) 12px,rgba(255,255,255,.012) 24px)}
+
+  /* ---------- محتوى تعريفي (SEO) ---------- */
+  .seo{max-width:820px;margin:46px auto 0;padding-top:34px;border-top:1px solid var(--line)}
+  .seo h2{font-size:clamp(19px,2.6vw,25px);font-weight:900;color:var(--gold-2);margin:30px 0 12px}
+  .seo h2:first-child{margin-top:0}
+  .seo h3{font-size:17px;font-weight:800;margin:24px 0 10px}
+  .seo p,.seo li{color:var(--txt-dim);font-size:15.5px;line-height:2}
+  .seo ol,.seo ul{padding-inline-start:22px;margin:10px 0}
+  .seo li{margin-bottom:9px}
+  .seo strong{color:var(--txt)}
+  .seo em{color:var(--txt);font-style:italic}
+  .seo details{border:1px solid var(--line);border-radius:13px;padding:15px 18px;margin-bottom:11px;background:var(--bg-2)}
+  .seo summary{cursor:pointer;font-weight:800;font-size:15px;color:var(--txt);list-style:none;display:flex;align-items:center;gap:9px}
+  .seo summary::-webkit-details-marker{display:none}
+  .seo summary .chev{color:var(--gold-2);transition:.2s;flex:none}
+  .seo details[open] summary .chev{transform:rotate(90deg)}
+  .seo details p{margin-top:11px;font-size:14.5px}
+  .seo-en{display:none}
+  html[lang=en] .seo-ar{display:none}
+  html[lang=en] .seo-en{display:block}
 </style>
 <link rel="icon" href="../favicon.ico" sizes="any">
 <link rel="icon" type="image/png" sizes="32x32" href="../assets/icon-32.png">
@@ -111,6 +131,36 @@
 <link rel="author" href="../humans.txt">
 <script src="../assets/ads.js?v=2" defer></script>
 <script src="../assets/artgallery.js" defer></script>
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@type": "SoftwareApplication",
+ "name": "Watermark Studio",
+ "alternateName": "العلامة المائية",
+ "applicationCategory": "MultimediaApplication",
+ "operatingSystem": "Any (web browser)",
+ "url": "https://007.gallery/services/watermark.html",
+ "description": "A free tool that adds your watermark (text or logo) to your images in batch,\nor blurs a region to hide sensitive information. Everything inside your browser with no uploads.",
+ "offers": {
+  "@type": "Offer",
+  "price": "0",
+  "priceCurrency": "USD"
+ },
+ "author": {
+  "@type": "Person",
+  "name": "Artist Altayeb Amer"
+ },
+ "inLanguage": [
+  "ar",
+  "en"
+ ],
+ "featureList": [
+  "Runs entirely in the browser",
+  "No upload required",
+  "Free and unlimited"
+ ]
+}
+</script>
 </head>
 <body>
 
@@ -249,6 +299,66 @@
   <div data-ad-slot="rectangle" style="margin-inline:auto"></div>
 
   <div data-art-gallery></div>
+  <section class="seo">
+    <div class="seo-ar">
+      <h2>إضافة علامة مائية على الصور دفعة واحدة</h2>
+      <p>أداة مجانية تضيف علامتك المائية (نصاً أو شعاراً) على صورك <strong>دفعة واحدة</strong>،
+أو تطمس منطقة لإخفاء معلومة حسّاسة. كل شيء داخل متصفحك بلا رفع.</p>
+<p>لنكن صادقين: لا توجد حماية مطلقة لأي صورة منشورة. لكن العلامة المائية تفعل ثلاثة أشياء واقعية —
+تردع السرقة السهلة، وتنسب العمل إليك أينما انتشرت الصورة، وتسوّق لك مجاناً مع كل مشاركة.</p>
+<p>الموازنة مهمة: علامة خفيفة جداً تُقصّ بسهولة، وثقيلة جداً تُفسد الصورة. الشفافية بين <strong>٣٠٪ و٤٥٪</strong>
+مناسبة في أغلب الحالات، والتكرار عبر الصورة كلها هو الأصعب على الإزالة — وهو الأنسب لصور المعاينة قبل البيع.</p>
+
+      <h2>كيف تستخدمها — خطوة بخطوة</h2>
+      <ol>
+      <li>اختر الوضع: «إضافة علامة» أو «طمس منطقة».</li>
+      <li>أفلت صورة واحدة أو عدة صور دفعة واحدة.</li>
+      <li>اكتب نص علامتك أو ارفع شعارك، واضبط الحجم والشفافية والموضع.</li>
+      <li>فعّل «تكرار على كامل الصورة» لحماية أقوى إن أردت.</li>
+      <li>نزّل صورة واحدة، أو كل الصور في ملف ZIP.</li>
+      </ol>
+
+      <h2>لماذا المعالجة داخل متصفحك؟</h2>
+      <p>صورتك لا تغادر جهازك. معظم المواقع المنافسة ترفع صورك إلى خوادمها لتعالجها هناك؛ أما هذه الأداة فتعمل بالكامل داخل المتصفح. لا رفع، ولا حساب، ولا انتظار، ولا حدود على عدد الصور — لأن جهازك هو من يعالج.</p>
+
+      <h2>أسئلة شائعة</h2>
+      <details><summary><span class="chev">›</span>ما الشفافية المناسبة؟</summary><p>٣٠–٤٥٪. أقل من ذلك تكاد لا تُرى، وأكثر تُزعج المشاهد.</p></details>
+      <details><summary><span class="chev">›</span>أين أضع العلامة؟</summary><p>الزوايا أسهل ما يُقصّ. للحماية الجادة ضعها قرب المنتصف أو كرّرها عبر الصورة.</p></details>
+      <details><summary><span class="chev">›</span>هل يمكن إزالة علامة مائية من صورة؟</summary><p>وضع «طمس منطقة» يخفيها يدوياً. الإزالة الكاملة بالذكاء الاصطناعي خدمة مختلفة.</p></details>
+      <details><summary><span class="chev">›</span>هل تعمل على عدة صور معاً؟</summary><p>نعم، والإعدادات تُطبَّق على الكل مع تنزيل ZIP واحد.</p></details>
+    </div>
+
+    <div class="seo-en">
+      <h2>Add a Watermark to Photos in Batch</h2>
+      <p>A free tool that adds your watermark (text or logo) to your images <strong>in batch</strong>,
+or blurs a region to hide sensitive information. Everything inside your browser with no uploads.</p>
+<p>Let's be honest: there is no absolute protection for any published image. But a watermark does
+three realistic things — it deters lazy theft, it credits you wherever the image travels, and it markets you
+for free with every share.</p>
+<p>Balance matters: too light and it is easily cropped, too heavy and it ruins the image. Opacity between
+<strong>30% and 45%</strong> suits most cases, and tiling across the whole frame is hardest to remove — ideal
+for preview images before purchase.</p>
+
+      <h2>How to use it — step by step</h2>
+      <ol>
+      <li>Choose the mode: “Add watermark” or “Blur a region”.</li>
+      <li>Drop a single image or several at once.</li>
+      <li>Type your watermark text or upload your logo, then set size, opacity and position.</li>
+      <li>Enable “Tile across whole image” for stronger protection if you wish.</li>
+      <li>Download one image, or all of them as a ZIP.</li>
+      </ol>
+
+      <h2>Why processing inside your browser?</h2>
+      <p>Your image never leaves your device. Most competing sites upload your photos to their servers to process them; this tool runs entirely in the browser. No upload, no account, no waiting and no limits — because your own device does the work.</p>
+
+      <h2>Frequently asked</h2>
+      <details><summary><span class="chev">›</span>What opacity should I use?</summary><p>30–45%. Less is barely visible, more is intrusive.</p></details>
+      <details><summary><span class="chev">›</span>Where should I place it?</summary><p>Corners are the easiest to crop. For serious protection place it near the centre or tile it.</p></details>
+      <details><summary><span class="chev">›</span>Can I remove a watermark from an image?</summary><p>The “Blur a region” mode hides one manually. Full AI removal is a different service.</p></details>
+      <details><summary><span class="chev">›</span>Does it work on several images at once?</summary><p>Yes, settings apply to all, with a single ZIP download.</p></details>
+    </div>
+  </section>
+
 
   <div class="ad"><b style="color:var(--txt-dim)"><span data-ar>مساحة إعلانية — رد المعروف</span><span data-en>Ad space — support us</span></b> · <span data-ar>تُبقي الأداة مجانية</span><span data-en>keeps this tool free</span></div>
 
