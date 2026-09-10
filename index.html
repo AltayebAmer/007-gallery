@@ -236,12 +236,11 @@ html[lang=en] .desc[data-en],html[lang=en] .support p[data-en]{display:block}
     <span data-en>Professional image tools<br><span>free & fully private</span></span>
   </h1>
   <p>
-    <span data-ar>١٥ أداة ذكية للصور — ٧ مجانية تعمل بالكامل في متصفحك عبر WebGPU، و٨ خدمات سحابية احترافية قادمة. لا تسجيل، لا رفع، لا انتظار.</span>
-    <span data-en>15 smart image tools — 7 free, running entirely in your browser via WebGPU, plus 8 pro cloud services coming soon. No sign-up, no upload, no waiting.</span>
+    <span data-ar>سبع أدوات صور مجانية تعمل بالكامل داخل متصفحك — إزالة الخلفية، التكبير، الضغط، استخراج النص، QR والعلامة المائية. لا تسجيل، لا رفع، لا انتظار.</span>
+    <span data-en>Seven free image tools running entirely inside your browser — background removal, upscaling, compression, text extraction, QR and watermarking. No sign-up, no upload, no waiting.</span>
   </p>
   <div class="hero-cta">
     <a class="btn btn-primary" href="#free"><span data-ar>الأدوات المجانية</span><span data-en>Free tools</span></a>
-    <a class="btn" href="#pro"><span data-ar>الخدمات الاحترافية</span><span data-en>Pro services</span></a>
   </div>
   <div class="stats">
     <div class="stat"><b>7</b><span data-ar>أدوات مجانية</span><span data-en>Free tools</span></div>
@@ -260,7 +259,56 @@ html[lang=en] .desc[data-en],html[lang=en] .support p[data-en]{display:block}
     <span class="tag tag-free"><span data-ar>مجاني بالكامل</span><span data-en>Fully free</span></span>
   </div>
 
-  <div class="grid" id="freeGrid"></div>
+  <div class="grid">
+    <a class="card" href="services/background-removal.html">
+      <div class="ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><line x1="20" y1="4" x2="8.12" y2="15.88"/><line x1="14.47" y1="14.48" x2="20" y2="20"/><line x1="8.12" y1="8.12" x2="12" y2="12"/></svg></div>
+      <h3><span data-ar>إزالة الخلفية</span><span data-en>Background removal</span></h3>
+      <div class="desc"><span data-ar>أزل خلفية أي صورة تلقائياً بدقة عالية، مع أداة تصحيح يدوية دقيقة.</span><span data-en>Auto-remove any background in high quality, with precise manual touch-up.</span></div>
+      <div class="go"><span data-ar>افتح الأداة</span><span data-en>Open tool</span> <span class="arrow">←</span></div>
+    </a>
+
+    <a class="card" href="services/upscale.html">
+      <div class="ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg></div>
+      <h3><span data-ar>تكبير ودقة الصور</span><span data-en>Upscale & enhance</span></h3>
+      <div class="desc"><span data-ar>ضاعف حجم صورك ووضوحها حتى ٤ أضعاف دون فقدان الجودة.</span><span data-en>Increase size and sharpness up to 4× without losing quality.</span></div>
+      <div class="go"><span data-ar>افتح الأداة</span><span data-en>Open tool</span> <span class="arrow">←</span></div>
+    </a>
+
+    <a class="card" href="services/portrait-blur.html">
+      <div class="ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="14.31" y1="8" x2="20.05" y2="17.94"/><line x1="9.69" y1="8" x2="21.17" y2="8"/><line x1="7.38" y1="12" x2="13.12" y2="2.06"/><line x1="9.69" y1="16" x2="3.95" y2="6.06"/><line x1="14.31" y1="16" x2="2.83" y2="16"/><line x1="16.62" y1="12" x2="10.88" y2="21.94"/></svg></div>
+      <h3><span data-ar>عزل / طمس الخلفية</span><span data-en>Portrait blur</span></h3>
+      <div class="desc"><span data-ar>تأثير بوكيه احترافي يبرز موضوع الصورة ويطمس ما خلفه.</span><span data-en>Pro bokeh effect that highlights your subject and blurs the rest.</span></div>
+      <div class="go"><span data-ar>افتح الأداة</span><span data-en>Open tool</span> <span class="arrow">←</span></div>
+    </a>
+
+    <a class="card" href="services/convert-compress.html">
+      <div class="ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg></div>
+      <h3><span data-ar>تحويل وضغط وتغيير الحجم</span><span data-en>Convert · compress · resize</span></h3>
+      <div class="desc"><span data-ar>بين PNG وJPG وWebP — اضغط وغيّر الأبعاد بجودة مثالية.</span><span data-en>Between PNG, JPG & WebP — compress and resize with perfect quality.</span></div>
+      <div class="go"><span data-ar>افتح الأداة</span><span data-en>Open tool</span> <span class="arrow">←</span></div>
+    </a>
+
+    <a class="card" href="services/ocr.html">
+      <div class="ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 7 4 4 20 4 20 7"/><line x1="9" y1="20" x2="15" y2="20"/><line x1="12" y1="4" x2="12" y2="20"/></svg></div>
+      <h3><span data-ar>استخراج النص من الصور (OCR)</span><span data-en>Extract text (OCR)</span></h3>
+      <div class="desc"><span data-ar>حوّل الصور والمستندات إلى نص قابل للتحرير — عربي وإنجليزي.</span><span data-en>Turn images and documents into editable text — Arabic & English.</span></div>
+      <div class="go"><span data-ar>افتح الأداة</span><span data-en>Open tool</span> <span class="arrow">←</span></div>
+    </a>
+
+    <a class="card" href="services/qr.html">
+      <div class="ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><line x1="14" y1="14" x2="14" y2="17"/><line x1="17" y1="14" x2="20" y2="14"/><line x1="20" y1="17" x2="20" y2="20"/><line x1="14" y1="20" x2="17" y2="20"/></svg></div>
+      <h3><span data-ar>مولّد QR احترافي</span><span data-en>Pro QR generator</span></h3>
+      <div class="desc"><span data-ar>أنشئ رموز QR أنيقة بشعارك وألوانك الخاصة بدقة عالية.</span><span data-en>Create elegant QR codes with your logo and colors in high resolution.</span></div>
+      <div class="go"><span data-ar>افتح الأداة</span><span data-en>Open tool</span> <span class="arrow">←</span></div>
+    </a>
+
+    <a class="card" href="services/watermark.html">
+      <div class="ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M5 22h14"/><path d="M8 22v-4a4 4 0 0 1 .6-2.1C9.5 14.5 10 13.3 10 12a2 2 0 0 0-2-2 2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v2a2 2 0 0 1-2 2 2 2 0 0 0-2 2c0 1.3.5 2.5 1.4 3.9a4 4 0 0 1 .6 2.1v4"/></svg></div>
+      <h3><span data-ar>العلامة المائية</span><span data-en>Watermark studio</span></h3>
+      <div class="desc"><span data-ar>أضف علامتك (نص أو شعار) على صورك دفعة واحدة، أو اطمس منطقة لإخفائها.</span><span data-en>Brand your images (text or logo) in one batch, or blur a region to hide it.</span></div>
+      <div class="go"><span data-ar>افتح الأداة</span><span data-en>Open tool</span> <span class="arrow">←</span></div>
+    </a>
+  </div>
 </section>
 
 <!-- AD -->
@@ -268,18 +316,6 @@ html[lang=en] .desc[data-en],html[lang=en] .support p[data-en]{display:block}
 
 <div class="wrap"><div data-ad-slot="billboard"></div></div>
 
-<!-- PRO -->
-<section class="section wrap" id="pro">
-  <div class="sec-head">
-    <div>
-      <h2><span data-ar>الخدمات <em>الاحترافية</em></span><span data-en>The <em>pro</em> services</span></h2>
-      <p><span data-ar>معالجة سحابية عالية القوة — قريباً، مع استخدام مجاني واحد كل ٢٤ ساعة.</span><span data-en>High-power cloud processing — coming soon, with one free use every 24h.</span></p>
-    </div>
-    <span class="tag tag-pro"><span data-ar>قريباً</span><span data-en>Coming soon</span></span>
-  </div>
-
-  <div class="grid" id="proGrid"></div>
-</section>
 
 <div class="wrap"><div data-art-gallery></div></div>
 
@@ -301,63 +337,10 @@ html[lang=en] .desc[data-en],html[lang=en] .support p[data-en]{display:block}
 </footer>
 
 <script>
-/* icon set (inline svg) */
-const I = {
-  scissors:'<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><line x1="20" y1="4" x2="8.12" y2="15.88"/><line x1="14.47" y1="14.48" x2="20" y2="20"/><line x1="8.12" y1="8.12" x2="12" y2="12"/></svg>',
-  expand:'<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg>',
-  aperture:'<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="14.31" y1="8" x2="20.05" y2="17.94"/><line x1="9.69" y1="8" x2="21.17" y2="8"/><line x1="7.38" y1="12" x2="13.12" y2="2.06"/><line x1="9.69" y1="16" x2="3.95" y2="6.06"/><line x1="14.31" y1="16" x2="2.83" y2="16"/><line x1="16.62" y1="12" x2="10.88" y2="21.94"/></svg>',
-  layers:'<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>',
-  palette:'<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="13.5" cy="6.5" r=".8" fill="currentColor"/><circle cx="17.5" cy="10.5" r=".8" fill="currentColor"/><circle cx="8.5" cy="7.5" r=".8" fill="currentColor"/><circle cx="6.5" cy="12.5" r=".8" fill="currentColor"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c1.7 0 2.5-1.3 2.5-2.5 0-.7-.3-1.2-.7-1.7-.4-.4-.6-.9-.6-1.4 0-1.1.9-2 2-2h2c2.8 0 5-2.2 5-5C22 5.9 17.5 2 12 2z"/></svg>',
-  text:'<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 7 4 4 20 4 20 7"/><line x1="9" y1="20" x2="15" y2="20"/><line x1="12" y1="4" x2="12" y2="20"/></svg>',
-  qr:'<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><line x1="14" y1="14" x2="14" y2="17"/><line x1="17" y1="14" x2="20" y2="14"/><line x1="20" y1="17" x2="20" y2="20"/><line x1="14" y1="20" x2="17" y2="20"/></svg>',
-  stamp:'<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M5 22h14"/><path d="M8 22v-4a4 4 0 0 1 .6-2.1C9.5 14.5 10 13.3 10 12a2 2 0 0 0-2-2 2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v2a2 2 0 0 1-2 2 2 2 0 0 0-2 2c0 1.3.5 2.5 1.4 3.9a4 4 0 0 1 .6 2.1v4"/></svg>',
-  face:'<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>',
-  eraser:'<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M20 20H7L3 16a2 2 0 0 1 0-3l9-9a2 2 0 0 1 3 0l5 5a2 2 0 0 1 0 3l-8 8"/><line x1="18" y1="12.5" x2="9.5" y2="4"/></svg>',
-  wand:'<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M15 4V2M15 22v-2M8 9l-2 2M22 15l-2 2M2 15l2 2M20 9l2 2M9 8L2 15l7 7 13-13-5-5-4 4z"/></svg>',
-  image:'<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>',
-  video:'<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>',
-  film:'<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="2"/><line x1="7" y1="2" x2="7" y2="22"/><line x1="17" y1="2" x2="17" y2="22"/><line x1="2" y1="12" x2="22" y2="12"/></svg>',
-  package:'<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M16.5 9.4 7.5 4.21M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>'
-};
 
-const FREE = [
-  {ic:'scissors', href:'services/background-removal.html', ar:['إزالة الخلفية','أزل خلفية أي صورة تلقائياً بدقة عالية، مع أداة تصحيح يدوية دقيقة.'], en:['Background removal','Auto-remove any background in high quality, with precise manual touch-up.']},
-  {ic:'expand', href:'services/upscale.html', ar:['تكبير ودقة الصور','ضاعف حجم صورك ووضوحها حتى ٤ أضعاف دون فقدان الجودة.'], en:['Upscale & enhance','Increase size and sharpness up to 4× without losing quality.']},
-  {ic:'aperture', href:'services/portrait-blur.html', ar:['عزل / طمس الخلفية','تأثير بوكيه احترافي يبرز موضوع الصورة ويطمس ما خلفه.'], en:['Portrait blur','Pro bokeh effect that highlights your subject and blurs the rest.']},
-  {ic:'layers', href:'services/convert-compress.html', ar:['تحويل وضغط وتغيير الحجم','بين PNG وJPG وWebP — اضغط وغيّر الأبعاد بجودة مثالية.'], en:['Convert · compress · resize','Between PNG, JPG & WebP — compress and resize with perfect quality.']},
-  {ic:'text', href:'services/ocr.html', ar:['استخراج النص من الصور (OCR)','حوّل الصور والمستندات إلى نص قابل للتحرير — عربي وإنجليزي.'], en:['Extract text (OCR)','Turn images and documents into editable text — Arabic & English.']},
-  {ic:'qr', href:'services/qr.html', ar:['مولّد QR احترافي','أنشئ رموز QR أنيقة بشعارك وألوانك الخاصة بدقة عالية.'], en:['Pro QR generator','Create elegant QR codes with your logo and colors in high resolution.']},
-  {ic:'stamp', href:'services/watermark.html', ar:['العلامة المائية','أضف علامتك (نص أو شعار) على صورك دفعة واحدة، أو اطمس منطقة لإخفائها.'], en:['Watermark studio','Brand your images (text or logo) in one batch, or blur a region to hide it.']}
-];
 
-const PRO = [
-  {ic:'face', ar:['تحسين وترميم الوجوه HD','ترميم الوجوه القديمة أو الباهتة إلى دقة فائقة وواقعية.'], en:['Face restore HD','Restore old or blurry faces to ultra-sharp, lifelike detail.']},
-  {ic:'eraser', ar:['ممحاة الكائنات الذكية','امسح أي كائن أو شخص من الصورة وتُملأ الفجوة تلقائياً.'], en:['Smart object eraser','Erase any object or person; the gap is filled in automatically.']},
-  {ic:'wand', ar:['التعبئة التوليدية وتوسيع الصورة','وسّع حدود صورتك أو أضف عناصر جديدة بالذكاء الاصطناعي.'], en:['Generative fill & uncrop','Expand your image or add new elements with AI.']},
-  {ic:'image', ar:['توليد صور من نص','حوّل وصفك النصي إلى صور فنية عالية الجودة.'], en:['Text to image','Turn your text prompt into high-quality artistic images.']},
-  {ic:'video', ar:['تحويل صورة إلى فيديو','حرّك صورك الثابتة وحوّلها إلى مقاطع فيديو قصيرة حيّة.'], en:['Image to video','Animate still images into short, lively video clips.']},
-  {ic:'film', ar:['إزالة خلفية الفيديو','افصل الموضوع عن الخلفية في مقاطع الفيديو بدقة عالية.'], en:['Video background removal','Separate subject from background in videos with high precision.']},
-  {ic:'package', ar:['صور المنتجات الاحترافية','خلفيات ومشاهد احترافية لمنتجاتك جاهزة للمتاجر والإعلانات.'], en:['Product photoshoot','Pro backgrounds and scenes for your products, ready for stores & ads.']},
-  {ic:'palette', ar:['تلوين الصور القديمة','أعِد الحياة لصورك بالأبيض والأسود بألوان طبيعية بالذكاء الاصطناعي.'], en:['Colorize old photos','Bring black-&-white photos to life with natural AI color.']}
-];
 
-function card(s, pro){
-  const soon = pro || s.soon;
-  const goAr = soon ? 'قريباً' : 'افتح الأداة';
-  const goEn = soon ? 'Coming soon' : 'Open tool';
-  const badge = soon ? `<span class="badge"><span data-ar>قريباً</span><span data-en>Soon</span></span>` : '';
-  const tag = s.href ? `href="${s.href}"` : 'href="#free"';
-  return `<a class="card ${pro?'pro':''} ${s.soon?'soon':''}" ${tag}>
-    ${badge}
-    <div class="ic">${I[s.ic]}</div>
-    <h3><span data-ar>${s.ar[0]}</span><span data-en>${s.en[0]}</span></h3>
-    <div class="desc"><span data-ar>${s.ar[1]}</span><span data-en>${s.en[1]}</span></div>
-    <div class="go"><span data-ar>${goAr}</span><span data-en>${goEn}</span> <span class="arrow">←</span></div>
-  </a>`;
-}
 
-document.getElementById('freeGrid').innerHTML = FREE.map(s=>card(s,false)).join('');
-document.getElementById('proGrid').innerHTML  = PRO.map(s=>card(s,true)).join('');
 
 function toggleLang(){
   const html = document.documentElement;

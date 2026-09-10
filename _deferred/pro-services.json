@@ -1,0 +1,63 @@
+{
+  "note": "خدمات مؤجّلة — أُخفيت من الموقع بتاريخ 2026-09-10 لأن بطاقات «قريباً» تضر بأهلية AdSense والانطباع العام. أعِدها عند جاهزيتها الفعلية.",
+  "hidden_on": "2026-09-10",
+  "restore": "انظر _deferred/README.md",
+  "services": [
+    {
+      "icon": "face",
+      "title_ar": "تحسين وترميم الوجوه HD",
+      "desc_ar": "ترميم الوجوه القديمة أو الباهتة إلى دقة فائقة وواقعية.",
+      "title_en": "Face restore HD",
+      "desc_en": "Restore old or blurry faces to ultra-sharp, lifelike detail."
+    },
+    {
+      "icon": "eraser",
+      "title_ar": "ممحاة الكائنات الذكية",
+      "desc_ar": "امسح أي كائن أو شخص من الصورة وتُملأ الفجوة تلقائياً.",
+      "title_en": "Smart object eraser",
+      "desc_en": "Erase any object or person; the gap is filled in automatically."
+    },
+    {
+      "icon": "wand",
+      "title_ar": "التعبئة التوليدية وتوسيع الصورة",
+      "desc_ar": "وسّع حدود صورتك أو أضف عناصر جديدة بالذكاء الاصطناعي.",
+      "title_en": "Generative fill & uncrop",
+      "desc_en": "Expand your image or add new elements with AI."
+    },
+    {
+      "icon": "image",
+      "title_ar": "توليد صور من نص",
+      "desc_ar": "حوّل وصفك النصي إلى صور فنية عالية الجودة.",
+      "title_en": "Text to image",
+      "desc_en": "Turn your text prompt into high-quality artistic images."
+    },
+    {
+      "icon": "video",
+      "title_ar": "تحويل صورة إلى فيديو",
+      "desc_ar": "حرّك صورك الثابتة وحوّلها إلى مقاطع فيديو قصيرة حيّة.",
+      "title_en": "Image to video",
+      "desc_en": "Animate still images into short, lively video clips."
+    },
+    {
+      "icon": "film",
+      "title_ar": "إزالة خلفية الفيديو",
+      "desc_ar": "افصل الموضوع عن الخلفية في مقاطع الفيديو بدقة عالية.",
+      "title_en": "Video background removal",
+      "desc_en": "Separate subject from background in videos with high precision."
+    },
+    {
+      "icon": "package",
+      "title_ar": "صور المنتجات الاحترافية",
+      "desc_ar": "خلفيات ومشاهد احترافية لمنتجاتك جاهزة للمتاجر والإعلانات.",
+      "title_en": "Product photoshoot",
+      "desc_en": "Pro backgrounds and scenes for your products, ready for stores & ads."
+    },
+    {
+      "icon": "palette",
+      "title_ar": "تلوين الصور القديمة",
+      "desc_ar": "أعِد الحياة لصورك بالأبيض والأسود بألوان طبيعية بالذكاء الاصطناعي.",
+      "title_en": "Colorize old photos",
+      "desc_en": "Bring black-&-white photos to life with natural AI color."
+    }
+  ]
+}
