@@ -991,6 +991,272 @@ ARTICLES = [
   <li>Upload — and let the platform compress just once.</li>
 </ol>
 """
+},
+{
+ "slug":"cv-photo-white-background",
+ "date":"2026-09-11",
+ "tool":"services/background-removal.html",
+ "tool_ar":"جرّب إزالة الخلفية","tool_en":"Try background removal",
+ "icon":"\U0001F454",
+ "title_ar":"صورة شخصية للسيرة الذاتية بخلفية بيضاء — دون استوديو",
+ "title_en":"A Professional CV Photo on a White Background — No Studio Needed",
+ "desc_ar":"كيف تلتقط صورة احترافية للسيرة الذاتية أو لينكدإن بهاتفك، ثم تحوّل خلفيتها إلى بيضاء نظيفة مجاناً.",
+ "desc_en":"How to take a professional CV or LinkedIn photo with your phone, then turn its background clean white for free.",
+ "body_ar":"""
+<p>الصورة الشخصية أول ما يراه صاحب العمل، وتُكوِّن انطباعاً قبل قراءة أي سطر. والخبر الجيد: لا تحتاج استوديو. هاتف حديث وضوء نافذة وأداة إزالة خلفية تكفي.</p>
+
+<h2>متى تضع صورة في سيرتك الذاتية؟</h2>
+<p>الأعراف تختلف حسب البلد والقطاع:</p>
+<ul>
+  <li><strong>الخليج والعالم العربي وأوروبا عموماً:</strong> الصورة شائعة ومتوقَّعة غالباً.</li>
+  <li><strong>الولايات المتحدة وبريطانيا وكندا:</strong> تُستبعد عادةً لتجنّب التحيّز في التوظيف.</li>
+  <li><strong>لينكدإن:</strong> الصورة ضرورية في كل مكان — الملفات بلا صورة تُتجاهل أكثر.</li>
+</ul>
+
+<h2>التصوير: ٨٠٪ من النتيجة</h2>
+<ul>
+  <li><strong>الضوء:</strong> قف مواجهاً لنافذة في النهار. الضوء الطبيعي الناعم أجمل من أي فلاش.</li>
+  <li><strong>المسافة:</strong> ابتعد عن الجدار متراً على الأقل، فلا يسقط ظلك عليه.</li>
+  <li><strong>الخلفية:</strong> جدار بلون واحد يسهّل العزل كثيراً — حتى لو كنت ستستبدله.</li>
+  <li><strong>الإطار:</strong> من منتصف الصدر إلى أعلى الرأس، مع هامش صغير فوق الرأس.</li>
+  <li><strong>الكاميرا:</strong> بمستوى العينين، لا من الأسفل. استخدم مؤقّت الهاتف أو اطلب من صديق.</li>
+  <li><strong>المظهر:</strong> ملابس بلون سادة تختلف عن الخلفية — الأبيض على خلفية بيضاء يذوب.</li>
+</ul>
+
+<h2>الخطوات</h2>
+<ol>
+  <li>التقط عدة صور واختر أوضحها وأكثرها طبيعية.</li>
+  <li>أزل الخلفية بالأداة، واختر الخلفية البيضاء (أو رمادي فاتح جداً إن أردت لمسة أنعم).</li>
+  <li>قصّ الصورة مربّعة أو بنسبة 4:5 حسب الطلب.</li>
+  <li>احفظ بصيغة JPG بجودة 90 — حجم مناسب لنماذج التقديم الإلكترونية.</li>
+</ol>
+
+<h2>أخطاء تُضعف الانطباع</h2>
+<ul>
+  <li>صورة سيلفي بذراع ممدودة — تشوّه الملامح وتبدو غير رسمية.</li>
+  <li>قصّ صورة جماعية أو من مناسبة — تظهر أطراف أشخاص آخرين.</li>
+  <li>فلاتر تجميل قوية — تجعل الشخص مختلفاً عمّا سيراه في المقابلة.</li>
+  <li>دقة منخفضة مكبّرة — تبدو ضبابية في ملف PDF.</li>
+</ul>
+
+<h2>لماذا المعالجة المحلية هنا تحديداً؟</h2>
+<p>صورة وجهك بيانات بيومترية شخصية. رفعها إلى خدمة مجهولة يعني أن نسخة منها قد تُخزَّن أو تُستخدم لتدريب نماذج. معالجتها داخل متصفحك تُبقيها على جهازك وحده.</p>
+""",
+ "body_en":"""
+<p>Your photo is the first thing an employer sees, and it forms an impression before a single line is read. The good news: you don't need a studio. A modern phone, window light and a background remover are enough.</p>
+
+<h2>Should your CV include a photo?</h2>
+<ul>
+  <li><strong>Gulf, Arab world and much of Europe:</strong> photos are common and often expected.</li>
+  <li><strong>US, UK and Canada:</strong> usually omitted to avoid hiring bias.</li>
+  <li><strong>LinkedIn:</strong> essential everywhere — profiles without a photo get ignored more.</li>
+</ul>
+
+<h2>The shot: 80% of the result</h2>
+<ul>
+  <li><strong>Light:</strong> face a window in daytime. Soft natural light beats any flash.</li>
+  <li><strong>Distance:</strong> stand at least a metre from the wall so your shadow doesn't fall on it.</li>
+  <li><strong>Backdrop:</strong> a single-colour wall makes isolation much easier — even if you'll replace it.</li>
+  <li><strong>Framing:</strong> mid-chest to the top of the head, with a little space above.</li>
+  <li><strong>Camera:</strong> at eye level, never from below. Use the phone timer or ask a friend.</li>
+  <li><strong>Clothing:</strong> a plain colour that differs from the background — white on white disappears.</li>
+</ul>
+
+<h2>The steps</h2>
+<ol>
+  <li>Take several shots and pick the clearest, most natural one.</li>
+  <li>Remove the background and choose white (or a very light grey for a softer look).</li>
+  <li>Crop square or 4:5 as required.</li>
+  <li>Save as JPG at quality 90 — a good size for online application forms.</li>
+</ol>
+
+<h2>Mistakes that weaken the impression</h2>
+<ul>
+  <li>An arm's-length selfie — it distorts features and looks informal.</li>
+  <li>Cropping a group or event photo — other people's edges show.</li>
+  <li>Heavy beauty filters — you look different from who arrives at the interview.</li>
+  <li>A low-resolution image enlarged — it looks blurry inside a PDF.</li>
+</ul>
+
+<h2>Why local processing matters here</h2>
+<p>A photo of your face is personal biometric data. Uploading it to an unknown service means a copy may be stored or used to train models. Processing it in your browser keeps it on your device alone.</p>
+"""
+},
+{
+ "slug":"optimize-images-website-speed",
+ "date":"2026-09-11",
+ "tool":"services/convert-compress.html",
+ "tool_ar":"جرّب أداة الضغط","tool_en":"Try the compressor",
+ "icon":"\U000026A1",
+ "title_ar":"تسريع موقعك بتحسين الصور: دليل عملي لأصحاب المواقع",
+ "title_en":"Speed Up Your Website by Optimising Images: A Practical Guide",
+ "desc_ar":"الصور أثقل ما في صفحتك غالباً. خطوات مرتّبة حسب الأثر لتسريع الموقع وتحسين ترتيبه في جوجل.",
+ "desc_en":"Images are usually the heaviest part of a page. Steps ordered by impact to speed up your site and improve its Google ranking.",
+ "body_ar":"""
+<p>سرعة الصفحة عامل ترتيب معلَن في جوجل، وزائر الجوال يغادر إن تأخّر التحميل بضع ثوانٍ. والصور غالباً تشكّل أكثر من نصف وزن الصفحة — لذا فهي أسرع طريق لتسريع أي موقع.</p>
+
+<h2>الخطوات مرتّبة حسب الأثر</h2>
+
+<h3>١) لا ترفع صوراً أكبر مما يُعرض</h3>
+<p>صورة بعرض 4000 بكسل تُعرض في مكان عرضه 800 تعني أنك تحمّل الزائر ٢٥ ضعف البيانات اللازمة. صغّر الأبعاد إلى أقصى عرض فعلي — غالباً 1920 للصور العريضة و1200 لصور المقالات.</p>
+
+<h3>٢) استخدم WebP</h3>
+<p>توفير ٢٥–٣٥٪ مقارنةً بـJPG بنفس الجودة تقريباً، ومدعوم في كل المتصفحات الحديثة.</p>
+
+<h3>٣) الجودة 75–82</h3>
+<p>الفرق البصري بين 100 و80 لا يُلاحظ، والحجم ينخفض كثيراً. للصور الخلفية الكبيرة جرّب 65.</p>
+
+<h3>٤) التحميل الكسول (Lazy Loading)</h3>
+<p>أضف <code>loading="lazy"</code> لكل صورة أسفل الشاشة الأولى. لا تُحمَّل إلا عند اقتراب الزائر منها. سطر واحد بأثر كبير.</p>
+
+<h3>٥) حدّد الأبعاد في الكود</h3>
+<p>اكتب <code>width</code> و<code>height</code> لكل صورة. هذا يمنع «قفز» الصفحة أثناء التحميل، وهو مؤشر يقيسه جوجل (CLS).</p>
+
+<h3>٦) لا تكسل الصورة الرئيسية</h3>
+<p>الصورة الكبيرة أعلى الصفحة يجب ألا تكون <code>lazy</code> — تأخيرها يُبطئ مؤشر LCP الذي يعتمده جوجل.</p>
+
+<h2>كيف تقيس النتيجة؟</h2>
+<p>افتح أداة <strong>PageSpeed Insights</strong> من جوجل، والصق رابط صفحتك. ركّز على:</p>
+<ul>
+  <li><strong>LCP</strong> — زمن ظهور أكبر عنصر. الهدف: أقل من 2.5 ثانية.</li>
+  <li><strong>CLS</strong> — استقرار التخطيط. الهدف: أقل من 0.1.</li>
+  <li>قسم «Properly size images» و«Serve images in next-gen formats» — يخبرك بالضبط أي الصور تحتاج معالجة.</li>
+</ul>
+
+<h2>سير عمل سريع لموقع قائم</h2>
+<ol>
+  <li>اجمع صور الموقع في مجلد واحد.</li>
+  <li>أفلت المجلد كاملاً في أداة التحويل: WebP، جودة 80، أقصى عرض 1920.</li>
+  <li>نزّل ZIP واستبدل الصور، مع تحديث الامتدادات في الكود.</li>
+  <li>أعد القياس في PageSpeed وقارن.</li>
+</ol>
+""",
+ "body_en":"""
+<p>Page speed is a stated Google ranking factor, and mobile visitors leave if loading takes a few seconds. Images often make up more than half a page's weight — so they are the fastest route to a quicker site.</p>
+
+<h2>Steps ordered by impact</h2>
+
+<h3>1) Don't serve images larger than they display</h3>
+<p>A 4000px-wide image shown in an 800px slot makes visitors download 25× the data needed. Resize to the real maximum width — usually 1920 for full-width images and 1200 for article images.</p>
+
+<h3>2) Use WebP</h3>
+<p>25–35% smaller than JPG at near-identical quality, supported by every modern browser.</p>
+
+<h3>3) Quality 75–82</h3>
+<p>The visual difference between 100 and 80 is imperceptible, while size drops sharply. Try 65 for large background images.</p>
+
+<h3>4) Lazy loading</h3>
+<p>Add <code>loading="lazy"</code> to every image below the first screen. It loads only as the visitor approaches. One attribute, big effect.</p>
+
+<h3>5) Declare dimensions in the markup</h3>
+<p>Write <code>width</code> and <code>height</code> on every image. This prevents the page from jumping while loading — a metric Google measures (CLS).</p>
+
+<h3>6) Don't lazy-load the hero image</h3>
+<p>The large image at the top must not be <code>lazy</code> — delaying it slows LCP, which Google relies on.</p>
+
+<h2>How to measure</h2>
+<p>Open Google's <strong>PageSpeed Insights</strong> and paste your page URL. Focus on:</p>
+<ul>
+  <li><strong>LCP</strong> — time to render the largest element. Target: under 2.5 seconds.</li>
+  <li><strong>CLS</strong> — layout stability. Target: under 0.1.</li>
+  <li>The "Properly size images" and "Serve images in next-gen formats" sections — they name exactly which images need work.</li>
+</ul>
+
+<h2>A quick workflow for an existing site</h2>
+<ol>
+  <li>Collect your site's images into one folder.</li>
+  <li>Drop the whole folder into the converter: WebP, quality 80, max width 1920.</li>
+  <li>Download the ZIP and replace the images, updating extensions in your code.</li>
+  <li>Re-measure in PageSpeed and compare.</li>
+</ol>
+"""
+},
+{
+ "slug":"youtube-thumbnail-guide",
+ "date":"2026-09-11",
+ "tool":"services/background-removal.html",
+ "tool_ar":"جرّب إزالة الخلفية","tool_en":"Try background removal",
+ "icon":"\U0001F3AC",
+ "title_ar":"كيف تصمّم صورة مصغّرة ليوتيوب تجذب النقرات",
+ "title_en":"How to Design a YouTube Thumbnail That Gets Clicks",
+ "desc_ar":"المقاس الصحيح، وقواعد التصميم التي ترفع نسبة النقر، وكيف تعزل وجهك عن الخلفية لصورة مصغّرة احترافية.",
+ "desc_en":"The right size, the design rules that raise click-through rate, and how to cut yourself out for a professional thumbnail.",
+ "body_ar":"""
+<p>الصورة المصغّرة تقرّر إن كان أحد سيشاهد فيديوك أصلاً. محتوى ممتاز بصورة مصغّرة ضعيفة يبقى بلا مشاهدات. يوتيوب يقيس هذا بمؤشر «نسبة النقر» (CTR)، ويعطي الفيديوهات ذات النسبة الأعلى ظهوراً أكبر.</p>
+
+<h2>المواصفات التقنية</h2>
+<table>
+  <tr><th>البند</th><th>القيمة</th></tr>
+  <tr><td>الأبعاد</td><td>1280×720 بكسل</td></tr>
+  <tr><td>النسبة</td><td>16:9</td></tr>
+  <tr><td>الحد الأقصى للحجم</td><td>2 ميغابايت</td></tr>
+  <tr><td>الصيغ المقبولة</td><td>JPG · PNG · GIF</td></tr>
+</table>
+
+<h2>قواعد التصميم التي تعمل</h2>
+<ul>
+  <li><strong>صمّم للحجم الصغير:</strong> معظم المشاهدين يرون الصورة بعرض إبهام على الجوال. إن لم تُفهم وهي صغيرة، فهي فاشلة.</li>
+  <li><strong>وجه واضح بتعبير قوي:</strong> الوجوه تجذب العين أكثر من أي عنصر آخر، والتعبير يوصل الشعور فوراً.</li>
+  <li><strong>ثلاث كلمات كحدّ أقصى:</strong> العنوان موجود تحت الصورة. النص على الصورة يكمّله ولا يكرّره.</li>
+  <li><strong>تباين عالٍ:</strong> ألوان قوية ونص بحدود واضحة — واجهة يوتيوب بيضاء أو داكنة، فتميّز عنها.</li>
+  <li><strong>عنصر واحد رئيسي:</strong> الازدحام يقتل الصورة المصغّرة.</li>
+  <li><strong>تجنّب الزاوية السفلية اليمنى:</strong> يوتيوب يضع فيها مدة الفيديو فتغطّي ما تحتها.</li>
+</ul>
+
+<h2>عزل الوجه: التقنية الأكثر استخداماً</h2>
+<p>الصور المصغّرة الاحترافية تضع الشخص معزولاً فوق خلفية ملوّنة أو مشهد. الطريقة:</p>
+<ol>
+  <li>التقط لقطة من الفيديو أو صورة منفصلة بتعبير واضح وإضاءة جيدة.</li>
+  <li>أزل الخلفية واحفظ النتيجة PNG شفافة.</li>
+  <li>في أي برنامج تصميم ضع الشخص على خلفية جديدة بألوان قوية.</li>
+  <li>أضف إطاراً أبيض خفيفاً حول الشخص — يفصله بصرياً ويرفع الوضوح.</li>
+  <li>أضف النص وصدّر بمقاس 1280×720.</li>
+</ol>
+
+<h2>اختبر قبل النشر</h2>
+<p>صغّر الصورة على شاشتك إلى عرض ١٦٠ بكسل تقريباً وضعها بجوار صور مصغّرة منافسة. هل تبرز؟ هل تُفهم الفكرة في ثانية؟ إن لم تكن كذلك فأعد التصميم.</p>
+
+<h2>ولا تخدع المشاهد</h2>
+<p>صورة مصغّرة لا تمثّل المحتوى ترفع النقرات مؤقتاً، لكن المشاهدين يغادرون سريعاً، فيخفض يوتيوب ظهور القناة كلها. الوعد في الصورة يجب أن يتحقّق في الفيديو.</p>
+""",
+ "body_en":"""
+<p>The thumbnail decides whether anyone watches your video at all. Great content behind a weak thumbnail stays unwatched. YouTube measures this with click-through rate (CTR) and gives higher-CTR videos more exposure.</p>
+
+<h2>Technical specs</h2>
+<table>
+  <tr><th>Item</th><th>Value</th></tr>
+  <tr><td>Dimensions</td><td>1280×720 px</td></tr>
+  <tr><td>Ratio</td><td>16:9</td></tr>
+  <tr><td>Max file size</td><td>2 MB</td></tr>
+  <tr><td>Accepted formats</td><td>JPG · PNG · GIF</td></tr>
+</table>
+
+<h2>Design rules that work</h2>
+<ul>
+  <li><strong>Design for small:</strong> most viewers see it thumb-sized on a phone. If it doesn't read small, it fails.</li>
+  <li><strong>A clear face with strong expression:</strong> faces draw the eye more than anything, and expression conveys emotion instantly.</li>
+  <li><strong>Three words maximum:</strong> the title sits below. Thumbnail text complements it, never repeats it.</li>
+  <li><strong>High contrast:</strong> bold colours and outlined text — YouTube's interface is white or dark, so stand out from it.</li>
+  <li><strong>One main element:</strong> clutter kills thumbnails.</li>
+  <li><strong>Avoid the bottom-right corner:</strong> YouTube places the duration badge there, covering what's underneath.</li>
+</ul>
+
+<h2>Cutting yourself out: the most used technique</h2>
+<p>Professional thumbnails place the person isolated over a coloured backdrop or scene:</p>
+<ol>
+  <li>Grab a frame from the video, or shoot a separate photo with a clear expression and good lighting.</li>
+  <li>Remove the background and save a transparent PNG.</li>
+  <li>In any design app, place the person on a new, bold background.</li>
+  <li>Add a thin white outline around the person — it separates them visually and boosts clarity.</li>
+  <li>Add text and export at 1280×720.</li>
+</ol>
+
+<h2>Test before publishing</h2>
+<p>Shrink it on screen to roughly 160px wide and place it next to competing thumbnails. Does it stand out? Is the idea clear in a second? If not, redesign.</p>
+
+<h2>And don't mislead viewers</h2>
+<p>A thumbnail that misrepresents the content lifts clicks briefly, but viewers leave fast and YouTube reduces the whole channel's reach. The thumbnail's promise must be kept in the video.</p>
+"""
 }
 ]
 
@@ -1017,12 +1283,12 @@ TPL = """<!DOCTYPE html>
 <link rel="apple-touch-icon" href="../assets/icon-180.png">
 <link rel="manifest" href="../manifest.webmanifest">
 <meta name="theme-color" content="#0a0b0f">
-<link rel="canonical" href="{SITE}/articles/{slug}.html">
+<link rel="canonical" href="{SITE}/articles/{slug}">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="007.gallery">
 <meta property="og:title" content="{title_ar}">
 <meta property="og:description" content="{desc_ar}">
-<meta property="og:url" content="{SITE}/articles/{slug}.html">
+<meta property="og:url" content="{SITE}/articles/{slug}">
 <meta property="og:image" content="{SITE}/assets/og-cover.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="author" content="{EN_NAME}">
@@ -1038,7 +1304,7 @@ TPL = """<!DOCTYPE html>
 "image":"{SITE}/assets/og-cover.png",
 "author":{{"@type":"Person","name":"{EN_NAME}","alternateName":"{AR_NAME}"}},
 "publisher":{{"@type":"Organization","name":"007.gallery","url":"{SITE}"}},
-"mainEntityOfPage":"{SITE}/articles/{slug}.html"}}
+"mainEntityOfPage":"{SITE}/articles/{slug}"}}
 </script>
 <style>
   .art{{max-width:760px;margin:0 auto;padding:34px 0 20px}}
@@ -1062,6 +1328,10 @@ TPL = """<!DOCTYPE html>
   .art-en{{display:none}}
   html[lang=en] .art-ar{{display:none}}
   html[lang=en] .art-en{{display:block}}
+  .related{{margin:40px 0 10px;padding-top:26px;border-top:1px solid var(--line)}}
+  .related h2{{font-size:19px;font-weight:900;margin-bottom:14px}}
+  .related a{{display:block;padding:13px 16px;border:1px solid var(--line);border-radius:12px;margin-bottom:9px;color:var(--txt);font-weight:700;font-size:15px;background:var(--bg-2);transition:.15s}}
+  .related a:hover{{border-color:var(--gold);color:var(--gold-2)}}
   .backlink{{display:inline-flex;align-items:center;gap:7px;font-size:13.5px;color:var(--gold-2);font-weight:700;margin-bottom:6px}}
 </style>
 <script src="../assets/guardian.js" defer></script>
@@ -1104,6 +1374,8 @@ TPL = """<!DOCTYPE html>
     </div>
   </div>
 
+  {related}
+
   <div data-ad-slot="leaderboard"></div>
  </article>
 </main>
@@ -1143,8 +1415,16 @@ def build():
     outdir = os.path.join(here, "articles")
     os.makedirs(outdir, exist_ok=True)
     index = []
+    def related_html(a):
+        same=[x for x in ARTICLES if x['slug']!=a['slug'] and x['tool']==a['tool']]
+        rest=sorted([x for x in ARTICLES if x['slug']!=a['slug'] and x not in same],key=lambda x:x['date'],reverse=True)
+        pick=(same+rest)[:3]
+        ar=''.join(f'<a href="{x["slug"]}.html">{html.escape(x["title_ar"])}</a>' for x in pick)
+        en=''.join(f'<a href="{x["slug"]}.html">{html.escape(x["title_en"])}</a>' for x in pick)
+        return (f'<div class="related art-ar"><h2>دلائل ذات صلة</h2>{ar}</div>'
+                f'<div class="related art-en"><h2>Related guides</h2>{en}</div>')
     for a in ARTICLES:
-        page = TPL.format(
+        page = TPL.format(related=related_html(a),
             SITE=SITE, EN_NAME=EN_NAME, AR_NAME=AR_NAME,
             slug=a["slug"], date=a["date"], icon=a["icon"],
             date_ar=fmt_date(a["date"], True), date_en=fmt_date(a["date"], False),

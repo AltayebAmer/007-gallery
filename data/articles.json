@@ -42,6 +42,36 @@
       "tool": "services/convert-compress.html"
     },
     {
+      "slug": "cv-photo-white-background",
+      "date": "2026-09-11",
+      "icon": "👔",
+      "title_ar": "صورة شخصية للسيرة الذاتية بخلفية بيضاء — دون استوديو",
+      "title_en": "A Professional CV Photo on a White Background — No Studio Needed",
+      "desc_ar": "كيف تلتقط صورة احترافية للسيرة الذاتية أو لينكدإن بهاتفك، ثم تحوّل خلفيتها إلى بيضاء نظيفة مجاناً.",
+      "desc_en": "How to take a professional CV or LinkedIn photo with your phone, then turn its background clean white for free.",
+      "tool": "services/background-removal.html"
+    },
+    {
+      "slug": "optimize-images-website-speed",
+      "date": "2026-09-11",
+      "icon": "⚡",
+      "title_ar": "تسريع موقعك بتحسين الصور: دليل عملي لأصحاب المواقع",
+      "title_en": "Speed Up Your Website by Optimising Images: A Practical Guide",
+      "desc_ar": "الصور أثقل ما في صفحتك غالباً. خطوات مرتّبة حسب الأثر لتسريع الموقع وتحسين ترتيبه في جوجل.",
+      "desc_en": "Images are usually the heaviest part of a page. Steps ordered by impact to speed up your site and improve its Google ranking.",
+      "tool": "services/convert-compress.html"
+    },
+    {
+      "slug": "youtube-thumbnail-guide",
+      "date": "2026-09-11",
+      "icon": "🎬",
+      "title_ar": "كيف تصمّم صورة مصغّرة ليوتيوب تجذب النقرات",
+      "title_en": "How to Design a YouTube Thumbnail That Gets Clicks",
+      "desc_ar": "المقاس الصحيح، وقواعد التصميم التي ترفع نسبة النقر، وكيف تعزل وجهك عن الخلفية لصورة مصغّرة احترافية.",
+      "desc_en": "The right size, the design rules that raise click-through rate, and how to cut yourself out for a professional thumbnail.",
+      "tool": "services/background-removal.html"
+    },
+    {
       "slug": "remove-background-free",
       "date": "2026-08-20",
       "icon": "✂️",
