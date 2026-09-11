@@ -646,6 +646,351 @@ ARTICLES = [
 <h2>Bottom line</h2>
 <p>The golden rule: <strong>what never leaves your device cannot be leaked</strong>. Whenever a local tool does the job, prefer it — especially for files that matter to you.</p>
 """
+},
+{
+ "slug":"compress-image-without-uploading",
+ "date":"2026-09-11",
+ "tool":"services/convert-compress.html",
+ "tool_ar":"جرّب أداة الضغط","tool_en":"Try the compressor",
+ "icon":"\U0001F4E6",
+ "title_ar":"تصغير حجم الصورة أونلاين بدون رفعها لأي موقع",
+ "title_en":"Compress an Image Online Without Uploading It Anywhere",
+ "desc_ar":"كيف تقلّل حجم صورك بنسبة تصل إلى 70٪ دون خسارة ملحوظة في الجودة — وبدون إرسالها إلى خادم أحد.",
+ "desc_en":"How to cut image file size by up to 70% with no visible quality loss — and without sending your photos to anyone's server.",
+ "body_ar":"""
+<p>الصور الكبيرة تبطئ موقعك، وتملأ مساحة تخزينك، وتفشل في الرفع على المنصات التي تحدّ الحجم. لكن معظم أدوات الضغط المجانية تطلب رفع صورتك أولاً — وهذا يعني أن نسخة منها صارت على جهاز لا تملكه.</p>
+
+<h2>لماذا تكون الصورة كبيرة أصلاً؟</h2>
+<p>ثلاثة أسباب، وكل واحد له حلّ مختلف:</p>
+<ul>
+  <li><strong>أبعاد ضخمة:</strong> كاميرا الجوال تصوّر بـ12 ميغابكسل. صفحة الويب لا تحتاج أكثر من 1920 بكسل عرضاً. تصغير الأبعاد وحده قد يوفّر 80٪.</li>
+  <li><strong>صيغة غير مناسبة:</strong> حفظ صورة فوتوغرافية بصيغة PNG يضاعف حجمها بلا فائدة.</li>
+  <li><strong>جودة مبالغ فيها:</strong> الفرق بين جودة 100 وجودة 80 لا تراه العين، لكن الحجم ينخفض للنصف.</li>
+</ul>
+
+<h2>الترتيب الصحيح للضغط</h2>
+<p>هذا الترتيب يعطي أفضل نتيجة:</p>
+<ol>
+  <li><strong>صغّر الأبعاد أولاً</strong> إلى ما تحتاجه فعلاً. هذه أكبر مكسب على الإطلاق.</li>
+  <li><strong>اختر الصيغة الصحيحة:</strong> WebP للويب، JPG للإرسال، PNG للشفافية فقط.</li>
+  <li><strong>اضبط الجودة على 80.</strong> انزل إلى 65 للصور الخلفية الكبيرة التي لا يدقّق فيها أحد.</li>
+</ol>
+<p>لو عكست الترتيب — ضغطت بجودة منخفضة ثم صغّرت الأبعاد — ستحصل على صورة أسوأ بنفس الحجم.</p>
+
+<h2>ما الفرق بين «الضغط» و«تغيير الحجم»؟</h2>
+<p>خلط شائع يستحق التوضيح:</p>
+<ul>
+  <li><strong>تغيير الحجم (Resize):</strong> يقلّل عدد البكسلات. صورة 4000×3000 تصير 1920×1440.</li>
+  <li><strong>الضغط (Compress):</strong> يُبقي عدد البكسلات ويقلّل البيانات المستخدمة لوصفها.</li>
+</ul>
+<p>الأقوى هو استخدام الاثنين معاً — وهذا ما تفعله الأداة في خطوة واحدة.</p>
+
+<h2>متى لا تضغط؟</h2>
+<ul>
+  <li><strong>الصور المعدّة للطباعة:</strong> تحتاج كل بكسل. اطبع من الأصل.</li>
+  <li><strong>الصور التي ستحرّرها لاحقاً:</strong> كل ضغط يفقد بيانات لا تعود. احتفظ بنسخة أصلية دائماً.</li>
+  <li><strong>الرسومات ذات الحواف الحادة:</strong> الشعارات والمخططات تتشوّه بالضغط الفاقد. استخدم PNG أو WebP غير الفاقد.</li>
+</ul>
+
+<h2>لماذا يهمّ ألا تُرفع الصورة؟</h2>
+<p>الضغط عملية حسابية بحتة لا تحتاج خادماً — متصفحك قادر عليها تماماً. فإذا كان الرفع غير ضروري تقنياً، فلماذا تقبله؟ خصوصاً مع صور العائلة، أو لقطات مستندات، أو تصاميم لم تُنشر بعد.</p>
+""",
+ "body_en":"""
+<p>Large images slow your site, fill your storage, and fail to upload on platforms with size limits. Yet most free compression tools require uploading your image first — meaning a copy now sits on a machine you do not own.</p>
+
+<h2>Why is the image large in the first place?</h2>
+<p>Three causes, each with a different fix:</p>
+<ul>
+  <li><strong>Huge dimensions:</strong> a phone camera shoots 12 megapixels. A web page rarely needs more than 1920px wide. Resizing alone can save 80%.</li>
+  <li><strong>Wrong format:</strong> saving a photograph as PNG doubles its size for no benefit.</li>
+  <li><strong>Excessive quality:</strong> you cannot see the difference between quality 100 and 80, but the file halves.</li>
+</ul>
+
+<h2>The correct order</h2>
+<p>This sequence gives the best result:</p>
+<ol>
+  <li><strong>Resize first</strong> to what you actually need. This is by far the biggest win.</li>
+  <li><strong>Pick the right format:</strong> WebP for web, JPG for sending, PNG only for transparency.</li>
+  <li><strong>Set quality to 80.</strong> Drop to 65 for large background images nobody inspects closely.</li>
+</ol>
+<p>Reverse the order — compress hard then resize — and you get a worse image at the same size.</p>
+
+<h2>Compress vs resize — what's the difference?</h2>
+<ul>
+  <li><strong>Resize:</strong> reduces the pixel count. A 4000×3000 image becomes 1920×1440.</li>
+  <li><strong>Compress:</strong> keeps the pixel count and reduces the data used to describe it.</li>
+</ul>
+<p>The strongest approach uses both together — which is what the tool does in a single pass.</p>
+
+<h2>When not to compress</h2>
+<ul>
+  <li><strong>Images destined for print:</strong> they need every pixel. Print from the original.</li>
+  <li><strong>Images you will edit later:</strong> every compression discards data permanently. Always keep an original.</li>
+  <li><strong>Graphics with hard edges:</strong> logos and diagrams degrade under lossy compression. Use PNG or lossless WebP.</li>
+</ul>
+
+<h2>Why does avoiding upload matter?</h2>
+<p>Compression is pure arithmetic that needs no server — your browser handles it perfectly. So if uploading is technically unnecessary, why accept it? Especially for family photos, document scans, or unreleased designs.</p>
+"""
+},
+{
+ "slug":"convert-png-to-webp",
+ "date":"2026-09-11",
+ "tool":"services/convert-compress.html",
+ "tool_ar":"جرّب أداة التحويل","tool_en":"Try the converter",
+ "icon":"\U0001F504",
+ "title_ar":"تحويل PNG إلى WebP: لماذا ومتى وكيف",
+ "title_en":"Convert PNG to WebP: Why, When and How",
+ "desc_ar":"دليل عملي لتحويل صور PNG إلى WebP مع الحفاظ على الشفافية — وتوفير يتجاوز نصف الحجم أحياناً.",
+ "desc_en":"A practical guide to converting PNG images to WebP while keeping transparency — often saving more than half the file size.",
+ "body_ar":"""
+<p>PNG صيغة ممتازة لكنها مسرفة. WebP تعطيك نفس المزايا تقريباً بحجم أصغر بكثير. إليك متى يستحق التحويل ومتى لا.</p>
+
+<h2>كم ستوفّر فعلاً؟</h2>
+<p>التوفير يعتمد على نوع الصورة:</p>
+<ul>
+  <li><strong>لقطات الشاشة والواجهات:</strong> توفير 40–60٪ بضغط غير فاقد.</li>
+  <li><strong>الشعارات والأيقونات البسيطة:</strong> توفير 25–45٪ مع الحفاظ الكامل على الشفافية.</li>
+  <li><strong>الصور الفوتوغرافية المحفوظة خطأً كـPNG:</strong> توفير يتجاوز <strong>80٪</strong> — هذه أكبر مكسب.</li>
+</ul>
+
+<h2>هل تبقى الشفافية؟</h2>
+<p>نعم، تماماً. هذه أهم نقطة يخشاها الناس. WebP يدعم قناة ألفا الكاملة مثل PNG بالضبط — لن تفقد الشفافية ولن تظهر خلفية بيضاء.</p>
+<p>الفارق الوحيد: WebP يدعم <strong>نمطين</strong> — فاقد وغير فاقد. للشعارات والرسومات استخدم غير الفاقد للحفاظ على الحواف الحادة؛ وللصور الفوتوغرافية استخدم الفاقد بجودة 80.</p>
+
+<h2>هل يدعمه الجميع؟</h2>
+<p>كل المتصفحات الحديثة تدعمه منذ سنوات: Chrome وEdge وFirefox وSafari. المشكلة الوحيدة في برامج سطح مكتب قديمة جداً، أو بعض أدوات التصميم التي لم تُحدَّث.</p>
+<p><strong>القاعدة العملية:</strong> استخدم WebP لكل ما ينشر على الويب. واحتفظ بنسخة PNG للأرشيف أو للتسليم لعميل قد يفتحها ببرنامج قديم.</p>
+
+<h2>متى تبقى على PNG؟</h2>
+<ul>
+  <li>ملف تسلّمه لعميل أو مطبعة — إلا إن طلب WebP صراحةً.</li>
+  <li>صورة ستمرّ بدورات تحرير متكرّرة — الأصل غير الفاقد أأمن.</li>
+  <li>أيقونة تطبيق أو أصل تصميم داخل نظامك الفني.</li>
+</ul>
+
+<h2>الخطوات</h2>
+<ol>
+  <li>أفلت ملفات PNG — أو مجلداً كاملاً بمجلداته الفرعية.</li>
+  <li>اختر WebP، واضبط الجودة على 80 (أو اتركها أعلى للرسومات الحادة).</li>
+  <li>حدّد أقصى عرض إن أردت تصغير الأبعاد في الوقت نفسه.</li>
+  <li>نزّل الملفات فردياً أو كلها في ZIP واحد.</li>
+</ol>
+<p>ستظهر لك نسبة التوفير لكل صورة — مؤشر مفيد لتعرف أي الصور كانت تستنزف موقعك.</p>
+""",
+ "body_en":"""
+<p>PNG is an excellent but wasteful format. WebP gives you nearly the same benefits at a far smaller size. Here is when converting is worth it, and when it isn't.</p>
+
+<h2>How much will you actually save?</h2>
+<p>Savings depend on the image type:</p>
+<ul>
+  <li><strong>Screenshots and UI captures:</strong> 40–60% with lossless compression.</li>
+  <li><strong>Simple logos and icons:</strong> 25–45% with transparency fully preserved.</li>
+  <li><strong>Photographs mistakenly saved as PNG:</strong> over <strong>80%</strong> — the single biggest win.</li>
+</ul>
+
+<h2>Does transparency survive?</h2>
+<p>Yes, completely. This is the point people worry about most. WebP supports a full alpha channel exactly like PNG — you will not lose transparency and no white background will appear.</p>
+<p>The one difference: WebP has <strong>two modes</strong> — lossy and lossless. For logos and graphics use lossless to keep hard edges crisp; for photographs use lossy at quality 80.</p>
+
+<h2>Is it universally supported?</h2>
+<p>Every modern browser has supported it for years: Chrome, Edge, Firefox and Safari. The only friction is very old desktop software, or design tools that were never updated.</p>
+<p><strong>Practical rule:</strong> use WebP for everything published on the web. Keep a PNG copy for archiving or for delivering to a client who may open it in older software.</p>
+
+<h2>When to stay with PNG</h2>
+<ul>
+  <li>A file you deliver to a client or a printer — unless they explicitly ask for WebP.</li>
+  <li>An image that will go through repeated editing rounds — a lossless original is safer.</li>
+  <li>An app icon or a design asset inside your own system.</li>
+</ul>
+
+<h2>The steps</h2>
+<ol>
+  <li>Drop your PNG files — or an entire folder including subfolders.</li>
+  <li>Choose WebP and set quality to 80 (or higher for sharp graphics).</li>
+  <li>Set a max width if you want to resize at the same time.</li>
+  <li>Download files individually or all together as a ZIP.</li>
+</ol>
+<p>You will see the saving percentage for each image — a useful signal for spotting which files were draining your site.</p>
+"""
+},
+{
+ "slug":"product-photos-white-background",
+ "date":"2026-09-11",
+ "tool":"services/background-removal.html",
+ "tool_ar":"جرّب إزالة الخلفية","tool_en":"Try background removal",
+ "icon":"\U0001F6CD",
+ "title_ar":"صور المنتجات بخلفية بيضاء: دليل المتاجر الإلكترونية",
+ "title_en":"Product Photos on a White Background: An E-commerce Guide",
+ "desc_ar":"كيف تحوّل صور منتجاتك إلى خلفية بيضاء موحّدة تلبّي شروط أمازون ونون وتزيد ثقة المشتري.",
+ "desc_en":"How to put your product photos on a clean white background that meets marketplace rules and builds buyer trust.",
+ "body_ar":"""
+<p>الخلفية البيضاء ليست ذوقاً بل <strong>شرطاً</strong> في معظم المتاجر الكبرى. أمازون مثلاً يشترط خلفية بيضاء نقية للصورة الرئيسية، ويرفض أو يخفض ترتيب المنتجات المخالفة.</p>
+
+<h2>لماذا تزيد المبيعات؟</h2>
+<ul>
+  <li><strong>تركيز كامل على المنتج</strong> بلا مشتّتات بصرية.</li>
+  <li><strong>اتساق الصفحة:</strong> صفحة منتجات بخلفيات متباينة تبدو غير احترافية وتقلّل الثقة.</li>
+  <li><strong>ملفات أخف:</strong> الخلفية الموحّدة تُضغط أفضل بكثير، فتتحسّن سرعة متجرك.</li>
+</ul>
+
+<h2>التصوير أهم من المعالجة</h2>
+<p>لا تعتمد على البرنامج لإصلاح تصوير سيئ. اتبع هذه القواعد وسيصبح العزل شبه تلقائي:</p>
+<ul>
+  <li><strong>باعد المنتج عن الخلفية</strong> نصف متر على الأقل — يمنع انعكاس الظلال عليها.</li>
+  <li><strong>إضاءة من جهتين</strong> لتقليل الظلال الحادة التي يصعب عزلها.</li>
+  <li><strong>خلفية مختلفة عن لون المنتج:</strong> منتج أبيض على خلفية بيضاء أصعب حالة على أي نموذج.</li>
+  <li><strong>ثبّت الكاميرا</strong> وصوّر بأعلى دقة متاحة.</li>
+</ul>
+
+<h2>سير العمل الكامل</h2>
+<ol>
+  <li>أزل الخلفية بالذكاء الاصطناعي — ستحصل على خلفية شفافة.</li>
+  <li>اختر الخلفية البيضاء من لوحة الألوان بدل الشفافة.</li>
+  <li>نزّل الصورة، ثم مرّرها على أداة التحويل لضغطها بصيغة WebP أو JPG.</li>
+  <li>وحّد الأبعاد لكل منتجاتك — المربع 1:1 هو المعيار الأكثر قبولاً.</li>
+</ol>
+
+<h2>المنتجات الصعبة</h2>
+<ul>
+  <li><strong>الزجاج والشفافيات:</strong> أصعب حالة إطلاقاً. صوّرها على خلفية داكنة ثم عالجها، أو استعن بتصحيح يدوي.</li>
+  <li><strong>المجوهرات والتفاصيل الدقيقة:</strong> صوّر بأعلى دقة ممكنة — التفاصيل الصغيرة أول ما يضيع.</li>
+  <li><strong>الأقمشة والفراء:</strong> الحواف الناعمة تحتاج تباينًا قويًا مع الخلفية.</li>
+</ul>
+
+<h2>ميزة المعالجة المحلية للتجار</h2>
+<p>صور منتجاتك قبل الإطلاق <strong>معلومة تجارية حسّاسة</strong>. رفعها إلى خدمة مجانية يعني أن منتجك صار على خادم طرف ثالث قبل أن تعلنه. المعالجة داخل المتصفح تلغي هذا القلق تماماً — ولا حدّ على عدد الصور مهما كبر كتالوجك.</p>
+""",
+ "body_en":"""
+<p>A white background is not a matter of taste — it is a <strong>requirement</strong> on most major marketplaces. Amazon, for instance, demands a pure white background for the main image and will reject or down-rank listings that break it.</p>
+
+<h2>Why does it increase sales?</h2>
+<ul>
+  <li><strong>Full focus on the product</strong> with no visual distraction.</li>
+  <li><strong>Page consistency:</strong> a catalogue with mismatched backgrounds looks unprofessional and erodes trust.</li>
+  <li><strong>Lighter files:</strong> a uniform background compresses far better, improving your store's speed.</li>
+</ul>
+
+<h2>Shooting matters more than editing</h2>
+<p>Do not rely on software to rescue a bad shot. Follow these rules and isolation becomes almost automatic:</p>
+<ul>
+  <li><strong>Separate the product from the backdrop</strong> by at least half a metre — this prevents shadows falling on it.</li>
+  <li><strong>Light from two sides</strong> to reduce hard shadows that are difficult to cut out.</li>
+  <li><strong>Use a backdrop that differs from the product colour:</strong> a white product on white is the hardest case for any model.</li>
+  <li><strong>Stabilise the camera</strong> and shoot at the highest resolution available.</li>
+</ul>
+
+<h2>The full workflow</h2>
+<ol>
+  <li>Remove the background with AI — you get a transparent result.</li>
+  <li>Pick the white background from the colour swatches instead of transparent.</li>
+  <li>Download, then run it through the converter to compress as WebP or JPG.</li>
+  <li>Standardise dimensions across your catalogue — a 1:1 square is the most widely accepted.</li>
+</ol>
+
+<h2>Difficult products</h2>
+<ul>
+  <li><strong>Glass and transparent items:</strong> the hardest case by far. Shoot against a dark backdrop, then process, or expect manual touch-up.</li>
+  <li><strong>Jewellery and fine detail:</strong> shoot at maximum resolution — small details are the first thing lost.</li>
+  <li><strong>Fabric and fur:</strong> soft edges need strong contrast against the backdrop.</li>
+</ul>
+
+<h2>Why local processing matters for sellers</h2>
+<p>Pre-launch product photos are <strong>commercially sensitive</strong>. Uploading them to a free service puts your product on a third party's server before you announce it. In-browser processing removes that worry entirely — with no cap on image count, however large your catalogue.</p>
+"""
+},
+{
+ "slug":"image-sizes-social-media",
+ "date":"2026-09-11",
+ "tool":"services/convert-compress.html",
+ "tool_ar":"جرّب أداة تغيير الحجم","tool_en":"Try the resizer",
+ "icon":"\U0001F4F1",
+ "title_ar":"مقاسات الصور الصحيحة لوسائل التواصل الاجتماعي",
+ "title_en":"The Right Image Sizes for Social Media",
+ "desc_ar":"جدول مرجعي بأبعاد الصور لكل منصة، ولماذا تفقد صورك جودتها عند النشر وكيف تمنع ذلك.",
+ "desc_en":"A reference table of image dimensions for every platform, why your posts lose quality, and how to prevent it.",
+ "body_ar":"""
+<p>ترفع صورة عالية الجودة فتظهر باهتة أو مقصوصة. السبب ليس المنصة وحدها — بل عدم مطابقة الأبعاد والحجم لما تتوقّعه.</p>
+
+<h2>لماذا تفقد صورك جودتها؟</h2>
+<p>كل منصة <strong>تعيد ضغط</strong> ما ترفعه. فإذا رفعت صورة بأبعاد خاطئة، تحدث عمليتان ضارتان: إعادة تحجيم ثم إعادة ضغط. والنتيجة صورة أسوأ مما لو رفعتها بالمقاس الصحيح من البداية.</p>
+<p><strong>القاعدة الذهبية:</strong> ارفع بالأبعاد الدقيقة التي تتوقّعها المنصة، وبجودة عالية (85–90)، ودع المنصة تضغط مرة واحدة فقط.</p>
+
+<h2>جدول الأبعاد</h2>
+<table>
+  <tr><th>المنصة والنوع</th><th>الأبعاد</th><th>النسبة</th></tr>
+  <tr><td>إنستغرام — منشور مربع</td><td>1080×1080</td><td>1:1</td></tr>
+  <tr><td>إنستغرام — عمودي</td><td>1080×1350</td><td>4:5</td></tr>
+  <tr><td>إنستغرام — ستوري وريلز</td><td>1080×1920</td><td>9:16</td></tr>
+  <tr><td>فيسبوك — منشور</td><td>1200×630</td><td>1.91:1</td></tr>
+  <tr><td>فيسبوك — غلاف</td><td>1640×856</td><td>—</td></tr>
+  <tr><td>إكس (تويتر) — منشور</td><td>1600×900</td><td>16:9</td></tr>
+  <tr><td>لينكدإن — منشور</td><td>1200×627</td><td>1.91:1</td></tr>
+  <tr><td>يوتيوب — صورة مصغّرة</td><td>1280×720</td><td>16:9</td></tr>
+  <tr><td>بنترست</td><td>1000×1500</td><td>2:3</td></tr>
+  <tr><td>واتساب — حالة</td><td>1080×1920</td><td>9:16</td></tr>
+</table>
+
+<h2>النسبة أهم من الأبعاد</h2>
+<p>لو اضطررت للاختيار، فالنسبة أهم. صورة بنسبة صحيحة وأبعاد أصغر تظهر سليمة؛ أما النسبة الخاطئة فتعني <strong>قصّاً تلقائياً</strong> قد يقطع رأس شخص أو نصف شعارك.</p>
+
+<h2>أخطاء شائعة</h2>
+<ul>
+  <li><strong>رفع صورة الكاميرا كما هي:</strong> 12 ميغابكسل بنسبة 4:3 — ستُقصّ وتُضغط بعنف.</li>
+  <li><strong>نص قرب الحافة:</strong> اترك هامشاً آمناً 10٪ من كل جهة؛ الواجهات تغطّي الأطراف بأزرار.</li>
+  <li><strong>إعادة رفع صورة نُزّلت من منصة أخرى:</strong> ضغط فوق ضغط — أسوأ نتيجة ممكنة. ارفع من الأصل دائماً.</li>
+  <li><strong>استخدام PNG لصورة فوتوغرافية:</strong> ملف ضخم بلا فائدة، وبعض المنصات تحوّله إلى JPG بجودة أقل.</li>
+</ul>
+
+<h2>سير عمل سريع</h2>
+<ol>
+  <li>حدّد المنصة والمقاس من الجدول أعلاه.</li>
+  <li>غيّر أبعاد الصورة إلى المقاس المطلوب.</li>
+  <li>احفظ بصيغة JPG بجودة 85–90 (أو PNG إن كان فيها نص حادّ أو شفافية).</li>
+  <li>ارفع — ودع المنصة تضغط مرة واحدة فقط.</li>
+</ol>
+""",
+ "body_en":"""
+<p>You upload a high-quality image and it appears washed out or cropped. The platform is not solely to blame — your dimensions and file size did not match what it expects.</p>
+
+<h2>Why do your images lose quality?</h2>
+<p>Every platform <strong>re-compresses</strong> what you upload. If you upload at the wrong dimensions, two damaging operations occur: resampling, then re-compression. The result is worse than if you had uploaded at the correct size to begin with.</p>
+<p><strong>Golden rule:</strong> upload at the exact dimensions the platform expects, at high quality (85–90), and let it compress only once.</p>
+
+<h2>Dimensions table</h2>
+<table>
+  <tr><th>Platform and type</th><th>Dimensions</th><th>Ratio</th></tr>
+  <tr><td>Instagram — square post</td><td>1080×1080</td><td>1:1</td></tr>
+  <tr><td>Instagram — portrait</td><td>1080×1350</td><td>4:5</td></tr>
+  <tr><td>Instagram — Story &amp; Reels</td><td>1080×1920</td><td>9:16</td></tr>
+  <tr><td>Facebook — post</td><td>1200×630</td><td>1.91:1</td></tr>
+  <tr><td>Facebook — cover</td><td>1640×856</td><td>—</td></tr>
+  <tr><td>X (Twitter) — post</td><td>1600×900</td><td>16:9</td></tr>
+  <tr><td>LinkedIn — post</td><td>1200×627</td><td>1.91:1</td></tr>
+  <tr><td>YouTube — thumbnail</td><td>1280×720</td><td>16:9</td></tr>
+  <tr><td>Pinterest</td><td>1000×1500</td><td>2:3</td></tr>
+  <tr><td>WhatsApp — status</td><td>1080×1920</td><td>9:16</td></tr>
+</table>
+
+<h2>Ratio matters more than size</h2>
+<p>If you must choose, prioritise the ratio. A correct ratio at smaller dimensions still displays properly; a wrong ratio means <strong>automatic cropping</strong> that may cut off someone's head or half your logo.</p>
+
+<h2>Common mistakes</h2>
+<ul>
+  <li><strong>Uploading the camera file as-is:</strong> 12 megapixels at 4:3 — it will be cropped and heavily compressed.</li>
+  <li><strong>Text near the edge:</strong> leave a 10% safe margin on every side; interfaces cover the edges with buttons.</li>
+  <li><strong>Re-uploading an image downloaded from another platform:</strong> compression on top of compression — the worst possible result. Always upload from the original.</li>
+  <li><strong>Using PNG for a photograph:</strong> a huge file for no benefit, and some platforms convert it to a lower-quality JPG anyway.</li>
+</ul>
+
+<h2>Quick workflow</h2>
+<ol>
+  <li>Pick the platform and size from the table above.</li>
+  <li>Resize your image to those dimensions.</li>
+  <li>Save as JPG at quality 85–90 (or PNG if it contains sharp text or transparency).</li>
+  <li>Upload — and let the platform compress just once.</li>
+</ol>
+"""
 }
 ]
 

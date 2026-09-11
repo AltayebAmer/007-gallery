@@ -1,6 +1,46 @@
 {
-  "updated": "2026-08-20",
+  "updated": "2026-09-11",
   "articles": [
+    {
+      "slug": "compress-image-without-uploading",
+      "date": "2026-09-11",
+      "icon": "📦",
+      "title_ar": "تصغير حجم الصورة أونلاين بدون رفعها لأي موقع",
+      "title_en": "Compress an Image Online Without Uploading It Anywhere",
+      "desc_ar": "كيف تقلّل حجم صورك بنسبة تصل إلى 70٪ دون خسارة ملحوظة في الجودة — وبدون إرسالها إلى خادم أحد.",
+      "desc_en": "How to cut image file size by up to 70% with no visible quality loss — and without sending your photos to anyone's server.",
+      "tool": "services/convert-compress.html"
+    },
+    {
+      "slug": "convert-png-to-webp",
+      "date": "2026-09-11",
+      "icon": "🔄",
+      "title_ar": "تحويل PNG إلى WebP: لماذا ومتى وكيف",
+      "title_en": "Convert PNG to WebP: Why, When and How",
+      "desc_ar": "دليل عملي لتحويل صور PNG إلى WebP مع الحفاظ على الشفافية — وتوفير يتجاوز نصف الحجم أحياناً.",
+      "desc_en": "A practical guide to converting PNG images to WebP while keeping transparency — often saving more than half the file size.",
+      "tool": "services/convert-compress.html"
+    },
+    {
+      "slug": "product-photos-white-background",
+      "date": "2026-09-11",
+      "icon": "🛍",
+      "title_ar": "صور المنتجات بخلفية بيضاء: دليل المتاجر الإلكترونية",
+      "title_en": "Product Photos on a White Background: An E-commerce Guide",
+      "desc_ar": "كيف تحوّل صور منتجاتك إلى خلفية بيضاء موحّدة تلبّي شروط أمازون ونون وتزيد ثقة المشتري.",
+      "desc_en": "How to put your product photos on a clean white background that meets marketplace rules and builds buyer trust.",
+      "tool": "services/background-removal.html"
+    },
+    {
+      "slug": "image-sizes-social-media",
+      "date": "2026-09-11",
+      "icon": "📱",
+      "title_ar": "مقاسات الصور الصحيحة لوسائل التواصل الاجتماعي",
+      "title_en": "The Right Image Sizes for Social Media",
+      "desc_ar": "جدول مرجعي بأبعاد الصور لكل منصة، ولماذا تفقد صورك جودتها عند النشر وكيف تمنع ذلك.",
+      "desc_en": "A reference table of image dimensions for every platform, why your posts lose quality, and how to prevent it.",
+      "tool": "services/convert-compress.html"
+    },
     {
       "slug": "remove-background-free",
       "date": "2026-08-20",
