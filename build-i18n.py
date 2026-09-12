@@ -274,6 +274,14 @@ def ltr_fixes(s):
     s = s.replace('id="homeArrow">', 'id="homeArrow" style="transform:rotate(180deg)">')
     # حرفا اسم الفنان في الشعار الدائري
     s = s.replace('<div class="avatar">\u0637\u0639</div>', '<div class="avatar">AA</div>')
+    # النص الإرشادي في حقول النموذج: يُبنى إنجليزياً ثابتاً.
+    # data-ph-en يحمل النص، وplaceholder هو ما يراه الزائر فعلاً.
+    def _ph(m):
+        tag = m.group(0)
+        en = re.search(r'data-ph-en="([^"]*)"', tag).group(1)
+        return re.sub(r'placeholder="[^"]*"', 'placeholder="' + en + '"', tag)
+
+    s = re.sub(r'<(?:input|textarea)\b[^>]*\bdata-ph-en="[^"]*"[^>]*>', _ph, s)
     # نص <option> يُبنى إنجليزياً مباشرةً بدل الانتظار حتى تُصحّحه
     # syncSelectLabels() — كانت تعرض «\u0623\u0628\u064a\u0636 \u00b7 White» لحظةً قبل عمل JS
     s = re.sub(r'(<option\b[^>]*\bdata-label-en="([^"]*)"[^>]*>)[^<]*(</option>)',
