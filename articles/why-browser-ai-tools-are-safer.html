@@ -21,6 +21,11 @@
 <link rel="manifest" href="../manifest.webmanifest">
 <meta name="theme-color" content="#0a0b0f">
 <link rel="canonical" href="https://007.gallery/articles/why-browser-ai-tools-are-safer">
+<link rel="alternate" hreflang="ar" href="https://007.gallery/articles/why-browser-ai-tools-are-safer">
+<link rel="alternate" hreflang="en" href="https://007.gallery/en/articles/why-browser-ai-tools-are-safer">
+<link rel="alternate" hreflang="x-default" href="https://007.gallery/articles/why-browser-ai-tools-are-safer">
+<meta property="og:locale" content="ar_AR">
+<meta property="og:locale:alternate" content="en_US">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="007.gallery">
 <meta property="og:title" content="لماذا أدوات الذكاء الاصطناعي في المتصفح أكثر أماناً؟">
@@ -71,6 +76,7 @@
   .related a:hover{border-color:var(--gold);color:var(--gold-2)}
   .backlink{display:inline-flex;align-items:center;gap:7px;font-size:13.5px;color:var(--gold-2);font-weight:700;margin-bottom:6px}
 </style>
+<script src="/assets/lang.js" defer></script>
 <script src="../assets/guardian.js" defer></script>
 <script src="../assets/ads.js" defer></script>
 </head>
@@ -216,7 +222,7 @@ function toggleLang(){
   document.getElementById('langBtn').textContent = en?'EN':'ع';
   try{ localStorage.setItem('gallery_lang', en?'ar':'en'); }catch(e){}
 }
-try{ if(localStorage.getItem('gallery_lang')==='en') toggleLang(); }catch(e){}
+/* فصل /en/: لا قلب داخل الصفحة — الزر ينتقل عبر assets/lang.js */
 </script>
 </body>
 </html>
