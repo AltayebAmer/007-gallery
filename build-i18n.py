@@ -264,6 +264,23 @@ def patch_arabic(rel, url):
 # ════════════════════════════════════════════════════════════
 #  توليد النسخة الإنجليزية
 # ════════════════════════════════════════════════════════════
+def ltr_fixes(s):
+    """ما كانت toggleLang() القديمة تضبطه وقت التشغيل صار يجب أن يكون
+       صحيحاً في HTML الثابت، لأن الزر لم يعد يقلب الصفحة بل ينتقل.
+       والصواب الثابت أفضل على أي حال: لا وميض قبل عمل JS، وصحيح للزاحف."""
+    # سهم «افتح الأداة» يتبع اتجاه القراءة
+    s = s.replace('<span class="arrow">\u2190</span>', '<span class="arrow">\u2192</span>')
+    # سهم الرجوع للرئيسية: SVG يشير يساراً، يُقلب في LTR
+    s = s.replace('id="homeArrow">', 'id="homeArrow" style="transform:rotate(180deg)">')
+    # حرفا اسم الفنان في الشعار الدائري
+    s = s.replace('<div class="avatar">\u0637\u0639</div>', '<div class="avatar">AA</div>')
+    # نص <option> يُبنى إنجليزياً مباشرةً بدل الانتظار حتى تُصحّحه
+    # syncSelectLabels() — كانت تعرض «\u0623\u0628\u064a\u0636 \u00b7 White» لحظةً قبل عمل JS
+    s = re.sub(r'(<option\b[^>]*\bdata-label-en="([^"]*)"[^>]*>)[^<]*(</option>)',
+               lambda m: m.group(1) + m.group(2) + m.group(3), s)
+    return s
+
+
 def build_english(rel, url, meta):
     src = open(os.path.join(HERE, rel), encoding="utf-8").read()
     depth = rel.count("/")
@@ -271,9 +288,11 @@ def build_english(rel, url, meta):
     s, store = protect(src)
     # حذف المحتوى العربي — خارج <script> و<style> فقط
     s = strip_balanced(s, r"<span\s+data-ar\s*>", "span")
-    s = strip_balanced(s, r'<div class="art-ar"\s*>', "div")
-    s = strip_balanced(s, r'<div class="block-ar"\s*>', "div")
-    s = strip_balanced(s, r'<div class="related art-ar"\s*>', "div")
+    # أي <div> يحمل صنفاً ينتهي بـ -ar مهما رافقه من أصناف أخرى.
+    # المطابقة الحرفية لا تكفي: الموجود فعلاً class="related art-ar"
+    # وclass="guides seo-ar" وclass="doc doc-ar".
+    s = strip_balanced(
+        s, r'<div[^>]*\bclass="[^"]*\b(?:art|seo|doc|block)-ar\b[^"]*"[^>]*>', "div")
     s = restore(s, store)
 
     # لغة الصفحة
@@ -305,6 +324,7 @@ def build_english(rel, url, meta):
     s = s.replace('"inLanguage": [\n  "ar",\n  "en"\n ]', '"inLanguage": "en"')
     s = s.replace('"inLanguage":["ar","en"]', '"inLanguage":"en"')
 
+    s = ltr_fixes(s)
     s = absolutize(s, depth)
     s = kill_lang_memory(s)
     s = ensure_lang_js(s)

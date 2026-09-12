@@ -11,3 +11,7 @@ dist/*.zip
 *.tmp
 .vscode/
 .idea/
+
+# ذاكرة بايثون المؤقتة
+__pycache__/
+*.pyc
