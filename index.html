@@ -195,6 +195,28 @@ html[lang=en] .desc[data-en],html[lang=en] .support p[data-en]{display:block}
 .seo-en{display:none}
 html[lang=en] .seo-ar{display:none}
 html[lang=en] .seo-en{display:block}
+/* شريط المشاريع — يجلس فوق الفووتر ولا يكون جزءاً منه */
+.works-band{max-width:var(--maxw);margin:58px auto 0;padding:0 20px}
+.wb-head{text-align:center;margin-bottom:20px}
+.wb-eyebrow{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--txt-mute)}
+.wb-title{font-size:clamp(19px,3.4vw,26px);font-weight:800;color:var(--gold-2);margin-top:6px}
+.wb-panel{border:1px solid var(--line);background:var(--card);border-radius:var(--radius);padding:22px 18px;max-width:780px;margin-inline:auto}
+.wb-h{font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);text-align:center;margin:0}
+.wb-note{font-size:12.5px;line-height:1.9;color:var(--txt-mute);text-align:center;max-width:48ch;margin:8px auto 15px}
+.wb-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-top:12px}
+.wb-grid a{display:flex;flex-direction:column;gap:3px;align-items:center;text-align:center;padding:14px 12px;
+  border:1px solid var(--line-2);border-radius:var(--radius-sm);text-decoration:none;transition:border-color .2s,background .2s}
+.wb-grid a:hover{border-color:var(--gold);background:var(--gold-soft)}
+.wb-grid b{font-size:14px;font-weight:800;color:var(--gold-2)}
+.wb-grid span{font-size:11.5px;color:var(--txt-mute)}
+.wb-sep{height:1px;max-width:170px;margin:20px auto;background:linear-gradient(90deg,transparent,var(--line-2),transparent)}
+.wb-art{background:rgba(207,214,234,.035);border-color:rgba(207,214,234,.16)}
+.wb-art .wb-h{color:#cfd6ea}
+.wb-art .wb-grid{max-width:290px;margin-inline:auto}
+.wb-art .wb-grid a{border-color:rgba(207,214,234,.2)}
+.wb-art .wb-grid a:hover{border-color:#cfd6ea;background:rgba(207,214,234,.07)}
+.wb-art .wb-grid b{color:#e6ebf7}
+@media(max-width:480px){.works-band{margin-top:40px}.wb-panel{padding:18px 14px}}
 </style>
 <link rel="icon" href="favicon.ico" sizes="any">
 <link rel="icon" type="image/png" sizes="32x32" href="assets/icon-32.png">
@@ -447,25 +469,24 @@ html[lang=en] .seo-en{display:block}
   </div>
 </section>
 
+<!-- works:begin -->
+<section class="works-band">
+  <div class="wb-head">
+    <div class="wb-eyebrow"><span data-ar>مشاريع أخرى</span><span data-en>Other projects</span></div>
+    <div class="wb-title"><span data-ar>من تصميم الطيب عامر</span><span data-en>Designed by Altayeb Amer</span></div>
+  </div>
+  <div class="wb-panel wb-free">
+    <h4 class="wb-h"><span data-ar>مشاريع مجانية</span><span data-en>Free projects</span></h4>
+    <p class="wb-note"><span data-ar>كل مشروع صُمِّم ليكون مجانياً ونافعاً. شاركه مع من ينتفع به.</span><span data-en>Each project is built to be free and useful. Share it with someone who would benefit.</span></p>
+    <div class="wb-grid">
+      <a href="https://awraqna.com" target="_blank" rel="noopener"><b>أوراقنا</b><span data-ar>أوراق عمل للطباعة</span><span data-en>Printable worksheets</span></a>
+      <a href="https://mawlidi.com" target="_blank" rel="noopener"><b>مَوْلِدي</b><span data-ar>الميلاد القمري</span><span data-en>Lunar birthdays</span></a>
+      <a href="https://qurankarem.org" target="_blank" rel="noopener"><b>القرآن الكريم</b><span data-ar>مصحف رقمي</span><span data-en>Digital Quran</span></a>
+    </div>
+  </div>
+</section>
+<!-- works:end -->
 <footer>
-  <!-- works:begin -->
-  <section class="foot-works">
-    <div class="fw-grp">
-      <h4><span data-ar>مشاريع مجانية</span><span data-en>Free projects</span></h4>
-      <div class="fw-row">
-        <a href="https://awraqna.com" target="_blank" rel="noopener"><b>أوراقنا</b><span data-ar>أوراق عمل للطباعة</span><span data-en>Printable worksheets</span></a>
-        <a href="https://mawlidi.com" target="_blank" rel="noopener"><b>مَوْلِدي</b><span data-ar>الميلاد القمري</span><span data-en>Lunar birthdays</span></a>
-        <a href="https://qurankarem.org" target="_blank" rel="noopener"><b>القرآن الكريم</b><span data-ar>مصحف رقمي</span><span data-en>Digital Quran</span></a>
-      </div>
-    </div>
-    <div class="fw-grp">
-      <h4><span data-ar>المعرض الفني</span><span data-en>Art gallery</span></h4>
-      <div class="fw-row">
-        <a href="https://altayebamer.com" target="_blank" rel="noopener"><b>الفنان الطيب عامر</b><span data-ar>أعمال بصرية · دبي</span><span data-en>Visual art · Dubai</span></a>
-      </div>
-    </div>
-  </section>
-  <!-- works:end -->
 <div class="wrap foot">
     <a class="brand" href="#top"><span class="logo">007</span><span>007<b>.gallery</b></span></a>
     <p>© 2026 007.gallery · <span data-ar>كل الحقوق محفوظة</span><span data-en>All rights reserved</span> · <a href="privacy.html" style="color:var(--gold-2)"><span data-ar>سياسة الخصوصية</span><span data-en>Privacy</span></a> · <a href="articles/index.html" style="color:var(--gold-2)"><span data-ar>المقالات</span><span data-en>Guides</span></a> · <a href="projects.html" style="color:var(--gold-2)"><span data-ar>المشاريع</span><span data-en>Projects</span></a> · <a href="contact.html" style="color:var(--gold-2)"><span data-ar>تواصل</span><span data-en>Contact</span></a></p>
