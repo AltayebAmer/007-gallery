@@ -73,8 +73,11 @@
   .skills{display:flex;flex-wrap:wrap;gap:9px;justify-content:center;margin-top:22px}
   .skills span{font-size:12.5px;font-weight:700;color:var(--txt-dim);border:1px solid var(--line-2);
     padding:8px 14px;border-radius:999px}
-  .proj-soon{opacity:.72;cursor:default}
-  .proj-soon:hover{transform:none;border-color:var(--line)}
+  .grp-t{font-size:17px;font-weight:900;color:var(--gold-2);margin:38px 0 4px;text-align:center}
+  .grp-t:first-of-type{margin-top:8px}
+  .grp-s{font-size:13.5px;color:var(--txt-mute);text-align:center;margin-bottom:16px;line-height:1.9}
+  .grid-one{grid-template-columns:1fr;max-width:560px;margin-inline:auto}
+  .hero .avatar svg{display:block}
 </style>
 <script src="/assets/lang.js" defer></script>
 <script src="/assets/guardian.js" defer></script>
@@ -91,7 +94,7 @@
 
 <main class="wrap" style="padding-bottom:40px">
   <div class="hero">
-    <div class="avatar">AA</div>
+    <div class="avatar"><svg viewBox="0 0 24 24" width="46" height="46" fill="none" stroke="#0a0b0f" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a9 9 0 0 0 0 18h1.5a2 2 0 0 0 1.6-3.2 2 2 0 0 1 1.6-3.2H19a3 3 0 0 0 3-3A9.6 9.6 0 0 0 12 2Z"/><circle cx="7.5" cy="10.5" r="1.1" fill="#0a0b0f"/><circle cx="11" cy="7" r="1.1" fill="#0a0b0f"/><circle cx="15.5" cy="8" r="1.1" fill="#0a0b0f"/></svg></div>
     <h1><span data-en>Artist <em>Altayeb Amer</em></span></h1>
     <div class="role"><span data-en>Graphic Designer · Digital Creator · Calligrapher</span></div>
     <p>
@@ -109,89 +112,64 @@
 
   <h2 class="sec-title"><span data-en>Projects</span></h2>
 
+  <h3 class="grp-t"><span data-en>Free projects</span></h3>
+  <p class="grp-s"><span data-en>Tools and platforms open to everyone — no subscription, no cost.</span></p>
   <div class="grid">
     <a class="proj" href="index.html">
       <div class="head">
         <span class="mark" style="background:var(--gold-soft);border:1px solid rgba(212,175,55,.25);color:var(--gold-2)">🖼️</span>
         <div><h3>007.gallery<span class="live"><span data-en>Live</span></span></h3>
         <div class="tagline"><span data-en>Professional image tools</span></div></div>
-      </div>
-      <p>
-         <span data-en>Seven free AI image tools running entirely inside the visitor's browser — no upload, no sign-up, full privacy.</span></p>
-      <span class="go" style="color:var(--gold-2)"><span data-en>Open project →</span></span>
-    </a>
-
-    <a class="proj" href="https://altayebamer.com" target="_blank" rel="noopener">
-      <div class="head">
-        <span class="mark" style="background:rgba(201,163,255,.12);border:1px solid rgba(201,163,255,.25);color:#c9a3ff">🎨</span>
-        <div><h3><span data-en>Altayeb Amer</span><span class="live"><span data-en>Live</span></span></h3>
-        <div class="tagline"><span data-en>Visual art · Dubai</span></div></div>
-      </div>
-      <p>
-         <span data-en>My visual art portfolio: Hurufiyya and Arabic calligraphy, Arabian horse painting, portraits, design, AI art, and art education.</span></p>
-      <span class="go" style="color:#c9a3ff"><span data-en>Visit project →</span></span>
-    </a>
-
     <a class="proj" href="https://awraqna.com" target="_blank" rel="noopener">
       <div class="head">
         <span class="mark" style="background:rgba(79,224,176,.12);border:1px solid rgba(79,224,176,.25);color:#4fe0b0">📄</span>
         <div><h3><span data-en>Awraqna</span><span class="live"><span data-en>Live</span></span></h3>
         <div class="tagline"><span data-en>Printable worksheets</span></div></div>
-      </div>
-      <p>
-         <span data-en>Generators for printable worksheets: maths, puzzles and sudoku, ruled and grid paper, art and colouring, letters and languages — generated on the spot, free.</span></p>
-      <span class="go" style="color:#4fe0b0"><span data-en>Visit project →</span></span>
-    </a>
-
     <a class="proj" href="https://mawlidi.com" target="_blank" rel="noopener">
       <div class="head">
         <span class="mark" style="background:rgba(91,140,255,.12);border:1px solid rgba(91,140,255,.25);color:#5b8cff">🌙</span>
         <div><h3><span data-en>Mawlidi</span><span class="live"><span data-en>Live</span></span></h3>
         <div class="tagline"><span data-en>Your birthday, lunar</span></div></div>
-      </div>
-      <p>
-         <span data-en>Work out your birthday in the Hijri calendar precisely, your lunar age, and your next lunar birthday — with a guide to the Hijri months.</span></p>
-      <span class="go" style="color:#5b8cff"><span data-en>Visit project →</span></span>
-    </a>
-
     <a class="proj" href="https://qurankarem.org" target="_blank" rel="noopener">
       <div class="head">
         <span class="mark" style="background:rgba(240,210,100,.12);border:1px solid rgba(240,210,100,.25);color:#f0d264">📖</span>
         <div><h3><span data-en>Quran Kareem</span><span class="live"><span data-en>Live</span></span></h3>
         <div class="tagline"><span data-en>A clean digital Quran</span></div></div>
-      </div>
-      <p>
-         <span data-en>Read, listen to and learn the Quran with tafsir, tajweed, prayer times and qibla direction — a calm experience with no distractions.</span></p>
-      <span class="go" style="color:#f0d264"><span data-en>Visit project →</span></span>
-    </a>
+  </div>
 
-    <div class="proj proj-soon">
+  <h3 class="grp-t"><span data-en>Art gallery</span></h3>
+  <p class="grp-s"><span data-en>My visual work and personal gallery — separate from the free projects.</span></p>
+  <div class="grid grid-one">
+    <a class="proj" href="https://altayebamer.com" target="_blank" rel="noopener">
       <div class="head">
-        <span class="mark" style="background:rgba(79,224,176,.12);border:1px solid rgba(79,224,176,.25);color:#4fe0b0">📊</span>
-        <div><h3><span data-en>Kashf</span><span class="soon-b"><span data-en>Soon</span></span></h3>
-        <div class="tagline"><span data-en>Smart data insight</span></div></div>
-      </div>
-      <p>
-         <span data-en>A tool that turns complex data into clear insights and decisions using AI.</span></p>
-      <span class="go" style="color:var(--txt-mute)"><span data-en>In development</span></span>
-    </div>
-
-    <div class="proj proj-soon">
-      <div class="head">
-        <span class="mark" style="background:rgba(169,180,204,.12);border:1px solid rgba(169,180,204,.25);color:#a9b4cc">🜲</span>
-        <div><h3><span data-en>The Seven Council</span><span class="soon-b"><span data-en>Soon</span></span></h3>
-        <div class="tagline"><span data-en>Project intelligence platform</span></div></div>
-      </div>
-      <p>
-         <span data-en>A platform for tracking and analysing projects in one place. Still in development — we will announce it when it is ready.</span></p>
-      <span class="go" style="color:var(--txt-mute)"><span data-en>In development</span></span>
-    </div>
+        <span class="mark" style="background:rgba(201,163,255,.12);border:1px solid rgba(201,163,255,.25);color:#c9a3ff">🎨</span>
+        <div><h3><span data-en>Altayeb Amer</span><span class="live"><span data-en>Live</span></span></h3>
+        <div class="tagline"><span data-en>Visual art · Dubai</span></div></div>
   </div>
 
   <div data-ad-slot="billboard"></div>
 </main>
 
-<footer class="site-footer"><div class="wrap foot">
+<footer class="site-footer">
+  <!-- works:begin -->
+  <section class="foot-works">
+    <div class="fw-grp">
+      <h4><span data-en>Free projects</span></h4>
+      <div class="fw-row">
+        <a href="https://awraqna.com" target="_blank" rel="noopener"><b>أوراقنا</b><span data-en>Printable worksheets</span></a>
+        <a href="https://mawlidi.com" target="_blank" rel="noopener"><b>مَوْلِدي</b><span data-en>Lunar birthdays</span></a>
+        <a href="https://qurankarem.org" target="_blank" rel="noopener"><b>القرآن الكريم</b><span data-en>Digital Quran</span></a>
+      </div>
+    </div>
+    <div class="fw-grp">
+      <h4><span data-en>Art gallery</span></h4>
+      <div class="fw-row">
+        <a href="https://altayebamer.com" target="_blank" rel="noopener"><b>الفنان الطيب عامر</b><span data-en>Visual art · Dubai</span></a>
+      </div>
+    </div>
+  </section>
+  <!-- works:end -->
+<div class="wrap foot">
   <a class="brand" href="index.html"><span class="logo">007</span><span>007<b>.gallery</b></span></a>
   <p>© 2026 007.gallery · <span data-en>All rights reserved</span>
      · <a href="privacy.html" style="color:var(--gold-2)"><span data-en>Privacy</span></a> · <a href="articles/index.html" style="color:var(--gold-2)"><span data-en>Guides</span></a> · <a href="projects.html" style="color:var(--gold-2)"><span data-en>Projects</span></a> · <a href="contact.html" style="color:var(--gold-2)"><span data-en>Contact</span></a></p>
